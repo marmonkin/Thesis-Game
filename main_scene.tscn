@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dwma16btcf6v8"]
+
+[ext_resource type="PackedScene" uid="uid://d1n2rq1qu12dt" path="res://rooms/base_room.tscn" id="1_0f027"]
+[ext_resource type="Script" uid="uid://da324mvklj3oh" path="res://scripts/camera/cam_anchor.gd" id="2_2c62f"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0f027"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_2c62f"]
+sky_material = SubResource("ProceduralSkyMaterial_0f027")
+
+[sub_resource type="Environment" id="Environment_gyfs4"]
+background_mode = 2
+sky = SubResource("Sky_2c62f")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Main" type="Node3D" unique_id=998085854]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=82237180]
+environment = SubResource("Environment_gyfs4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=627176900]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Room" parent="." unique_id=409298254 instance=ExtResource("1_0f027")]
+
+[node name="Cam_anchor" type="Node3D" parent="." unique_id=362555694]
+script = ExtResource("2_2c62f")
+rotation_speed = 5.0
+
+[node name="Camera3D" type="Camera3D" parent="Cam_anchor" unique_id=173303432]
+transform = Transform3D(0.7071068, -0.35355338, 0.61237246, 0, 0.8660254, 0.50000006, -0.7071068, -0.35355338, 0.61237246, 1, 1, 1)
+projection = 1
+size = 1.21

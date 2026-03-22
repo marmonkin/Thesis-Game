@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://d1n2rq1qu12dt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7j06c"]
+albedo_color = Color(0.21123034, 0.23943305, 0.47554272, 1)
+
+[node name="Room" type="Node3D" unique_id=409298254]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=132568579]
+size = Vector3(1, 0.078125, 1)
+material = SubResource("StandardMaterial3D_7j06c")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=895091609]
+transform = Transform3D(0.12, 0, 0, 0, 0.12, 0, 0, 0, 0.12, 0.34498003, 0.1, 0.21223068)

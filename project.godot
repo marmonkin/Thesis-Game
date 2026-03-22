@@ -18,7 +18,8 @@ config/icon="res://icon.svg"
 
 folder_colors={
 "res://Cursor/": "blue",
-"res://rooms/": "red"
+"res://Resource/": "yellow",
+"res://Rooms/": "red"
 }
 
 [input]

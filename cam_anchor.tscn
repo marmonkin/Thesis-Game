@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://pi7rrl21hf2v"]
 
-[ext_resource type="Script" uid="uid://da324mvklj3oh" path="res://scripts/camera/cam_anchor.gd" id="1_c63li"]
+[ext_resource type="Script" uid="uid://da324mvklj3oh" path="res://Scripts/camera/cam_anchor.gd" id="1_c63li"]
 
 [node name="Cam_anchor" type="Node3D" unique_id=1352252814]
 script = ExtResource("1_c63li")

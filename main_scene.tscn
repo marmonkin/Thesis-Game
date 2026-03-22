@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://dwma16btcf6v8"]
 
-[ext_resource type="PackedScene" uid="uid://d1n2rq1qu12dt" path="res://rooms/base_room.tscn" id="1_0f027"]
+[ext_resource type="PackedScene" uid="uid://d1n2rq1qu12dt" path="res://Rooms/base_room.tscn" id="1_0f027"]
 [ext_resource type="PackedScene" uid="uid://pi7rrl21hf2v" path="res://cam_anchor.tscn" id="2_2c62f"]
+[ext_resource type="PackedScene" uid="uid://tq07r2dj2j0l" path="res://cursor_man.tscn" id="3_d5x1h"]
 [ext_resource type="Script" uid="uid://clartx4c6yfb6" path="res://rotateon.gd" id="3_gyfs4"]
+[ext_resource type="Texture2D" uid="uid://0u58bxc8j7y4" path="res://Cursor/cursor_none.png" id="4_nfk4m"]
+[ext_resource type="Texture2D" uid="uid://b0ojyowyu0jie" path="res://Cursor/cursor_help.png" id="5_66tet"]
+[ext_resource type="Texture2D" uid="uid://bvwapm7jxrwve" path="res://Cursor/hand_point.png" id="6_7ycvg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0f027"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -18,18 +22,6 @@ tonemap_mode = 2
 glow_enabled = true
 
 [node name="Main" type="Node3D" unique_id=998085854]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=82237180]
-environment = SubResource("Environment_gyfs4")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=627176900]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-layers = 3
-shadow_enabled = true
-
-[node name="Room" parent="." unique_id=409298254 instance=ExtResource("1_0f027")]
-
-[node name="Cam_anchor" parent="." unique_id=1352252814 instance=ExtResource("2_2c62f")]
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1064325762]
 anchors_preset = 8
@@ -60,3 +52,29 @@ cull_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
 layers = 2
 script = ExtResource("3_gyfs4")
+
+[node name="Cam_anchor" parent="." unique_id=1352252814 instance=ExtResource("2_2c62f")]
+
+[node name="-----------------" type="Node3D" parent="." unique_id=1259966664]
+visible = false
+
+[node name="CursorMan" parent="." unique_id=2092318042 instance=ExtResource("3_d5x1h")]
+default_cursor = ExtResource("4_nfk4m")
+hover_cursor = ExtResource("5_66tet")
+interactable_cursor = ExtResource("6_7ycvg")
+
+[node name="-----------------2" type="Node3D" parent="." unique_id=258498581]
+visible = false
+
+[node name="Room" parent="." unique_id=409298254 instance=ExtResource("1_0f027")]
+
+[node name="-----------------3" type="Node3D" parent="." unique_id=452032353]
+visible = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=82237180]
+environment = SubResource("Environment_gyfs4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=627176900]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+layers = 3
+shadow_enabled = true

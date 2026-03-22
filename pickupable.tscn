@@ -1,6 +1,19 @@
 [gd_scene format=3 uid="uid://cf0ox1t6i5j8f"]
 
+[ext_resource type="Script" uid="uid://db42nha66i5m8" path="res://pickupable_base.gd" id="1_ivmqe"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1hr0u"]
+radius = 0.22172084
+
 [node name="Pickupable" type="Node3D" unique_id=521622925]
+script = ExtResource("1_ivmqe")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=2042655325]
 transform = Transform3D(0.19999999, 0, 0, 0, 0.19999999, 0, 0, 0, 0.19999999, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1309140725]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=413945871]
+shape = SubResource("SphereShape3D_1hr0u")
+
+[connection signal="mouse_entered" from="Area3D" to="." method="_on_area_3d_mouse_entered"]

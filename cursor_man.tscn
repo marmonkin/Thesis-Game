@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://tq07r2dj2j0l"]
+
+[ext_resource type="Script" uid="uid://bpub2kg445du6" path="res://cursor_mananger.gd" id="1_w3eg0"]
+
+[node name="CursorMan" type="Node3D" unique_id=2092318042]
+script = ExtResource("1_w3eg0")

@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [file_customization]
 
 folder_colors={
+"res://Cursor/": "blue",
 "res://rooms/": "red"
 }
 
@@ -40,3 +41,7 @@ rot_left={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+viewport/hdr_2d=true
+anti_aliasing/quality/msaa_2d=3
+anti_aliasing/quality/msaa_3d=3
+anti_aliasing/quality/screen_space_aa=2

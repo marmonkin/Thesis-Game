@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://dwma16btcf6v8"]
 
 [ext_resource type="PackedScene" uid="uid://d1n2rq1qu12dt" path="res://rooms/base_room.tscn" id="1_0f027"]
-[ext_resource type="Script" uid="uid://da324mvklj3oh" path="res://scripts/camera/cam_anchor.gd" id="2_2c62f"]
+[ext_resource type="PackedScene" uid="uid://pi7rrl21hf2v" path="res://cam_anchor.tscn" id="2_2c62f"]
+[ext_resource type="Script" uid="uid://clartx4c6yfb6" path="res://rotateon.gd" id="3_gyfs4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0f027"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -23,15 +24,39 @@ environment = SubResource("Environment_gyfs4")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=627176900]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+layers = 3
 shadow_enabled = true
 
 [node name="Room" parent="." unique_id=409298254 instance=ExtResource("1_0f027")]
 
-[node name="Cam_anchor" type="Node3D" parent="." unique_id=362555694]
-script = ExtResource("2_2c62f")
-rotation_speed = 5.0
+[node name="Cam_anchor" parent="." unique_id=1352252814 instance=ExtResource("2_2c62f")]
 
-[node name="Camera3D" type="Camera3D" parent="Cam_anchor" unique_id=173303432]
-transform = Transform3D(0.7071068, -0.35355338, 0.61237246, 0, 0.8660254, 0.50000006, -0.7071068, -0.35355338, 0.61237246, 1, 1, 1)
-projection = 1
-size = 1.21
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1064325762]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -75.0
+offset_right = 75.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=269038662]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(150, 150)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=748193400]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 2, -4.947956)
+cull_mask = 2
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewportContainer/SubViewport" unique_id=1792002215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+layers = 2
+script = ExtResource("3_gyfs4")

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cf0ox1t6i5j8f"]
+
+[node name="Pickupable" type="Node3D" unique_id=521622925]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=2042655325]
+transform = Transform3D(0.19999999, 0, 0, 0, 0.19999999, 0, 0, 0, 0.19999999, 0, 0, 0)

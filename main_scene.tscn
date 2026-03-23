@@ -4,8 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://pi7rrl21hf2v" path="res://cam_anchor.tscn" id="2_2c62f"]
 [ext_resource type="PackedScene" uid="uid://tq07r2dj2j0l" path="res://cursor_man.tscn" id="3_d5x1h"]
 [ext_resource type="Script" uid="uid://clartx4c6yfb6" path="res://rotateon.gd" id="3_gyfs4"]
-[ext_resource type="Texture2D" uid="uid://0u58bxc8j7y4" path="res://Cursor/cursor_none.png" id="4_nfk4m"]
-[ext_resource type="Texture2D" uid="uid://b0ojyowyu0jie" path="res://Cursor/cursor_help.png" id="5_66tet"]
+[ext_resource type="PackedScene" uid="uid://bcj5qiehqitv4" path="res://interation_man.tscn" id="3_hq1ik"]
 [ext_resource type="Texture2D" uid="uid://bvwapm7jxrwve" path="res://Cursor/hand_point.png" id="6_7ycvg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0f027"]
@@ -24,6 +23,7 @@ glow_enabled = true
 [node name="Main" type="Node3D" unique_id=998085854]
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1064325762]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -42,7 +42,7 @@ size_flags_vertical = 4
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(150, 150)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=748193400]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 2, -4.947956)
@@ -58,9 +58,9 @@ script = ExtResource("3_gyfs4")
 [node name="-----------------" type="Node3D" parent="." unique_id=1259966664]
 visible = false
 
-[node name="CursorMan" parent="." unique_id=2092318042 instance=ExtResource("3_d5x1h")]
-default_cursor = ExtResource("4_nfk4m")
-hover_cursor = ExtResource("5_66tet")
+[node name="InteractionMan" parent="." unique_id=65828697 instance=ExtResource("3_hq1ik")]
+
+[node name="CursorMan" parent="." unique_id=2092318042 groups=["cursor_manager"] instance=ExtResource("3_d5x1h")]
 interactable_cursor = ExtResource("6_7ycvg")
 
 [node name="-----------------2" type="Node3D" parent="." unique_id=258498581]

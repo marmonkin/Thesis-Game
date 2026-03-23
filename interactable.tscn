@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cf0ox1t6i5j8f"]
+
+[ext_resource type="Script" uid="uid://db42nha66i5m8" path="res://interactable_base.gd" id="1_wh154"]
+[ext_resource type="Script" uid="uid://dmwkuyfanvx0t" path="res://Resource/InteractableData.gd" id="2_jcy0q"]
+
+[sub_resource type="Resource" id="Resource_0k2he"]
+script = ExtResource("2_jcy0q")
+metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1hr0u"]
+radius = 1.0885001
+
+[node name="Area3D" type="Area3D" unique_id=1309140725]
+script = ExtResource("1_wh154")
+data = SubResource("Resource_0k2he")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=413945871]
+shape = SubResource("SphereShape3D_1hr0u")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

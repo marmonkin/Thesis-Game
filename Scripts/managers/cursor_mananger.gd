@@ -1,14 +1,17 @@
 extends Node3D
+class_name CursorManager
 
 # Preload cursor textures
 @export var default_cursor: Texture2D
 @export var hover_cursor: Texture2D
 @export var interactable_cursor: Texture2D
 
+
 func _ready():
 	# Set the default cursor
 	Input.set_custom_mouse_cursor(default_cursor, Input.CURSOR_ARROW, Vector2.ZERO)
 
+## default, hover, interactable
 func set_cursor(cursor_type: String):
 	match cursor_type:
 		"default":

@@ -1,9 +1,15 @@
 [gd_scene format=3 uid="uid://d1n2rq1qu12dt"]
 
-[ext_resource type="PackedScene" uid="uid://cf0ox1t6i5j8f" path="res://pickupable.tscn" id="1_uglcu"]
+[ext_resource type="PackedScene" uid="uid://cf0ox1t6i5j8f" path="res://interactable.tscn" id="1_uglcu"]
+[ext_resource type="Script" uid="uid://dmwkuyfanvx0t" path="res://Resource/InteractableData.gd" id="2_fs65j"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7j06c"]
 albedo_color = Color(0.21123034, 0.23943305, 0.47554272, 1)
+
+[sub_resource type="Resource" id="Resource_g03ww"]
+script = ExtResource("2_fs65j")
+interaction_type = "pickup"
+metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
 
 [node name="Room" type="Node3D" unique_id=409298254]
 
@@ -12,5 +18,10 @@ transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, 0, 0, 0)
 size = Vector3(1, 0.078125, 1)
 material = SubResource("StandardMaterial3D_7j06c")
 
-[node name="Pickupable" parent="." unique_id=521622925 instance=ExtResource("1_uglcu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21314144, 0.14640407, 0.25051636)
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1363255682]
+transform = Transform3D(0.23760074, 0, 0, 0, 0.23760074, 0, 0, 0, 0.23760074, 0, 0.23103118, 0)
+
+[node name="Area3D" parent="CSGBox3D2" unique_id=1309140725 instance=ExtResource("1_uglcu")]
+data = SubResource("Resource_g03ww")
+
+[editable path="CSGBox3D2/Area3D"]

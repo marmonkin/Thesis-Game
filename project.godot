@@ -15,12 +15,19 @@ run/main_scene="uid://dwma16btcf6v8"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+InventoryManager="*uid://c0ajcqoyhpwpb"
+InteractionManager="*uid://dtixre216xgcg"
+CursorMananger="*uid://bpub2kg445du6"
+
 [file_customization]
 
 folder_colors={
-"res://Cursor/": "blue",
+"res://Cursor/": "gray",
 "res://Resource/": "yellow",
-"res://Rooms/": "red"
+"res://Rooms/": "red",
+"res://Scripts/": "blue"
 }
 
 [global_group]
@@ -28,6 +35,7 @@ folder_colors={
 interactable=""
 cursor_manager=""
 interaction_manager=""
+inventory_manager=""
 
 [input]
 

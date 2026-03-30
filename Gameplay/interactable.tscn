@@ -1,14 +1,15 @@
 [gd_scene format=3 uid="uid://cf0ox1t6i5j8f"]
 
-[ext_resource type="Script" uid="uid://db42nha66i5m8" path="res://interactable_base.gd" id="1_wh154"]
+[ext_resource type="Script" uid="uid://db42nha66i5m8" path="res://Scripts/interactable_base.gd" id="1_wh154"]
 [ext_resource type="Script" uid="uid://dmwkuyfanvx0t" path="res://Resource/InteractableData.gd" id="2_jcy0q"]
 
 [sub_resource type="Resource" id="Resource_0k2he"]
 script = ExtResource("2_jcy0q")
+interaction_type = 1
 metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1hr0u"]
-radius = 1.0885001
+radius = 0.6219663
 
 [node name="Area3D" type="Area3D" unique_id=1309140725]
 script = ExtResource("1_wh154")

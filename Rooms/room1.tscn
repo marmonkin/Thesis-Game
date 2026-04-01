@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://ddc3tlmhufgbg"]
 
-[ext_resource type="Script" uid="uid://bprfnqjotn67r" path="res://Rooms/base_room.gd" id="1_hj0iu"]
+[ext_resource type="Script" uid="uid://cmgq1syb3anf2" path="res://Scripts/room_base.gd" id="1_hj0iu"]
 [ext_resource type="PackedScene" uid="uid://cf0ox1t6i5j8f" path="res://Gameplay/interactable.tscn" id="2_16wms"]
 [ext_resource type="Script" uid="uid://dmwkuyfanvx0t" path="res://Resource/InteractableData.gd" id="3_f8sis"]
-[ext_resource type="PackedScene" uid="uid://kymyjqen21mj" path="res://arrow.tscn" id="4_aojjf"]
+[ext_resource type="PackedScene" uid="uid://cc72l6ub755xi" path="res://Gameplay/interactable_arrow.tscn" id="4_aojjf"]
 [ext_resource type="Texture2D" uid="uid://bv2gmfowdgd33" path="res://isolated-brown-nautical-compass-equipment-on-transparent-background-free-png.webp" id="4_hj0iu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7j06c"]

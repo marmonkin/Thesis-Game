@@ -21,7 +21,7 @@ func _on_mouse_entered():
 		1:
 			cursor_type = "question"
 		2:
-			pass
+			cursor_type = "eye"
 		3:
 			cursor_type = "move"
 	
@@ -49,7 +49,9 @@ func interact():
 					print("Used " + data.requires_item)
 					is_activated = true
 			else:
-				pass
+				print("Already used")
+		3:
+			RoomManager.switch_to_room(data.room)
 		_:
 			print("No interaction")
 

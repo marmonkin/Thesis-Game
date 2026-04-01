@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 InventoryManager="*uid://c0ajcqoyhpwpb"
 InteractionManager="*uid://dtixre216xgcg"
 CursorMananger="*uid://bpub2kg445du6"
+RoomManager="*uid://ctr8g0vu1gueu"
 
 [file_customization]
 

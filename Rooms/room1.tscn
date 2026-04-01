@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://ddc3tlmhufgbg"]
+
+[ext_resource type="Script" uid="uid://bprfnqjotn67r" path="res://Rooms/base_room.gd" id="1_hj0iu"]
+[ext_resource type="PackedScene" uid="uid://cf0ox1t6i5j8f" path="res://Gameplay/interactable.tscn" id="2_16wms"]
+[ext_resource type="Script" uid="uid://dmwkuyfanvx0t" path="res://Resource/InteractableData.gd" id="3_f8sis"]
+[ext_resource type="PackedScene" uid="uid://kymyjqen21mj" path="res://arrow.tscn" id="4_aojjf"]
+[ext_resource type="Texture2D" uid="uid://bv2gmfowdgd33" path="res://isolated-brown-nautical-compass-equipment-on-transparent-background-free-png.webp" id="4_hj0iu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7j06c"]
+albedo_color = Color(0.21123034, 0.23943305, 0.47554272, 1)
+
+[sub_resource type="Resource" id="Resource_fs65j"]
+script = ExtResource("3_f8sis")
+interaction_type = 1
+display_name = ""
+requires_item = "Box"
+metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
+
+[sub_resource type="Resource" id="Resource_f8sis"]
+script = ExtResource("3_f8sis")
+interaction_type = 3
+metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
+
+[node name="Room" type="Node3D" unique_id=409298254]
+script = ExtResource("1_hj0iu")
+
+[node name="Floor" type="CSGBox3D" parent="." unique_id=132568579]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, 0, 0, 0)
+size = Vector3(1, 0.078125, 1)
+material = SubResource("StandardMaterial3D_7j06c")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1282370315]
+transform = Transform3D(0.59976697, 0, 0, 0, 0.59976697, 0, 0, 0, 0.59976697, 0.99080086, 0.54683936, 0.27760106)
+
+[node name="Area3D" parent="CSGBox3D" unique_id=1309140725 instance=ExtResource("2_16wms")]
+transform = Transform3D(1.0926038, 0, 0, 0, 1.0926038, 0, 0, 0, 1.0926038, 0, 0, 0)
+data = SubResource("Resource_fs65j")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=590097708]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.05725479, -2.5026736e-09)
+layers = 2
+texture = ExtResource("4_hj0iu")
+
+[node name="Arrow" parent="." unique_id=237048088 instance=ExtResource("4_aojjf")]
+transform = Transform3D(-0.7, 0, 8.742278e-08, 0, 1, 0, -6.119594e-08, 0, -1, -2.8, 0, 0)
+
+[node name="Area3D" parent="Arrow" index="0" unique_id=1309140725]
+data = SubResource("Resource_f8sis")
+
+[editable path="Arrow"]
+[editable path="Arrow/Area3D"]

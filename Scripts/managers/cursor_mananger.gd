@@ -6,12 +6,15 @@ class_name CursorManager
 @onready var hover_cursor: Texture2D = preload("uid://fxx3nykk1kxw")
 @onready var interactable_cursor: Texture2D = preload("uid://px2bdxrkhqr7")
 @onready var move_cursor: Texture2D = preload("uid://dwlr5ykxomlkc")
+@onready var look_cursor: Texture2D = preload("uid://rw80mx6ubi0d")
+
 
 func _ready():
 	# Set the default cursor
 	Input.set_custom_mouse_cursor(default_cursor, Input.CURSOR_ARROW, Vector2(16, 16))
 
-## default, hover, interactable
+
+## default, question, exclamation, move
 func set_cursor(cursor_type: String):
 	match cursor_type:
 		"default":
@@ -22,3 +25,5 @@ func set_cursor(cursor_type: String):
 			Input.set_custom_mouse_cursor(interactable_cursor, Input.CURSOR_ARROW, Vector2(16, 16))
 		"move":
 			Input.set_custom_mouse_cursor(move_cursor, Input.CURSOR_ARROW, Vector2(16, 16))
+		"eye":
+			Input.set_custom_mouse_cursor(look_cursor, Input.CURSOR_ARROW, Vector2(16, 16))

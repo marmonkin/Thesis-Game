@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://cc72l6ub755xi"]
+
+[ext_resource type="Script" uid="uid://db42nha66i5m8" path="res://Scripts/interactable_base.gd" id="1_j1n8x"]
+[ext_resource type="Script" uid="uid://dmwkuyfanvx0t" path="res://Resource/InteractableData.gd" id="2_d2kjv"]
+
+[sub_resource type="Resource" id="Resource_0k2he"]
+script = ExtResource("2_d2kjv")
+interaction_type = 1
+metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j1n8x"]
+size = Vector3(0.7558594, 0.33789063, 0.43164063)
+
+[sub_resource type="PrismMesh" id="PrismMesh_d2kjv"]
+size = Vector3(1, 1, 0.495)
+
+[node name="Area3D" type="Area3D" unique_id=1309140725]
+script = ExtResource("1_j1n8x")
+data = SubResource("Resource_0k2he")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=413945871]
+shape = SubResource("BoxShape3D_j1n8x")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="." unique_id=1852799700]
+transform = Transform3D(-1.7484554e-08, 0.7, 0, 1.7484554e-08, 1.3374798e-15, 0.24, 0.39999998, 3.059797e-08, -1.0490733e-08, 0, 0, 0)
+layers = 2
+cast_shadow = 0
+gi_mode = 0
+calculate_tangents = false
+mesh = SubResource("PrismMesh_d2kjv")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

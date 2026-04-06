@@ -8,31 +8,25 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7j06c"]
 albedo_color = Color(0.21123034, 0.23943305, 0.47554272, 1)
 
-[sub_resource type="Resource" id="Resource_fs65j"]
-script = ExtResource("2_fs65j")
-interaction_type = 1
-requires_item = "Box"
-metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
-
 [sub_resource type="Resource" id="Resource_g03ww"]
 script = ExtResource("2_fs65j")
 display_name = "Box"
 metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
 
-[node name="Room" type="Node3D" unique_id=409298254]
+[node name="Room" type="Node3D" unique_id=409298254 groups=["room"]]
 script = ExtResource("1_20cee")
+room_id = "base_room"
+neighbour_rooms = Dictionary[String, String]({
+"East": "",
+"North": "room1",
+"South": "",
+"West": ""
+})
 
 [node name="Floor" type="CSGBox3D" parent="." unique_id=132568579]
 transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, 0, 0, 0)
 size = Vector3(1, 0.078125, 1)
 material = SubResource("StandardMaterial3D_7j06c")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1282370315]
-transform = Transform3D(0.59976697, 0, 0, 0, 0.59976697, 0, 0, 0, 0.59976697, -0.86231863, 0.54683936, -0.5344008)
-
-[node name="Area3D" parent="CSGBox3D" unique_id=1309140725 instance=ExtResource("1_uglcu")]
-transform = Transform3D(1.0926038, 0, 0, 0, 1.0926038, 0, 0, 0, 1.0926038, 0, 0, 0)
-data = SubResource("Resource_fs65j")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1363255682]
 transform = Transform3D(0.23760074, 0, 0, 0, 0.23760074, 0, 0, 0, 0.23760074, 0.8387108, 0.23103118, 0.8244059)
@@ -44,4 +38,7 @@ data = SubResource("Resource_g03ww")
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=813923217]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.05725479, -2.5026736e-09)
 layers = 4
+modulate = Color(0, 0, 0, 1)
 texture = ExtResource("6_6wywb")
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

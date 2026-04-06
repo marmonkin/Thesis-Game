@@ -1,18 +1,19 @@
 extends Node3D
 
-@export var neighbour_rooms : Dictionary[String, PackedScene] = {
-	"North": null,
-	"South": null,
-	"East": null,
-	"West": null
+@export var room_id = ""
+
+@export var neighbour_rooms : Dictionary[String, String] = {
+	"North": "",
+	"South": "",
+	"East": "",
+	"West": ""
 }
 
+var active_room = false
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func _on_visibility_changed() -> void:
+	RoomManager.arrow_container.direction_activate(neighbour_rooms)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func set_state(state: bool):
+	visible = state
+	active_room = state

@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://cmgq1syb3anf2" path="res://Scripts/room_base.gd" id="1_hj0iu"]
 [ext_resource type="PackedScene" uid="uid://cf0ox1t6i5j8f" path="res://Gameplay/interactable.tscn" id="2_16wms"]
 [ext_resource type="Script" uid="uid://dmwkuyfanvx0t" path="res://Resource/InteractableData.gd" id="3_f8sis"]
-[ext_resource type="PackedScene" uid="uid://cc72l6ub755xi" path="res://Gameplay/interactable_arrow.tscn" id="4_aojjf"]
 [ext_resource type="Texture2D" uid="uid://bv2gmfowdgd33" path="res://isolated-brown-nautical-compass-equipment-on-transparent-background-free-png.webp" id="4_hj0iu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7j06c"]
@@ -16,13 +15,15 @@ display_name = ""
 requires_item = "Box"
 metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
 
-[sub_resource type="Resource" id="Resource_f8sis"]
-script = ExtResource("3_f8sis")
-interaction_type = 3
-metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
-
-[node name="Room" type="Node3D" unique_id=409298254]
+[node name="Room" type="Node3D" unique_id=409298254 groups=["room"]]
 script = ExtResource("1_hj0iu")
+room_id = "room1"
+neighbour_rooms = Dictionary[String, String]({
+"East": "",
+"North": "",
+"South": "base_room",
+"West": ""
+})
 
 [node name="Floor" type="CSGBox3D" parent="." unique_id=132568579]
 transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, 0, 0, 0)
@@ -40,12 +41,3 @@ data = SubResource("Resource_fs65j")
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.05725479, -2.5026736e-09)
 layers = 2
 texture = ExtResource("4_hj0iu")
-
-[node name="Arrow" parent="." unique_id=237048088 instance=ExtResource("4_aojjf")]
-transform = Transform3D(-0.7, 0, 8.742278e-08, 0, 1, 0, -6.119594e-08, 0, -1, -2.8, 0, 0)
-
-[node name="Area3D" parent="Arrow" index="0" unique_id=1309140725]
-data = SubResource("Resource_f8sis")
-
-[editable path="Arrow"]
-[editable path="Arrow/Area3D"]

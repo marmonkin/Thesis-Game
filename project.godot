@@ -37,6 +37,7 @@ interactable=""
 cursor_manager=""
 interaction_manager=""
 inventory_manager=""
+room=""
 
 [input]
 

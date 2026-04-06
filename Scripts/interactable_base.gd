@@ -1,9 +1,9 @@
 extends Area3D
 class_name Interactable
 
-var is_activated: bool = true
-
 @export var data: InteractableData
+
+var is_activated: bool = true
 
 
 func _ready():
@@ -51,7 +51,7 @@ func interact():
 			else:
 				print("Already used")
 		3:
-			RoomManager.switch_to_room(data.room)
+			RoomManager.switch_to_room(get_meta("target_room"))
 		_:
 			print("No interaction")
 

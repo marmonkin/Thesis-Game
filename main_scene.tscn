@@ -2,7 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://pi7rrl21hf2v" path="res://cam_anchor.tscn" id="2_2c62f"]
 [ext_resource type="Script" uid="uid://bjiiftr3dlrao" path="res://Scripts/managers/arrows_man.gd" id="3_hq1ik"]
+[ext_resource type="Script" uid="uid://hmqgtod608ku" path="res://unlocker.gd" id="3_wr18j"]
 [ext_resource type="PackedScene" uid="uid://cc72l6ub755xi" path="res://Gameplay/interactable_arrow.tscn" id="4_8mm7a"]
+[ext_resource type="PackedScene" uid="uid://cdn5rijm5ob03" path="res://Rooms/unlockable_room.tscn" id="5_7ycvg"]
 [ext_resource type="PackedScene" uid="uid://d1n2rq1qu12dt" path="res://Rooms/base_room.tscn" id="5_hq1ik"]
 [ext_resource type="Script" uid="uid://dmwkuyfanvx0t" path="res://Resource/InteractableData.gd" id="6_66tet"]
 [ext_resource type="Texture2D" uid="uid://bv2gmfowdgd33" path="res://isolated-brown-nautical-compass-equipment-on-transparent-background-free-png.webp" id="6_hq1ik"]
@@ -45,6 +47,7 @@ offset_right = 796.0
 offset_bottom = 650.0
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer2" unique_id=1076353369]
+handle_input_locally = false
 physics_object_picking = true
 size = Vector2i(796, 650)
 render_target_update_mode = 4
@@ -99,6 +102,13 @@ size = 2.5
 [node name="-----------------" type="Node3D" parent="." unique_id=1259966664]
 visible = false
 
+[node name="unlocker" type="Node3D" parent="." unique_id=648966976 node_paths=PackedStringArray("unlock_room", "in_room", "by_using")]
+script = ExtResource("3_wr18j")
+unlock_room = NodePath("../Room3")
+in_room = NodePath("../Room")
+direction = "West"
+by_using = NodePath("../Room2/CSGBox3D/Area3D")
+
 [node name="Room" parent="." unique_id=409298254 instance=ExtResource("5_hq1ik")]
 unique_name_in_owner = true
 
@@ -106,8 +116,15 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
 
-[node name="RoomContainer" type="Node3D" parent="." unique_id=1983712989]
-unique_name_in_owner = true
+[node name="Room3" parent="." unique_id=536103405 instance=ExtResource("5_7ycvg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+room_id = "unlockable"
+neighbour_rooms = Dictionary[String, String]({
+"East": "base_room",
+"North": "",
+"South": "",
+"West": ""
+})
 
 [node name="MoveArrows" type="Node3D" parent="." unique_id=1019808265]
 unique_name_in_owner = true
@@ -155,3 +172,4 @@ shadow_enabled = true
 shadow_caster_mask = 4294967289
 
 [editable path="SubViewportContainer2/SubViewport/Cam_anchor"]
+[editable path="Room2"]

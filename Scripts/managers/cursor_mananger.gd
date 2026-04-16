@@ -7,7 +7,7 @@ class_name CursorManager
 @onready var interactable_cursor: Texture2D = preload("uid://px2bdxrkhqr7")
 @onready var move_cursor: Texture2D = preload("uid://dwlr5ykxomlkc")
 @onready var look_cursor: Texture2D = preload("uid://rw80mx6ubi0d")
-
+@onready var grab_cursor: Texture2D = preload("uid://cbtf4ncdgwi80")
 
 func _ready():
 	# Set the default cursor
@@ -27,3 +27,5 @@ func set_cursor(cursor_type: String):
 			Input.set_custom_mouse_cursor(move_cursor, Input.CURSOR_ARROW, Vector2(16, 16))
 		"eye":
 			Input.set_custom_mouse_cursor(look_cursor, Input.CURSOR_ARROW, Vector2(16, 16))
+		"grab":
+			Input.set_custom_mouse_cursor(grab_cursor, Input.CURSOR_ARROW, Vector2(16, 16))

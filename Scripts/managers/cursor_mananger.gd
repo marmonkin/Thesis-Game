@@ -25,7 +25,7 @@ func set_cursor(cursor_type: String):
 			Input.set_custom_mouse_cursor(interactable_cursor, Input.CURSOR_ARROW, Vector2(16, 16))
 		"move":
 			Input.set_custom_mouse_cursor(move_cursor, Input.CURSOR_ARROW, Vector2(16, 16))
-		"eye":
+		"read":
 			Input.set_custom_mouse_cursor(look_cursor, Input.CURSOR_ARROW, Vector2(16, 16))
 		"grab":
 			Input.set_custom_mouse_cursor(grab_cursor, Input.CURSOR_ARROW, Vector2(16, 16))

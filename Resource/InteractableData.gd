@@ -1,7 +1,7 @@
 extends Resource
 class_name InteractableData
 
-enum INTERACTION { PICKUP, USE, ACTIVATE, MOVE }
+enum INTERACTION { PICKUP, USE, ACTIVATE, MOVE, READ }
 
 @export var interaction_type: INTERACTION
 

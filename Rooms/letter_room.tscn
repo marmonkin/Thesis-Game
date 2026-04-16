@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://k4u7gndrwxrn"]
+
+[ext_resource type="PackedScene" uid="uid://cdn5rijm5ob03" path="res://Rooms/unlockable_room.tscn" id="1_eijf6"]
+[ext_resource type="PackedScene" uid="uid://cws7uwxsqkk6k" path="res://letter.tscn" id="2_j46lc"]
+
+[node name="Room" unique_id=409298254 instance=ExtResource("1_eijf6")]
+
+[node name="Letter" parent="." index="2" unique_id=126191928 instance=ExtResource("2_j46lc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1985933, 0.17719007, 1.0411452)

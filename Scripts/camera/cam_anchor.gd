@@ -7,6 +7,13 @@ extends Node3D
 var target_rotation = .0
 var move_target = self
 
+var lock_rot = false
+
+func _ready() -> void:
+	target_rotation = rotation.y
+	RoomManager.register_camera(self)
+
+
 func _process(delta):
 	rotation.y = lerp_angle(rotation.y, target_rotation, rotation_speed * delta)
 	global_position = lerp(global_position, move_target.global_position, move_speed * delta)
@@ -17,7 +24,7 @@ func move_to_room(room: Node3D):
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("rot_left"):
+	if event.is_action_pressed("rot_left") and not lock_rot:
 		target_rotation -= deg_to_rad(rotation_deg)
-	if event.is_action_pressed("rot_right"):
+	if event.is_action_pressed("rot_right") and not lock_rot:
 		target_rotation += deg_to_rad(rotation_deg)

@@ -9,5 +9,6 @@ extends Node3D
 func _ready() -> void:
 	by_using.unlock.connect(_on_unlock)
 
+
 func _on_unlock():
 	in_room.neighbour_rooms[direction] = unlock_room.room_id

@@ -8,11 +8,10 @@ func add_to_inventory(item: String):
 	print("Picked up " + item)
 
 
-func remove_from_inventory(item: String) -> bool:
+func get_item(item: String) -> bool:
 	if not inventory.has(item):
 		print("Don't have " + item)
 		return false
 		#probably add a return or something that would tell the player what they need this item
 	
-	inventory.erase(item)
 	return true

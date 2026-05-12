@@ -4,10 +4,13 @@ extends Node3D
 @export var rotation_deg = 1
 
 var target_rotation = .0
+var lock_rot = false
 
 var directions = {}
 
+
 func _ready():
+	RoomManager.register_arrows(self)
 	directions = {
 		"North": %N,
 		"South": %S,
@@ -29,7 +32,7 @@ func _process(delta):
 	rotation.y = lerp_angle(rotation.y, target_rotation, rotation_speed * delta)
 
 func _input(event):
-	if event.is_action_pressed("rot_left"):
+	if event.is_action_pressed("rot_left") and not lock_rot:
 		target_rotation -= deg_to_rad(rotation_deg)
-	if event.is_action_pressed("rot_right"):
+	if event.is_action_pressed("rot_right") and not lock_rot:
 		target_rotation += deg_to_rad(rotation_deg)

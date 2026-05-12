@@ -13,21 +13,11 @@ var current_room_id: String = ""
 
 
 func _ready():
-	var main = get_node("/root/Main")
-	
-	arrow_container = get_node("/root/Main/MoveArrows")
-	cam_anchor = get_node("/root/Main/SubViewportContainer2/SubViewport/Cam_anchor")
-	
-	for room in main.get_tree().get_nodes_in_group("room"):
-		rooms[room.room_id] = room
-	
-	if starting_room_id:
-		current_room = get_room(starting_room_id)
-		switch_to_room(starting_room_id)
+	pass
 
 
 func get_room(id : String) -> Node3D:
-	return rooms[id]
+	return rooms.get(id)
 
 
 func switch_to_room(room_id: String):
@@ -44,3 +34,38 @@ func switch_to_room(room_id: String):
 	else:
 		printerr("Room ID not found: ", room_id)
 		return
+
+
+func register_main(main):
+	if main:
+		for room in main.get_tree().get_nodes_in_group("room"):
+			rooms[room.room_id] = room
+		try_initialize()
+
+
+func register_camera(cam):
+	cam_anchor = cam
+	try_initialize()
+
+func register_arrows(arrows):
+	arrow_container = arrows
+	try_initialize()
+
+
+func try_initialize():
+	if not cam_anchor:
+		return
+
+	if not arrow_container:
+		return
+
+	if rooms.is_empty():
+		return
+
+	var room = get_room(starting_room_id)
+
+	if room:
+		current_room = room
+		switch_to_room(starting_room_id)
+	else:
+		printerr("Couldn't find starting room!")

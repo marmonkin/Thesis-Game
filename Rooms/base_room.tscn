@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cmgq1syb3anf2" path="res://Scripts/room_base.gd" id="1_20cee"]
 [ext_resource type="PackedScene" uid="uid://cf0ox1t6i5j8f" path="res://Gameplay/interactable.tscn" id="1_uglcu"]
 [ext_resource type="Script" uid="uid://dmwkuyfanvx0t" path="res://Resource/InteractableData.gd" id="2_fs65j"]
+[ext_resource type="Script" uid="uid://cdy6jrpiy81g3" path="res://Scripts/i_pickup.gd" id="3_qigil"]
 [ext_resource type="Texture2D" uid="uid://bv2gmfowdgd33" path="res://isolated-brown-nautical-compass-equipment-on-transparent-background-free-png.webp" id="6_6wywb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7j06c"]
@@ -34,11 +35,12 @@ size = Vector3(1, 0.078125, 1)
 material = SubResource("StandardMaterial3D_7j06c")
 
 [node name="CSGBox3D2" type="CSGMesh3D" parent="." unique_id=1332491620]
-transform = Transform3D(0.23760074, 0, 0, 0, 0.23760074, 0, 0, 0, 0.23760074, 0.8387108, 0.23103118, 0.8244059)
+transform = Transform3D(0.23760074, 0, 0, 0, 0.23760074, 0, 0, 0, 0.23760074, 2.4368854, 1.356651, -1.7095435)
 mesh = SubResource("SphereMesh_20cee")
 
 [node name="Area3D" parent="CSGBox3D2" unique_id=2115803580 instance=ExtResource("1_uglcu")]
 transform = Transform3D(1.353596, 0, 0, 0, 1.353596, 0, 0, 0, 1.353596, 0, 0, 0)
+script = ExtResource("3_qigil")
 data = SubResource("Resource_g03ww")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=813923217]
@@ -46,5 +48,30 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0
 layers = 4
 modulate = Color(0, 0, 0, 1)
 texture = ExtResource("6_6wywb")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1260155921]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96972656, 3.0674143)
+size = Vector3(1.9882813, 2.9394531, 0.2319336)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1534364118]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.842843, 0.9697268, -1.7782633)
+size = Vector3(1.9882813, 2.9394531, 0.2319336)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGBox3D3" unique_id=1131405874]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.012113452, 0.08978045, 0.13976288)
+size = Vector3(0.34179688, 0.09082031, 1.9338379)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGBox3D3" unique_id=136805702]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.012113452, 0.5469825, 0.13976288)
+size = Vector3(0.34179688, 0.09082031, 1.9338379)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGBox3D3" unique_id=1226436898]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.012113452, 1.0234661, 0.13976288)
+size = Vector3(0.34179688, 0.09082031, 1.9338379)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1113634952]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2.7852468, -4.371139e-08)
+spot_range = 6.8014064
+spot_angle = 89.99
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

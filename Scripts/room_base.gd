@@ -13,7 +13,7 @@ var active_room = false
 
 
 func _ready() -> void:
-	if room_id != "base_room":
+	if not room_id == RoomManager.starting_room_id:
 		visible = false
 
 

@@ -1,16 +1,16 @@
 extends Node
 class_name InteractableManager
 
-var interactables: Array[Interactable] = []
+var interactables = []
 var interactions_enabled: bool = true
 
 
-func register_interactable(interactable: Interactable):
+func register_interactable(interactable):
 	if not interactables.has(interactable):
 		interactables.append(interactable)
 
 
-func unregister_interactable(interactable: Interactable):
+func unregister_interactable(interactable):
 	interactables.erase(interactable)
 
 

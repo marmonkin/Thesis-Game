@@ -1,5 +1,4 @@
 extends Area3D
-class_name Interactable
 
 signal unlock
 
@@ -8,7 +7,6 @@ signal unlock
 
 var is_activated: bool = true
 
-var is_ui = false
 
 func _ready():
 	ui = get_tree().current_scene.get_node("UI")
@@ -42,10 +40,6 @@ func _on_mouse_exited():
 func _on_input_event(_camera: Node, event: InputEvent, _position: Vector3, _normal: Vector3, _shape_idx: int):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		interact()
-	
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed and is_ui:
-		ui.visible = false
-		is_ui = false
 
 
 func interact():
@@ -56,7 +50,7 @@ func interact():
 			CursorMananger.set_cursor("default")
 		1:
 			if not is_activated:
-				if InventoryManager.remove_from_inventory(data.requires_item):
+				if InventoryManager.get_item(data.requires_item):
 					print("Used " + data.requires_item)
 					is_activated = true
 					emit_signal("unlock")
@@ -65,8 +59,7 @@ func interact():
 		3:
 			RoomManager.switch_to_room(get_meta("target_room"))
 		4:
-			ui.visible = true
-			is_ui = true
+			ui.activate_ui()
 		_:
 			print("No interaction")
 

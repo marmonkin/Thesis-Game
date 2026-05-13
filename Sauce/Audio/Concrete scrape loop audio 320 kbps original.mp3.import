@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bencjvqsj00vp"
+path="res://.godot/imported/Concrete scrape loop audio 320 kbps original.mp3-81a1ad6ab53600438e13e19ecc9f3e39.mp3str"
+
+[deps]
+
+source_file="res://Sauce/Audio/Concrete scrape loop audio 320 kbps original.mp3"
+dest_files=["res://.godot/imported/Concrete scrape loop audio 320 kbps original.mp3-81a1ad6ab53600438e13e19ecc9f3e39.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

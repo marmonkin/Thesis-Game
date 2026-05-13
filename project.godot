@@ -30,9 +30,9 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 [file_customization]
 
 folder_colors={
-"res://Cursor/": "gray",
 "res://Resource/": "yellow",
 "res://Rooms/": "red",
+"res://Sauce/Cursor/": "gray",
 "res://Scripts/": "blue"
 }
 

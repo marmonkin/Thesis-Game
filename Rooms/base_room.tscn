@@ -9,6 +9,12 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7j06c"]
 albedo_color = Color(0.21123034, 0.23943305, 0.47554272, 1)
 
+[sub_resource type="BoxMesh" id="BoxMesh_qigil"]
+size = Vector3(1.98, 2.15, 0.26)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6wywb"]
+size = Vector3(1.9150391, 1.7753906, 0.3125)
+
 [sub_resource type="SphereMesh" id="SphereMesh_20cee"]
 radius = 1.0
 radial_segments = 12
@@ -34,28 +40,9 @@ transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 6, 0, 0, 0)
 size = Vector3(1, 0.078125, 1)
 material = SubResource("StandardMaterial3D_7j06c")
 
-[node name="CSGBox3D2" type="CSGMesh3D" parent="." unique_id=1332491620]
-transform = Transform3D(0.23760074, 0, 0, 0, 0.23760074, 0, 0, 0, 0.23760074, 2.4368854, 1.356651, -1.7095435)
-mesh = SubResource("SphereMesh_20cee")
-
-[node name="Area3D" parent="CSGBox3D2" unique_id=2115803580 instance=ExtResource("1_uglcu")]
-transform = Transform3D(1.353596, 0, 0, 0, 1.353596, 0, 0, 0, 1.353596, 0, 0, 0)
-script = ExtResource("3_qigil")
-data = SubResource("Resource_g03ww")
-
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=813923217]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.05725479, -2.5026736e-09)
-layers = 4
-modulate = Color(0, 0, 0, 1)
-texture = ExtResource("6_6wywb")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1260155921]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.96972656, 3.0674143)
-size = Vector3(1.9882813, 2.9394531, 0.2319336)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1534364118]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.842843, 0.9697268, -1.7782633)
-size = Vector3(1.9882813, 2.9394531, 0.2319336)
+[node name="CSGBox3D3" type="MeshInstance3D" parent="." unique_id=1929441627]
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 2.1912658, 0.9697267, -2.231375)
+mesh = SubResource("BoxMesh_qigil")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="CSGBox3D3" unique_id=1131405874]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.012113452, 0.08978045, 0.13976288)
@@ -68,6 +55,35 @@ size = Vector3(0.34179688, 0.09082031, 1.9338379)
 [node name="CSGBox3D6" type="CSGBox3D" parent="CSGBox3D3" unique_id=1226436898]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.012113452, 1.0234661, 0.13976288)
 size = Vector3(0.34179688, 0.09082031, 1.9338379)
+
+[node name="Area3D" type="Area3D" parent="CSGBox3D3" unique_id=1331943268]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D3/Area3D" unique_id=403551053]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17382813, 0)
+shape = SubResource("BoxShape3D_6wywb")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=813923217]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.05725479, -2.5026736e-09)
+layers = 4
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("6_6wywb")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=210095807]
+transform = Transform3D(-3.367718e-08, 0, 0.31629246, 0, 1, 0, -0.77044404, 0, -1.38255825e-08, 3, 0.96972656, 0.06741415)
+size = Vector3(1.9882813, 2.9394531, 0.2319336)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=1042407500]
+transform = Transform3D(0.77044404, 0, 0, 0, 1, 0, 0, 0, 0.31629246, -0.008835822, 0.96972656, 2.991044)
+size = Vector3(1.9882813, 2.9394531, 0.2319336)
+
+[node name="CSGBox3D2" type="CSGMesh3D" parent="." unique_id=1332491620]
+transform = Transform3D(0.23760074, 0, 0, 0, 0.23760074, 0, 0, 0, 0.23760074, 2.3116527, 1.356651, -1.6410867)
+mesh = SubResource("SphereMesh_20cee")
+
+[node name="Area3D" parent="CSGBox3D2" unique_id=2115803580 instance=ExtResource("1_uglcu")]
+transform = Transform3D(1.353596, 0, 0, 0, 1.353596, 0, 0, 0, 1.353596, 0, 0, 0)
+script = ExtResource("3_qigil")
+data = SubResource("Resource_g03ww")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1113634952]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2.7852468, -4.371139e-08)

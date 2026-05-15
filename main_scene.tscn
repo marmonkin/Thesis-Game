@@ -61,6 +61,7 @@ render_target_update_mode = 4
 
 [node name="Cam_anchor" parent="SubViewportContainer2/SubViewport" unique_id=1352252814 instance=ExtResource("2_2c62f")]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 rotation_deg = 90
 
 [node name="Camera3D" parent="SubViewportContainer2/SubViewport/Cam_anchor" index="0" unique_id=666522786]
@@ -177,6 +178,7 @@ neighbour_rooms = Dictionary[String, String]({
 
 [node name="PillarPuzzle" parent="." unique_id=1938957 instance=ExtResource("14_42l1d")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.0771637, 2, 7.021899)
+solution = Array[int]([2, 0, 3])
 
 [node name="Room3" parent="." unique_id=536103405 instance=ExtResource("5_7ycvg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 7)

@@ -6,6 +6,7 @@ extends Node3D
 
 var target_rotation = .0
 var move_target = self
+var move_target_pos
 
 var lock_rot = false
 
@@ -16,11 +17,11 @@ func _ready() -> void:
 
 func _process(delta):
 	rotation.y = lerp_angle(rotation.y, target_rotation, rotation_speed * delta)
-	global_position = lerp(global_position, move_target.global_position, move_speed * delta)
+	global_position = lerp(global_position, move_target_pos, move_speed * delta)
 
 
 func move_to_room(room: Node3D):
-	move_target = room
+	move_target_pos = room.global_position + Vector3(0, 1.5, 0)
 
 
 func _input(event: InputEvent) -> void:

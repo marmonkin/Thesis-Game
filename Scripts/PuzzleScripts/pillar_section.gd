@@ -1,6 +1,7 @@
 extends CSGCylinder3D
 
-@export var rotation_axis = Vector3.UP
+@export var my_id = 0
+
 @export var sens = .4
 @export var snap_speed = 8.
 
@@ -17,7 +18,6 @@ var dragging = false
 
 var current_deg = .0
 var target_deg = .0
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -52,8 +52,9 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: 
 			var length = audio_stream_player_3d.stream.get_length()
 			audio_stream_player_3d.seek(randf_range(0.0, length))
 
+
 func _input(event: InputEvent) -> void:
-	if dragging and event is InputEventMouseMotion:
+	if dragging and event is InputEventMouseMotion and not get_parent().solved:
 		current_deg += event.relative.x * sens
 		rotation_degrees.y = current_deg
 		
@@ -81,16 +82,26 @@ func _input(event: InputEvent) -> void:
 				audio_stream_player_3d.seek(randf_range(0.0, length))
 		
 		
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and not get_parent().solved:
 		if event.button_index == MOUSE_BUTTON_LEFT and !event.pressed:
 			if dragging:
 				dragging = false
 				
 				snap()
 
+
 func snap():
 	target_deg = round(current_deg / STEP_DEG) * STEP_DEG
 	snapping = true
 	
+	print(get_current_side())
+	
+	get_parent().reg_section(my_id, get_current_side())
 	audio_stream_player.play()
 	audio_stream_player_3d.stop()
+
+
+func get_current_side() -> int:
+	var normalized = fposmod(rotation_degrees.y, 360.0)
+	var num = int(round(normalized / STEP_DEG)) % 4
+	return num

@@ -3,17 +3,37 @@
 [ext_resource type="Script" uid="uid://cmgq1syb3anf2" path="res://Scripts/room_base.gd" id="1_20cee"]
 [ext_resource type="PackedScene" uid="uid://cf0ox1t6i5j8f" path="res://Gameplay/interactable.tscn" id="1_uglcu"]
 [ext_resource type="Script" uid="uid://dmwkuyfanvx0t" path="res://Resource/InteractableData.gd" id="2_fs65j"]
+[ext_resource type="Shader" uid="uid://5j620dcmf257" path="res://CloseFade.gdshader" id="3_6wywb"]
 [ext_resource type="Script" uid="uid://cdy6jrpiy81g3" path="res://Scripts/i_pickup.gd" id="3_qigil"]
 [ext_resource type="Texture2D" uid="uid://bv2gmfowdgd33" path="res://isolated-brown-nautical-compass-equipment-on-transparent-background-free-png.webp" id="6_6wywb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7j06c"]
 albedo_color = Color(0.21123034, 0.23943305, 0.47554272, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6wywb"]
+render_priority = 0
+shader = ExtResource("3_6wywb")
+shader_parameter/fade_inner_radius = 7.0
+shader_parameter/fade_outer_radius = 3.0
+
 [sub_resource type="BoxMesh" id="BoxMesh_qigil"]
+material = SubResource("ShaderMaterial_6wywb")
 size = Vector3(1.98, 2.15, 0.26)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6wywb"]
 size = Vector3(1.9150391, 1.7753906, 0.3125)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ib00c"]
+render_priority = 0
+shader = ExtResource("3_6wywb")
+shader_parameter/fade_inner_radius = 7.0
+shader_parameter/fade_outer_radius = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4lpd7"]
+render_priority = 0
+shader = ExtResource("3_6wywb")
+shader_parameter/fade_inner_radius = 7.0
+shader_parameter/fade_outer_radius = 3.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_20cee"]
 radius = 1.0
@@ -24,6 +44,8 @@ rings = 12
 script = ExtResource("2_fs65j")
 display_name = "Box"
 metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6wywb"]
 
 [node name="Room" type="Node3D" unique_id=409298254 groups=["room"]]
 script = ExtResource("1_20cee")
@@ -71,10 +93,12 @@ texture = ExtResource("6_6wywb")
 [node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=210095807]
 transform = Transform3D(-3.367718e-08, 0, 0.31629246, 0, 1, 0, -0.77044404, 0, -1.38255825e-08, 3, 0.96972656, 0.06741415)
 size = Vector3(1.9882813, 2.9394531, 0.2319336)
+material = SubResource("ShaderMaterial_ib00c")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=1042407500]
 transform = Transform3D(0.77044404, 0, 0, 0, 1, 0, 0, 0, 0.31629246, -0.008835822, 0.96972656, 2.991044)
 size = Vector3(1.9882813, 2.9394531, 0.2319336)
+material = SubResource("ShaderMaterial_4lpd7")
 
 [node name="CSGBox3D2" type="CSGMesh3D" parent="." unique_id=1332491620]
 transform = Transform3D(0.23760074, 0, 0, 0, 0.23760074, 0, 0, 0, 0.23760074, 2.3116527, 1.356651, -1.6410867)
@@ -87,7 +111,24 @@ data = SubResource("Resource_g03ww")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1113634952]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2.7852468, -4.371139e-08)
-spot_range = 6.8014064
+spot_range = 34.218
 spot_angle = 89.99
+spot_angle_attenuation = 1.2311456
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=148599417]
+transform = Transform3D(3, 0, 0, 0, -4.371139e-08, 2.28, 0, -1, -9.966197e-08, 0, 2.28, 2.9999998)
+mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1765777882]
+transform = Transform3D(-3, -8.742278e-08, 0, -1.1464113e-14, 4.371139e-08, 2.28, -2.6226832e-07, 1, -9.966197e-08, 0, 2.2799997, -3.0000002)
+mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1420161419]
+transform = Transform3D(3.9340247e-07, -1, 0, -1.3113416e-07, -3.5527137e-15, 2.28, -3, -1.3113416e-07, -9.966196e-08, 2.9999995, 2.2799997, 3.771752e-07)
+mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1652599375]
+transform = Transform3D(-6.5567076e-07, 1, 0, 1.3113416e-07, 1.1732768e-14, 2.28, 3, 2.1855693e-07, -9.966196e-08, -3.0000005, 2.2799997, -4.0962973e-07)
+mesh = SubResource("PlaneMesh_6wywb")
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

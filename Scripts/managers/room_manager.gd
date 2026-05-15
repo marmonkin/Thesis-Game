@@ -47,6 +47,7 @@ func register_camera(cam):
 	cam_anchor = cam
 	try_initialize()
 
+
 func register_arrows(arrows):
 	arrow_container = arrows
 	try_initialize()

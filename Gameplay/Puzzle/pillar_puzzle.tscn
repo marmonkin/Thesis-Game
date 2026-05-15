@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cso28bogm3x3c"]
 
+[ext_resource type="Script" uid="uid://cjm5c2vs0ht6g" path="res://Scripts/PuzzleScripts/pillar_puzzle.gd" id="1_0gdmp"]
 [ext_resource type="PackedScene" uid="uid://c5peg74qaghj" path="res://Gameplay/Puzzle/pillar_puzzle_section.tscn" id="1_vdq6s"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_vdq6s"]
@@ -11,14 +12,17 @@ albedo_color = Color(0.99999994, 0.17070219, 0.28199884, 1)
 material = SubResource("StandardMaterial3D_0gdmp")
 
 [node name="PillarPuzzle" type="Node3D" unique_id=1938957]
+script = ExtResource("1_0gdmp")
 
-[node name="PillarSection" parent="." unique_id=1871072951 instance=ExtResource("1_vdq6s")]
+[node name="PillarSection1" parent="." unique_id=851310366 instance=ExtResource("1_vdq6s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="PillarSection2" parent="." unique_id=1871072951 instance=ExtResource("1_vdq6s")]
+my_id = 1
 
 [node name="PillarSection3" parent="." unique_id=1509233647 instance=ExtResource("1_vdq6s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-
-[node name="PillarSection2" parent="." unique_id=851310366 instance=ExtResource("1_vdq6s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+my_id = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1731612058]
 transform = Transform3D(0.764262, 0, 0, 0, 1.2265892, 0, 0, 0, 0.764262, 0, 0, 0)

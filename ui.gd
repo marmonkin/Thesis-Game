@@ -3,7 +3,11 @@ extends Control
 @onready var cam_anchor: Node3D = %Cam_anchor
 @onready var move_arrows: Node3D = %MoveArrows
 
-func activate_ui():
+@onready var image: TextureRect = $AspectRatioContainer/TextureRect
+
+func activate_ui(img):
+	image.texture = img
+	
 	visible = true
 	cam_anchor.lock_rot = true
 	move_arrows.lock_rot = true

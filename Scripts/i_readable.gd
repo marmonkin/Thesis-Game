@@ -1,6 +1,8 @@
 extends Area3D
 
-@export var ui: Control
+@export var my_image: Texture2D
+
+var ui: Control
 
 var is_activated: bool = true
 
@@ -24,7 +26,7 @@ func _on_input_event(_camera: Node, event: InputEvent, _position: Vector3, _norm
 
 
 func interact():
-	ui.activate_ui()
+	ui.activate_ui(my_image)
 
 
 func _exit_tree() -> void:

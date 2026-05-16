@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dmwkuyfanvx0t" path="res://Resource/InteractableData.gd" id="2_fs65j"]
 [ext_resource type="Shader" uid="uid://5j620dcmf257" path="res://CloseFade.gdshader" id="3_6wywb"]
 [ext_resource type="Script" uid="uid://cdy6jrpiy81g3" path="res://Scripts/i_pickup.gd" id="3_qigil"]
+[ext_resource type="Texture2D" uid="uid://nsxveipwx4wt" path="res://Sauce/PNG/d1122aa1de7c5b48b08ebffe35aceb1e.jpg" id="4_ib00c"]
 [ext_resource type="Texture2D" uid="uid://bv2gmfowdgd33" path="res://isolated-brown-nautical-compass-equipment-on-transparent-background-free-png.webp" id="6_6wywb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7j06c"]
@@ -23,11 +24,15 @@ size = Vector3(1.98, 2.15, 0.26)
 [sub_resource type="BoxShape3D" id="BoxShape3D_6wywb"]
 size = Vector3(1.9150391, 1.7753906, 0.3125)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ib00c"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qx34j"]
 render_priority = 0
 shader = ExtResource("3_6wywb")
+shader_parameter/albedo = ExtResource("4_ib00c")
 shader_parameter/fade_inner_radius = 7.0
 shader_parameter/fade_outer_radius = 3.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_cw7ow"]
+material = SubResource("ShaderMaterial_qx34j")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4lpd7"]
 render_priority = 0
@@ -90,10 +95,9 @@ layers = 4
 modulate = Color(0, 0, 0, 1)
 texture = ExtResource("6_6wywb")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=210095807]
-transform = Transform3D(-3.367718e-08, 0, 0.31629246, 0, 1, 0, -0.77044404, 0, -1.38255825e-08, 3, 0.96972656, 0.06741415)
-size = Vector3(1.9882813, 2.9394531, 0.2319336)
-material = SubResource("ShaderMaterial_ib00c")
+[node name="CSGBox3D4" type="MeshInstance3D" parent="." unique_id=1315955520]
+transform = Transform3D(-6.054261e-08, 0, 0.09792324, 0, 2.6088753, 0, -1.3850535, 0, -4.280361e-09, 3, 1.2714441, 0.06741415)
+mesh = SubResource("BoxMesh_cw7ow")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=1042407500]
 transform = Transform3D(0.77044404, 0, 0, 0, 1, 0, 0, 0, 0.31629246, -0.008835822, 0.96972656, 2.991044)

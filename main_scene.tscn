@@ -149,18 +149,27 @@ visible = false
 [node name="-----------------" type="Node3D" parent="." unique_id=1259966664]
 visible = false
 
-[node name="RoomUnlocker" type="Node3D" parent="." unique_id=648966976 node_paths=PackedStringArray("unlock_room", "in_room", "by_using")]
+[node name="Unlockers" type="Node3D" parent="." unique_id=2018813935]
+
+[node name="NoteRoom" type="Node3D" parent="Unlockers" unique_id=648966976 node_paths=PackedStringArray("unlock_room", "in_room", "trigger")]
 script = ExtResource("3_wr18j")
-unlock_room = NodePath("../Room3")
-in_room = NodePath("../Room")
+unlock_room = NodePath("../../Room4")
+in_room = NodePath("../../Room")
+direction = "East"
+trigger = NodePath("../../Room2/CSGBox3D/Area3D")
+
+[node name="EmptyRoom" type="Node3D" parent="Unlockers" unique_id=348072332 node_paths=PackedStringArray("unlock_room", "in_room", "trigger")]
+script = ExtResource("3_wr18j")
+unlock_room = NodePath("../../Room3")
+in_room = NodePath("../../Room")
 direction = "West"
-by_using = NodePath("../Room2/CSGBox3D/Area3D")
+trigger = NodePath("../../PillarPuzzle")
 
 [node name="Room" parent="." unique_id=409298254 instance=ExtResource("5_hq1ik")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
 neighbour_rooms = Dictionary[String, String]({
-"East": "note_room",
+"East": "",
 "North": "",
 "South": "room1",
 "West": ""
@@ -213,3 +222,4 @@ shadow_enabled = true
 shadow_caster_mask = 4294967289
 
 [editable path="SubViewportContainer2/SubViewport/Cam_anchor"]
+[editable path="Room2"]

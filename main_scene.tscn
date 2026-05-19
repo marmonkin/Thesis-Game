@@ -57,12 +57,6 @@ metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_6wywb"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4lpd7"]
-render_priority = 0
-shader = ExtResource("13_42l1d")
-shader_parameter/fade_inner_radius = 7.0
-shader_parameter/fade_outer_radius = 3.0
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qx34j"]
 render_priority = 0
 shader = ExtResource("13_42l1d")
@@ -72,6 +66,12 @@ shader_parameter/fade_outer_radius = 3.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_cw7ow"]
 material = SubResource("ShaderMaterial_qx34j")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4lpd7"]
+render_priority = 0
+shader = ExtResource("13_42l1d")
+shader_parameter/fade_inner_radius = 7.0
+shader_parameter/fade_outer_radius = 3.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_42l1d"]
 render_priority = 0
@@ -245,9 +245,6 @@ neighbour_rooms = Dictionary[String, String]({
 "West": "base_room"
 })
 
-[node name="Area3D" parent="NoteRoom/Letter" parent_id_path=PackedInt32Array(509234291, 126191928) index="1" unique_id=1832766235]
-my_image = ExtResource("12_u0ygc")
-
 [node name="Walls" type="Node3D" parent="NoteRoom" unique_id=130056120]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NoteRoom/Walls" unique_id=692181921]
@@ -265,6 +262,20 @@ mesh = SubResource("PlaneMesh_6wywb")
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="NoteRoom/Walls" unique_id=23645677]
 transform = Transform3D(-6.5567076e-07, 1, 0, 1.3113416e-07, 1.1732768e-14, 2.28, 3, 2.1855693e-07, -9.966196e-08, -3.0000005, 2.2799997, -4.0962973e-07)
 mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="Letter" parent="NoteRoom" unique_id=126191928 instance=ExtResource("15_m35m6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4967713, 0.05831194, 1.6308169)
+
+[node name="Area3D" parent="NoteRoom/Letter" index="1" unique_id=1832766235]
+my_image = ExtResource("12_u0ygc")
+
+[node name="CSGBox3D4" type="MeshInstance3D" parent="NoteRoom" unique_id=1242948637]
+transform = Transform3D(-1.3850535, 0, 8.560722e-09, 0, 2.6088753, 0, -1.2108522e-07, 0, -0.09792324, 0.22989297, 1.2714441, -2.9682064)
+mesh = SubResource("BoxMesh_cw7ow")
+
+[node name="CSGBox3D5" type="MeshInstance3D" parent="NoteRoom" unique_id=1527880117]
+transform = Transform3D(-6.054261e-08, 0, -0.09792324, 0, 2.6088753, 0, 1.3850535, 0, -4.280361e-09, -3.0015738, 1.2714441, 0.067413904)
+mesh = SubResource("BoxMesh_cw7ow")
 
 [node name="BoxRoom" parent="." unique_id=520243100 instance=ExtResource("6_nfk4m")]
 unique_name_in_owner = true
@@ -324,7 +335,7 @@ transform = Transform3D(-3.367718e-08, 0, -0.31629246, 0, 1, 0, 0.77044404, 0, -
 size = Vector3(1.9882813, 2.9394531, 0.2319336)
 material = SubResource("ShaderMaterial_4lpd7")
 
-[node name="Letter" parent="HallwayNorth" unique_id=126191928 instance=ExtResource("15_m35m6")]
+[node name="Letter" parent="HallwayNorth" unique_id=715070445 instance=ExtResource("15_m35m6")]
 transform = Transform3D(-4.371139e-08, 1, 0, 4.371139e-08, 0, 1, 1, 4.371139e-08, -4.3711385e-08, -2.9747615, 1.4414276, -1.2482786)
 
 [node name="Area3D" parent="HallwayNorth/Letter" index="1" unique_id=1832766235]
@@ -336,7 +347,7 @@ room_id = "library_entrance"
 neighbour_rooms = Dictionary[String, String]({
 "East": "",
 "North": "library_north",
-"South": "",
+"South": "note_room",
 "West": "library_west"
 })
 same_room = [NodePath("../LibraryWest"), NodePath("../LiobrarySecret"), NodePath("../LibraryNorth")]
@@ -481,6 +492,5 @@ material = SubResource("ShaderMaterial_4lpd7")
 
 [editable path="Control/SubViewportContainer2/SubViewport/Cam_anchor"]
 [editable path="SpawnRoom"]
-[editable path="NoteRoom"]
 [editable path="NoteRoom/Letter"]
 [editable path="HallwayNorth/Letter"]

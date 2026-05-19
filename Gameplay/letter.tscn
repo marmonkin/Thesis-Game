@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://cws7uwxsqkk6k"]
+
+[ext_resource type="Script" uid="uid://bxbr5d5shgj0x" path="res://Scripts/i_readable.gd" id="1_mbwuw"]
+[ext_resource type="Shader" uid="uid://5j620dcmf257" path="res://CloseFade.gdshader" id="1_pvut2"]
+[ext_resource type="Texture2D" uid="uid://c1qakhjpvn0dw" path="res://Sauce/PNG/Crumpled-low-wear.png" id="2_ewnen"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gxukr"]
+render_priority = 0
+shader = ExtResource("1_pvut2")
+shader_parameter/albedo = ExtResource("2_ewnen")
+shader_parameter/fade_inner_radius = 7.0
+shader_parameter/fade_outer_radius = 3.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_u08kb"]
+material = SubResource("ShaderMaterial_gxukr")
+size = Vector3(0.62, 0.055, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r6swm"]
+size = Vector3(0.73657227, 0.14282227, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pvut2"]
+size = Vector3(0.92871094, 0.118133545, 1.2871094)
+
+[node name="Letter" type="Node3D" unique_id=126191928]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1608767068]
+mesh = SubResource("BoxMesh_u08kb")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1832766235]
+script = ExtResource("1_mbwuw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1963117356]
+shape = SubResource("BoxShape3D_r6swm")
+
+[node name="Area3D2" type="Area3D" parent="." unique_id=856603790]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2" unique_id=838305867]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04649353, 0)
+shape = SubResource("BoxShape3D_pvut2")
+
+[connection signal="input_event" from="Area3D" to="Area3D" method="_on_input_event"]
+[connection signal="mouse_entered" from="Area3D" to="Area3D" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Area3D" to="Area3D" method="_on_mouse_exited"]

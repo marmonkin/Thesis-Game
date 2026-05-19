@@ -55,7 +55,11 @@ func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: 
 
 func _input(event: InputEvent) -> void:
 	if dragging and event is InputEventMouseMotion and not get_parent().solved:
-		current_deg += event.relative.x * sens
+		if get_parent().rotation_direction == 0:
+			current_deg += event.relative.x * sens
+		if get_parent().rotation_direction == 1:
+			current_deg -= event.relative.y * sens
+		
 		rotation_degrees.y = current_deg
 		
 		print(audio_stream_player_3d.playing)

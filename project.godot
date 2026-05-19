@@ -23,6 +23,11 @@ CursorMananger="*uid://bpub2kg445du6"
 RoomManager="*uid://ctr8g0vu1gueu"
 DialogueManager="*uid://c3rodes2l3gxb"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
@@ -30,8 +35,10 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 [file_customization]
 
 folder_colors={
+"res://Gameplay/": "orange",
 "res://Resource/": "yellow",
 "res://Rooms/": "red",
+"res://Sauce/": "purple",
 "res://Sauce/Cursor/": "gray",
 "res://Scripts/": "blue"
 }

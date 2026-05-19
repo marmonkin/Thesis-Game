@@ -2,12 +2,15 @@ extends Node3D
 
 signal unlock
 
+@export var rotation_direction: DIRECTION
+
 @export var solution: Array[int]
 @export var current_position: Array[int] = [0,0,0]
 
-@export var unlocking: Node3D
+enum DIRECTION {LEFT_RIGHT, UP_DOWN}
 
 var solved = false
+
 
 func reg_section(pos, num):
 	current_position[pos] = num

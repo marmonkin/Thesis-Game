@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://nsxveipwx4wt" path="res://Sauce/PNG/d1122aa1de7c5b48b08ebffe35aceb1e.jpg" id="4_ib00c"]
 [ext_resource type="Texture2D" uid="uid://bv2gmfowdgd33" path="res://isolated-brown-nautical-compass-equipment-on-transparent-background-free-png.webp" id="6_6wywb"]
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_6wywb"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7j06c"]
 albedo_color = Color(0.21123034, 0.23943305, 0.47554272, 1)
 
@@ -50,8 +52,6 @@ script = ExtResource("2_fs65j")
 display_name = "Box"
 metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_6wywb"]
-
 [node name="Room" type="Node3D" unique_id=409298254 groups=["room"]]
 script = ExtResource("1_20cee")
 room_id = "base_room"
@@ -62,30 +62,48 @@ neighbour_rooms = Dictionary[String, String]({
 "West": ""
 })
 
+[node name="Walls" type="Node3D" parent="." unique_id=263429393]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls" unique_id=148599417]
+transform = Transform3D(3, 0, 0, 0, -4.371139e-08, 2.28, 0, -1, -9.966197e-08, 0, 2.28, 2.9999998)
+mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Walls" unique_id=1765777882]
+transform = Transform3D(-3, -8.742278e-08, 0, -1.1464113e-14, 4.371139e-08, 2.28, -2.6226832e-07, 1, -9.966197e-08, 0, 2.2799997, -3.0000002)
+mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Walls" unique_id=1420161419]
+transform = Transform3D(3.9340247e-07, -1, 0, -1.3113416e-07, -3.5527137e-15, 2.28, -3, -1.3113416e-07, -9.966196e-08, 2.9999995, 2.2799997, 3.771752e-07)
+mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Walls" unique_id=1652599375]
+transform = Transform3D(-6.5567076e-07, 1, 0, 1.3113416e-07, 1.1732768e-14, 2.28, 3, 2.1855693e-07, -9.966196e-08, -3.0000005, 2.2799997, -4.0962973e-07)
+mesh = SubResource("PlaneMesh_6wywb")
+
 [node name="Floor" type="CSGBox3D" parent="." unique_id=132568579]
 transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 6, 0, 0, 0)
 size = Vector3(1, 0.078125, 1)
 material = SubResource("StandardMaterial3D_7j06c")
 
-[node name="CSGBox3D3" type="MeshInstance3D" parent="." unique_id=1929441627]
+[node name="Cupboard" type="MeshInstance3D" parent="." unique_id=1929441627]
 transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 2.1912658, 0.9697267, -2.231375)
 mesh = SubResource("BoxMesh_qigil")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="CSGBox3D3" unique_id=1131405874]
+[node name="CSGBox3D4" type="CSGBox3D" parent="Cupboard" unique_id=1131405874]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.012113452, 0.08978045, 0.13976288)
 size = Vector3(0.34179688, 0.09082031, 1.9338379)
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="CSGBox3D3" unique_id=136805702]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Cupboard" unique_id=136805702]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.012113452, 0.5469825, 0.13976288)
 size = Vector3(0.34179688, 0.09082031, 1.9338379)
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="CSGBox3D3" unique_id=1226436898]
+[node name="CSGBox3D6" type="CSGBox3D" parent="Cupboard" unique_id=1226436898]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.012113452, 1.0234661, 0.13976288)
 size = Vector3(0.34179688, 0.09082031, 1.9338379)
 
-[node name="Area3D" type="Area3D" parent="CSGBox3D3" unique_id=1331943268]
+[node name="Area3D" type="Area3D" parent="Cupboard" unique_id=1331943268]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D3/Area3D" unique_id=403551053]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cupboard/Area3D" unique_id=403551053]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17382813, 0)
 shape = SubResource("BoxShape3D_6wywb")
 
@@ -104,35 +122,22 @@ transform = Transform3D(0.77044404, 0, 0, 0, 1, 0, 0, 0, 0.31629246, -0.00883582
 size = Vector3(1.9882813, 2.9394531, 0.2319336)
 material = SubResource("ShaderMaterial_4lpd7")
 
-[node name="CSGBox3D2" type="CSGMesh3D" parent="." unique_id=1332491620]
+[node name="CSGBox3D6" type="CSGBox3D" parent="." unique_id=765682380]
+transform = Transform3D(-3.367718e-08, 0, -0.31629246, 0, 1, 0, 0.77044404, 0, -1.38255825e-08, -2.9957242, 0.96972656, -0.0015621185)
+size = Vector3(1.9882813, 2.9394531, 0.2319336)
+material = SubResource("ShaderMaterial_4lpd7")
+
+[node name="Key" type="CSGMesh3D" parent="." unique_id=1332491620]
 transform = Transform3D(0.23760074, 0, 0, 0, 0.23760074, 0, 0, 0, 0.23760074, 2.3116527, 1.356651, -1.6410867)
 mesh = SubResource("SphereMesh_20cee")
 
-[node name="Area3D" parent="CSGBox3D2" unique_id=2115803580 instance=ExtResource("1_uglcu")]
+[node name="Area3D" parent="Key" unique_id=2115803580 instance=ExtResource("1_uglcu")]
 transform = Transform3D(1.353596, 0, 0, 0, 1.353596, 0, 0, 0, 1.353596, 0, 0, 0)
 script = ExtResource("3_qigil")
 data = SubResource("Resource_g03ww")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1113634952]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2.7852468, -4.371139e-08)
-spot_range = 34.218
-spot_angle = 89.99
-spot_angle_attenuation = 1.2311456
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=148599417]
-transform = Transform3D(3, 0, 0, 0, -4.371139e-08, 2.28, 0, -1, -9.966197e-08, 0, 2.28, 2.9999998)
-mesh = SubResource("PlaneMesh_6wywb")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1765777882]
-transform = Transform3D(-3, -8.742278e-08, 0, -1.1464113e-14, 4.371139e-08, 2.28, -2.6226832e-07, 1, -9.966197e-08, 0, 2.2799997, -3.0000002)
-mesh = SubResource("PlaneMesh_6wywb")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1420161419]
-transform = Transform3D(3.9340247e-07, -1, 0, -1.3113416e-07, -3.5527137e-15, 2.28, -3, -1.3113416e-07, -9.966196e-08, 2.9999995, 2.2799997, 3.771752e-07)
-mesh = SubResource("PlaneMesh_6wywb")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1652599375]
-transform = Transform3D(-6.5567076e-07, 1, 0, 1.3113416e-07, 1.1732768e-14, 2.28, 3, 2.1855693e-07, -9.966196e-08, -3.0000005, 2.2799997, -4.0962973e-07)
-mesh = SubResource("PlaneMesh_6wywb")
+[node name="SpotLight3D" type="OmniLight3D" parent="." unique_id=509807374]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 4.021005, -9.772809e-08)
+omni_range = 3.8976552
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

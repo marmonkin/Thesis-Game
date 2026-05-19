@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bumsrj82m85xw" path="res://main.gd" id="1_mo76n"]
 [ext_resource type="PackedScene" uid="uid://pi7rrl21hf2v" path="res://cam_anchor.tscn" id="2_2c62f"]
 [ext_resource type="Script" uid="uid://bjiiftr3dlrao" path="res://Scripts/managers/arrows_man.gd" id="3_hq1ik"]
-[ext_resource type="PackedScene" uid="uid://d2ahpjp6808fh" path="res://ui.tscn" id="3_qwutr"]
+[ext_resource type="PackedScene" uid="uid://d2ahpjp6808fh" path="res://Gameplay/note_overlay.tscn" id="3_qwutr"]
 [ext_resource type="Script" uid="uid://hmqgtod608ku" path="res://Scripts/room_unlocker.gd" id="3_wr18j"]
 [ext_resource type="PackedScene" uid="uid://cc72l6ub755xi" path="res://Gameplay/interactable_arrow.tscn" id="4_8mm7a"]
 [ext_resource type="PackedScene" uid="uid://cdn5rijm5ob03" path="res://Rooms/unlockable_room.tscn" id="5_7ycvg"]
@@ -11,9 +11,29 @@
 [ext_resource type="Script" uid="uid://dmwkuyfanvx0t" path="res://Resource/InteractableData.gd" id="6_66tet"]
 [ext_resource type="Texture2D" uid="uid://bv2gmfowdgd33" path="res://isolated-brown-nautical-compass-equipment-on-transparent-background-free-png.webp" id="6_hq1ik"]
 [ext_resource type="PackedScene" uid="uid://ddc3tlmhufgbg" path="res://Rooms/room1.tscn" id="6_nfk4m"]
-[ext_resource type="Texture2D" uid="uid://bnsfotcv0tjim" path="res://Sauce/PNG/border.png" id="8_66tet"]
 [ext_resource type="PackedScene" uid="uid://k4u7gndrwxrn" path="res://Rooms/letter_room.tscn" id="8_671wp"]
+[ext_resource type="Texture2D" uid="uid://clajncmfwdxty" path="res://Sauce/PNG/First-note.png" id="12_u0ygc"]
+[ext_resource type="Shader" uid="uid://5j620dcmf257" path="res://CloseFade.gdshader" id="13_42l1d"]
 [ext_resource type="PackedScene" uid="uid://cso28bogm3x3c" path="res://Gameplay/Puzzle/pillar_puzzle.tscn" id="14_42l1d"]
+[ext_resource type="PackedScene" uid="uid://cws7uwxsqkk6k" path="res://Gameplay/letter.tscn" id="15_m35m6"]
+[ext_resource type="Texture2D" uid="uid://bh6d6kfv1ps3f" path="res://Sauce/PNG/Jessica_hint.png" id="16_u0ygc"]
+[ext_resource type="Texture2D" uid="uid://nsxveipwx4wt" path="res://Sauce/PNG/d1122aa1de7c5b48b08ebffe35aceb1e.jpg" id="18_7th4q"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mo76n"]
+sky_top_color = Color(0.63908696, 0.62341, 0.55517936, 1)
+sky_horizon_color = Color(0.737186, 0.0002712649, 0.6975633, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_42l1d"]
+sky_material = SubResource("ProceduralSkyMaterial_mo76n")
+
+[sub_resource type="Environment" id="Environment_2jcla"]
+background_mode = 1
+sky = SubResource("Sky_42l1d")
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.6
+tonemap_mode = 4
+glow_enabled = true
 
 [sub_resource type="Resource" id="Resource_7ycvg"]
 script = ExtResource("6_66tet")
@@ -35,116 +55,149 @@ script = ExtResource("6_66tet")
 interaction_type = 3
 metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
 
-[sub_resource type="Environment" id="Environment_hq1ik"]
-background_mode = 1
-background_color = Color(0.48962224, 0.48962224, 0.48962218, 1)
-ambient_light_source = 2
-glow_normalized = true
-fog_enabled = true
-fog_light_color = Color(0.2013016, 0.0005000785, 0.38153756, 1)
-volumetric_fog_albedo = Color(0.54540735, 0.47662818, 0.97005385, 1)
+[sub_resource type="PlaneMesh" id="PlaneMesh_6wywb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4lpd7"]
+render_priority = 0
+shader = ExtResource("13_42l1d")
+shader_parameter/fade_inner_radius = 7.0
+shader_parameter/fade_outer_radius = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qx34j"]
+render_priority = 0
+shader = ExtResource("13_42l1d")
+shader_parameter/albedo = ExtResource("18_7th4q")
+shader_parameter/fade_inner_radius = 7.0
+shader_parameter/fade_outer_radius = 3.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_cw7ow"]
+material = SubResource("ShaderMaterial_qx34j")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_42l1d"]
+render_priority = 0
+shader = ExtResource("13_42l1d")
+shader_parameter/fade_inner_radius = 7.0
+shader_parameter/fade_outer_radius = 3.0
 
 [node name="Main" type="Node3D" unique_id=998085854]
 script = ExtResource("1_mo76n")
 
-[node name="SubViewportContainer2" type="SubViewportContainer" parent="." unique_id=182045605]
-offset_right = 796.0
-offset_bottom = 650.0
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=160694907]
+environment = SubResource("Environment_2jcla")
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer2" unique_id=1076353369]
-handle_input_locally = false
-physics_object_picking = true
-physics_object_picking_sort = true
-physics_object_picking_first_only = true
-size = Vector2i(796, 650)
-render_target_update_mode = 4
-
-[node name="Cam_anchor" parent="SubViewportContainer2/SubViewport" unique_id=1352252814 instance=ExtResource("2_2c62f")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-rotation_deg = 90
-
-[node name="Camera3D" parent="SubViewportContainer2/SubViewport/Cam_anchor" index="0" unique_id=666522786]
-transform = Transform3D(0.7071068, -0.3535534, 0.61237246, 0, 0.8660254, 0.50000006, -0.7071068, -0.3535534, 0.61237246, 4.050653, 3.512281, 4.0718384)
-cull_mask = 1048569
-current = true
-size = 8.069
-
-[node name="AudioListener3D" type="AudioListener3D" parent="SubViewportContainer2/SubViewport/Cam_anchor/Camera3D" index="0" unique_id=1444841079]
-current = true
-
-[node name="Border" type="Sprite2D" parent="." unique_id=81193286]
-position = Vector2(578, 323)
-scale = Vector2(0.6023149, 0.6023149)
-texture = ExtResource("8_66tet")
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1064325762]
-anchors_preset = -1
-anchor_left = 0.69500005
-anchor_top = 0.605
+[node name="Control" type="Control" parent="." unique_id=298671244]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -208.64008
-offset_top = -256.04
-offset_right = -48.0
-grow_horizontal = 0
-grow_vertical = 0
-scale = Vector2(0.5, 0.5)
-pivot_offset_ratio = Vector2(1, 1)
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Control" unique_id=1064325762]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6020833
+anchor_top = 0.5972222
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 0
+stretch = true
 metadata/_edit_use_anchors_ = true
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=269038662]
+[node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer" unique_id=269038662]
 transparent_bg = true
 handle_input_locally = false
 physics_object_picking = true
 canvas_cull_mask = 4294967294
-size = Vector2i(512, 435)
+size = Vector2i(764, 435)
 render_target_update_mode = 4
 
-[node name="Camera3D2" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=748193400]
+[node name="Camera3D2" type="Camera3D" parent="Control/SubViewportContainer/SubViewport" unique_id=748193400]
 transform = Transform3D(0.7071068, -0.35355338, 0.61237246, 0, 0.8660254, 0.50000006, -0.7071068, -0.35355338, 0.61237246, -13.938137, 3.5000005, -16.938137)
 cull_mask = 2
 projection = 1
 size = 2.5
 
-[node name="MoveArrows" type="Node3D" parent="SubViewportContainer/SubViewport" unique_id=1019808265]
+[node name="MoveArrows" type="Node3D" parent="Control/SubViewportContainer/SubViewport" unique_id=1019808265]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -21)
 script = ExtResource("3_hq1ik")
 rotation_speed = 5.0
 rotation_deg = -90
 
-[node name="N" parent="SubViewportContainer/SubViewport/MoveArrows" unique_id=1309140725 instance=ExtResource("4_8mm7a")]
+[node name="N" parent="Control/SubViewportContainer/SubViewport/MoveArrows" unique_id=1309140725 instance=ExtResource("4_8mm7a")]
 unique_name_in_owner = true
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -0.7200012)
 data = SubResource("Resource_7ycvg")
 
-[node name="S" parent="SubViewportContainer/SubViewport/MoveArrows" unique_id=799992737 instance=ExtResource("4_8mm7a")]
+[node name="S" parent="Control/SubViewportContainer/SubViewport/MoveArrows" unique_id=799992737 instance=ExtResource("4_8mm7a")]
 unique_name_in_owner = true
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0.7199993)
 data = SubResource("Resource_wr18j")
 
-[node name="E" parent="SubViewportContainer/SubViewport/MoveArrows" unique_id=390808290 instance=ExtResource("4_8mm7a")]
+[node name="E" parent="Control/SubViewportContainer/SubViewport/MoveArrows" unique_id=390808290 instance=ExtResource("4_8mm7a")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.70000076, 0, 0)
 data = SubResource("Resource_qwutr")
 
-[node name="W" parent="SubViewportContainer/SubViewport/MoveArrows" unique_id=145518109 instance=ExtResource("4_8mm7a")]
+[node name="W" parent="Control/SubViewportContainer/SubViewport/MoveArrows" unique_id=145518109 instance=ExtResource("4_8mm7a")]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, -0.70000076, 0, 0)
 data = SubResource("Resource_671wp")
 
-[node name="Sprite3D" type="Sprite3D" parent="SubViewportContainer/SubViewport/MoveArrows" unique_id=870262354]
+[node name="Sprite3D" type="Sprite3D" parent="Control/SubViewportContainer/SubViewport/MoveArrows" unique_id=870262354]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.008577846, -3.749367e-10)
 layers = 2
 modulate = Color(0.8047426, 0.80474263, 0.8047426, 1)
 texture = ExtResource("6_hq1ik")
 
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="Control" unique_id=182045605]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.6020833
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer2" unique_id=1076353369]
+handle_input_locally = false
+physics_object_picking = true
+physics_object_picking_sort = true
+physics_object_picking_first_only = true
+size = Vector2i(1156, 1080)
+render_target_update_mode = 4
+
+[node name="Cam_anchor" parent="Control/SubViewportContainer2/SubViewport" unique_id=1352252814 instance=ExtResource("2_2c62f")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+rotation_deg = 90
+
+[node name="Camera3D" parent="Control/SubViewportContainer2/SubViewport/Cam_anchor" index="0" unique_id=666522786]
+transform = Transform3D(0.7071068, -0.3535534, 0.61237246, 0, 0.8660254, 0.50000006, -0.7071068, -0.3535534, 0.61237246, 4.050653, 3.512281, 4.0718384)
+cull_mask = 1048569
+current = true
+size = 8.069
+
+[node name="AudioListener3D" type="AudioListener3D" parent="Control/SubViewportContainer2/SubViewport/Cam_anchor/Camera3D" index="0" unique_id=1444841079]
+current = true
+
 [node name="UI" parent="." unique_id=1589225218 instance=ExtResource("3_qwutr")]
 visible = false
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 
 [node name="-----------------" type="Node3D" parent="." unique_id=1259966664]
 visible = false
@@ -153,21 +206,23 @@ visible = false
 
 [node name="NoteRoom" type="Node3D" parent="Unlockers" unique_id=648966976 node_paths=PackedStringArray("unlock_room", "in_room", "trigger")]
 script = ExtResource("3_wr18j")
-unlock_room = NodePath("../../Room4")
-in_room = NodePath("../../Room")
+unlock_room = NodePath("../../NoteRoom")
+in_room = NodePath("../../SpawnRoom")
 direction = "East"
-trigger = NodePath("../../Room2/CSGBox3D/Area3D")
+trigger = NodePath("../../BoxRoom/CSGBox3D/Area3D")
 
 [node name="EmptyRoom" type="Node3D" parent="Unlockers" unique_id=348072332 node_paths=PackedStringArray("unlock_room", "in_room", "trigger")]
 script = ExtResource("3_wr18j")
-unlock_room = NodePath("../../Room3")
-in_room = NodePath("../../Room")
+unlock_room = NodePath("../../HallwayCenter")
+in_room = NodePath("../../SpawnRoom")
 direction = "West"
-trigger = NodePath("../../PillarPuzzle")
+trigger = NodePath("../../SpawnRoom/PillarPuzzle")
 
-[node name="Room" parent="." unique_id=409298254 instance=ExtResource("5_hq1ik")]
+[node name="-----------------2" type="Node3D" parent="." unique_id=961954054]
+visible = false
+
+[node name="SpawnRoom" parent="." unique_id=409298254 instance=ExtResource("5_hq1ik")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
 neighbour_rooms = Dictionary[String, String]({
 "East": "",
 "North": "",
@@ -175,9 +230,45 @@ neighbour_rooms = Dictionary[String, String]({
 "West": ""
 })
 
-[node name="Room2" parent="." unique_id=520243100 instance=ExtResource("6_nfk4m")]
+[node name="PillarPuzzle" parent="SpawnRoom" unique_id=1938957 instance=ExtResource("14_42l1d")]
+transform = Transform3D(-3.5527137e-15, 2.6226834e-08, 0.6, 0.6, -2.6226834e-08, 0, 2.6226834e-08, 0.6, -2.6226829e-08, -3.1618605, 2.6, 0.021899223)
+rotation_direction = 1
+solution = Array[int]([2, 0, 3])
+
+[node name="NoteRoom" parent="." unique_id=509234291 instance=ExtResource("8_671wp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+room_id = "note_room"
+neighbour_rooms = Dictionary[String, String]({
+"East": "",
+"North": "library_entrance",
+"South": "",
+"West": "base_room"
+})
+
+[node name="Area3D" parent="NoteRoom/Letter" parent_id_path=PackedInt32Array(509234291, 126191928) index="1" unique_id=1832766235]
+my_image = ExtResource("12_u0ygc")
+
+[node name="Walls" type="Node3D" parent="NoteRoom" unique_id=130056120]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NoteRoom/Walls" unique_id=692181921]
+transform = Transform3D(3, 0, 0, 0, -4.371139e-08, 2.28, 0, -1, -9.966197e-08, 0, 2.28, 2.9999998)
+mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="NoteRoom/Walls" unique_id=1071402629]
+transform = Transform3D(-3, -8.742278e-08, 0, -1.1464113e-14, 4.371139e-08, 2.28, -2.6226832e-07, 1, -9.966197e-08, 0, 2.2799997, -3.0000002)
+mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="NoteRoom/Walls" unique_id=1372271458]
+transform = Transform3D(3.9340247e-07, -1, 0, -1.3113416e-07, -3.5527137e-15, 2.28, -3, -1.3113416e-07, -9.966196e-08, 2.9999995, 2.2799997, 3.771752e-07)
+mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="NoteRoom/Walls" unique_id=23645677]
+transform = Transform3D(-6.5567076e-07, 1, 0, 1.3113416e-07, 1.1732768e-14, 2.28, 3, 2.1855693e-07, -9.966196e-08, -3.0000005, 2.2799997, -4.0962973e-07)
+mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="BoxRoom" parent="." unique_id=520243100 instance=ExtResource("6_nfk4m")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
 neighbour_rooms = Dictionary[String, String]({
 "East": "",
 "North": "base_room",
@@ -185,41 +276,211 @@ neighbour_rooms = Dictionary[String, String]({
 "West": ""
 })
 
-[node name="PillarPuzzle" parent="." unique_id=1938957 instance=ExtResource("14_42l1d")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.0771637, 2, 7.021899)
-solution = Array[int]([2, 0, 3])
+[node name="Walls" type="Node3D" parent="BoxRoom" unique_id=1653888485]
 
-[node name="Room3" parent="." unique_id=536103405 instance=ExtResource("5_7ycvg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 7)
-room_id = "unlockable"
-neighbour_rooms = Dictionary[String, String]({
-"East": "base_room",
-"North": "",
-"South": "",
-"West": ""
-})
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BoxRoom/Walls" unique_id=1949912512]
+transform = Transform3D(3, 0, 0, 0, -4.371139e-08, 2.28, 0, -1, -9.966197e-08, 0, 2.28, 2.9999998)
+mesh = SubResource("PlaneMesh_6wywb")
 
-[node name="Room4" parent="." unique_id=509234291 instance=ExtResource("8_671wp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 7)
-room_id = "note_room"
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="BoxRoom/Walls" unique_id=1276313130]
+transform = Transform3D(-3, -8.742278e-08, 0, -1.1464113e-14, 4.371139e-08, 2.28, -2.6226832e-07, 1, -9.966197e-08, 0, 2.2799997, -3.0000002)
+mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="BoxRoom/Walls" unique_id=1499495718]
+transform = Transform3D(3.9340247e-07, -1, 0, -1.3113416e-07, -3.5527137e-15, 2.28, -3, -1.3113416e-07, -9.966196e-08, 2.9999995, 2.2799997, 3.771752e-07)
+mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="BoxRoom/Walls" unique_id=2108872279]
+transform = Transform3D(-6.5567076e-07, 1, 0, 1.3113416e-07, 1.1732768e-14, 2.28, 3, 2.1855693e-07, -9.966196e-08, -3.0000005, 2.2799997, -4.0962973e-07)
+mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="HallwayNorth" parent="." unique_id=259956236 node_paths=PackedStringArray("same_room") instance=ExtResource("5_7ycvg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -6)
+room_id = "unlockable1"
 neighbour_rooms = Dictionary[String, String]({
 "East": "",
 "North": "",
-"South": "",
-"West": "base_room"
+"South": "unlockable",
+"West": ""
 })
+same_room = [NodePath("../HallwayCenter"), NodePath("../HallwaySouth")]
 
-[node name="-----------------2" type="Node3D" parent="." unique_id=961954054]
-visible = false
+[node name="Walls" type="Node3D" parent="HallwayNorth" unique_id=503585996]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=82237180]
-environment = SubResource("Environment_hq1ik")
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="HallwayNorth/Walls" unique_id=2031169210]
+transform = Transform3D(-3, -8.742278e-08, 0, -1.1464113e-14, 4.371139e-08, 2.28, -2.6226832e-07, 1, -9.966197e-08, 0, 2.2799997, -3.0000002)
+mesh = SubResource("PlaneMesh_6wywb")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=627176900]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-layers = 3
-shadow_enabled = true
-shadow_caster_mask = 4294967289
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="HallwayNorth/Walls" unique_id=344307771]
+transform = Transform3D(3.9340247e-07, -1, 0, -1.3113416e-07, -3.5527137e-15, 2.28, -3, -1.3113416e-07, -9.966196e-08, 2.9999995, 2.2799997, 3.771752e-07)
+mesh = SubResource("PlaneMesh_6wywb")
 
-[editable path="SubViewportContainer2/SubViewport/Cam_anchor"]
-[editable path="Room2"]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="HallwayNorth/Walls" unique_id=170080263]
+transform = Transform3D(-6.5567076e-07, 1, 0, 1.3113416e-07, 1.1732768e-14, 2.28, 3, 2.1855693e-07, -9.966196e-08, -3.0000005, 2.2799997, -4.0962973e-07)
+mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="HallwayNorth" unique_id=1717852232]
+transform = Transform3D(-3.367718e-08, 0, -0.31629246, 0, 1, 0, 0.77044404, 0, -1.38255825e-08, -2.9957242, 0.96972656, -0.0015621185)
+size = Vector3(1.9882813, 2.9394531, 0.2319336)
+material = SubResource("ShaderMaterial_4lpd7")
+
+[node name="Letter" parent="HallwayNorth" unique_id=126191928 instance=ExtResource("15_m35m6")]
+transform = Transform3D(-4.371139e-08, 1, 0, 4.371139e-08, 0, 1, 1, 4.371139e-08, -4.3711385e-08, -2.9747615, 1.4414276, -1.2482786)
+
+[node name="Area3D" parent="HallwayNorth/Letter" index="1" unique_id=1832766235]
+my_image = ExtResource("16_u0ygc")
+
+[node name="LibraryEntrance" parent="." unique_id=1025790125 node_paths=PackedStringArray("same_room") instance=ExtResource("5_7ycvg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -6)
+room_id = "library_entrance"
+neighbour_rooms = Dictionary[String, String]({
+"East": "",
+"North": "library_north",
+"South": "",
+"West": "library_west"
+})
+same_room = [NodePath("../LibraryWest"), NodePath("../LiobrarySecret"), NodePath("../LibraryNorth")]
+
+[node name="Walls" type="Node3D" parent="LibraryEntrance" unique_id=297170302]
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="LibraryEntrance/Walls" unique_id=1196923471]
+transform = Transform3D(3.9340247e-07, -1, 0, -1.3113416e-07, -3.5527137e-15, 2.28, -3, -1.3113416e-07, -9.966196e-08, 2.9999995, 2.2799997, 3.771752e-07)
+mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="LibraryEntrance/Walls" unique_id=70052803]
+transform = Transform3D(3, 1.7484555e-07, -7.1054274e-15, 1.4210855e-14, -4.3711385e-08, 2.28, 5.2453663e-07, -1, -9.966196e-08, -9.536743e-07, 2.28, 3)
+mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="CSGBox3D4" type="MeshInstance3D" parent="LibraryEntrance" unique_id=1292145162]
+transform = Transform3D(1.3850535, 0, 0, 0, 2.6088753, 0, 0, 0, 0.09792324, 0.22989297, 1.2714441, 3.0051112)
+mesh = SubResource("BoxMesh_cw7ow")
+
+[node name="LibraryWest" parent="." unique_id=907468272 node_paths=PackedStringArray("same_room") instance=ExtResource("5_7ycvg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+room_id = "library_west"
+neighbour_rooms = Dictionary[String, String]({
+"East": "library_entrance",
+"North": "library_nw",
+"South": "",
+"West": ""
+})
+same_room = [NodePath("../LibraryEntrance"), NodePath("../LiobrarySecret"), NodePath("../LibraryNorth")]
+
+[node name="Walls" type="Node3D" parent="LibraryWest" unique_id=2137824246]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="LibraryWest/Walls" unique_id=1783411617]
+transform = Transform3D(3, 1.7484555e-07, 0, 2.2928225e-14, -4.371139e-08, 2.28, 5.2453663e-07, -1, -9.966197e-08, -5.2453663e-07, 2.28, 2.9999998)
+mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="LibraryWest/Walls" unique_id=1793714912]
+transform = Transform3D(-6.5567076e-07, 1, 0, 1.3113416e-07, 1.1732768e-14, 2.28, 3, 2.1855693e-07, -9.966196e-08, -3.0000005, 2.2799997, -4.0962973e-07)
+mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="LiobrarySecret" parent="." unique_id=2070927292 node_paths=PackedStringArray("same_room") instance=ExtResource("5_7ycvg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+room_id = "library_nw"
+neighbour_rooms = Dictionary[String, String]({
+"East": "library_north",
+"North": "",
+"South": "library_west",
+"West": ""
+})
+same_room = [NodePath("../LibraryEntrance"), NodePath("../LibraryWest"), NodePath("../LibraryNorth")]
+
+[node name="Walls" type="Node3D" parent="LiobrarySecret" unique_id=1098572]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="LiobrarySecret/Walls" unique_id=408471635]
+transform = Transform3D(-3, -2.6226832e-07, 0, -3.4392336e-14, 4.371139e-08, 2.28, -7.8680495e-07, 1, -9.966197e-08, 5.2453663e-07, 2.2799997, -3.0000002)
+mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="LiobrarySecret/Walls" unique_id=1308060634]
+transform = Transform3D(-6.5567076e-07, 1, 0, 1.3113416e-07, 1.1732768e-14, 2.28, 3, 2.1855693e-07, -9.966196e-08, -3.0000005, 2.2799997, -4.0962973e-07)
+mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="LibraryNorth" parent="." unique_id=709643409 node_paths=PackedStringArray("same_room") instance=ExtResource("5_7ycvg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -12)
+room_id = "library_north"
+neighbour_rooms = Dictionary[String, String]({
+"East": "",
+"North": "",
+"South": "library_entrance",
+"West": "library_nw"
+})
+same_room = [NodePath("../LibraryEntrance"), NodePath("../LibraryWest"), NodePath("../LiobrarySecret")]
+
+[node name="Walls" type="Node3D" parent="LibraryNorth" unique_id=1656435692]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="LibraryNorth/Walls" unique_id=912224846]
+transform = Transform3D(-3, -2.6226832e-07, 0, -3.4392336e-14, 4.371139e-08, 2.28, -7.8680495e-07, 1, -9.966197e-08, 5.2453663e-07, 2.2799997, -3.0000002)
+mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="LibraryNorth/Walls" unique_id=166733520]
+transform = Transform3D(3.9340247e-07, -1, 0, -1.3113416e-07, -3.5527137e-15, 2.28, -3, -1.3113416e-07, -9.966196e-08, 2.9999995, 2.2799997, 3.771752e-07)
+mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="HallwayCenter" parent="." unique_id=536103405 node_paths=PackedStringArray("same_room") instance=ExtResource("5_7ycvg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+room_id = "unlockable"
+neighbour_rooms = Dictionary[String, String]({
+"East": "base_room",
+"North": "unlockable1",
+"South": "unlockable2",
+"West": ""
+})
+same_room = [NodePath("../HallwayNorth"), NodePath("../HallwaySouth")]
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="HallwayCenter" unique_id=1372577624]
+transform = Transform3D(-3.367718e-08, 0, -0.31629246, 0, 1, 0, 0.77044404, 0, -1.38255825e-08, 3.0138326, 0.96972656, -0.0015618559)
+size = Vector3(1.9882813, 2.9394531, 0.2319336)
+material = SubResource("ShaderMaterial_42l1d")
+
+[node name="Walls" type="Node3D" parent="HallwayCenter" unique_id=1030218428]
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="HallwayCenter/Walls" unique_id=717248745]
+transform = Transform3D(3.9340247e-07, -1, 0, -1.3113416e-07, -3.5527137e-15, 2.28, -3, -1.3113416e-07, -9.966196e-08, 2.9999995, 2.2799997, 3.771752e-07)
+mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="HallwayCenter/Walls" unique_id=231272247]
+transform = Transform3D(-6.5567076e-07, 1, 0, 1.3113416e-07, 1.1732768e-14, 2.28, 3, 2.1855693e-07, -9.966196e-08, -3.0000005, 2.2799997, -4.0962973e-07)
+mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="HallwayCenter" unique_id=1262427483]
+transform = Transform3D(-3.367718e-08, 0, -0.31629246, 0, 1, 0, 0.77044404, 0, -1.38255825e-08, -2.9957242, 0.96972656, -0.0015621185)
+size = Vector3(1.9882813, 2.9394531, 0.2319336)
+material = SubResource("ShaderMaterial_4lpd7")
+
+[node name="HallwaySouth" parent="." unique_id=832566099 node_paths=PackedStringArray("same_room") instance=ExtResource("5_7ycvg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 6)
+room_id = "unlockable2"
+neighbour_rooms = Dictionary[String, String]({
+"East": "",
+"North": "unlockable",
+"South": "",
+"West": ""
+})
+same_room = [NodePath("../HallwayNorth"), NodePath("../HallwayCenter")]
+
+[node name="Walls" type="Node3D" parent="HallwaySouth" unique_id=1462659340]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HallwaySouth/Walls" unique_id=2095868279]
+transform = Transform3D(3, 0, 0, 0, -4.371139e-08, 2.28, 0, -1, -9.966197e-08, 0, 2.28, 2.9999998)
+mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="HallwaySouth/Walls" unique_id=820495254]
+transform = Transform3D(3.9340247e-07, -1, 0, -1.3113416e-07, -3.5527137e-15, 2.28, -3, -1.3113416e-07, -9.966196e-08, 2.9999995, 2.2799997, 3.771752e-07)
+mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="HallwaySouth/Walls" unique_id=837973682]
+transform = Transform3D(-6.5567076e-07, 1, 0, 1.3113416e-07, 1.1732768e-14, 2.28, 3, 2.1855693e-07, -9.966196e-08, -3.0000005, 2.2799997, -4.0962973e-07)
+mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="HallwaySouth" unique_id=2141725779]
+transform = Transform3D(-3.367718e-08, 0, -0.31629246, 0, 1, 0, 0.77044404, 0, -1.38255825e-08, -2.9957242, 0.96972656, -0.0015621185)
+size = Vector3(1.9882813, 2.9394531, 0.2319336)
+material = SubResource("ShaderMaterial_4lpd7")
+
+[editable path="Control/SubViewportContainer2/SubViewport/Cam_anchor"]
+[editable path="SpawnRoom"]
+[editable path="NoteRoom"]
+[editable path="NoteRoom/Letter"]
+[editable path="HallwayNorth/Letter"]

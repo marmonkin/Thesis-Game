@@ -26,6 +26,8 @@ func switch_to_room(room_id: String):
 	if new_room:
 		current_room.visible = false
 		new_room.visible = true
+		for room in new_room.same_room:
+			room.visible = true
 		current_room = new_room
 		current_room_id = room_id
 		

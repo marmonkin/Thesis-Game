@@ -2,13 +2,41 @@
 
 [ext_resource type="Script" uid="uid://cjm5c2vs0ht6g" path="res://Scripts/PuzzleScripts/pillar_puzzle.gd" id="1_0gdmp"]
 [ext_resource type="PackedScene" uid="uid://c5peg74qaghj" path="res://Gameplay/Puzzle/pillar_puzzle_section.tscn" id="1_vdq6s"]
+[ext_resource type="PackedScene" uid="uid://bp31lctdq7hud" path="res://Sauce/3D/hemisphere.tscn" id="3_chaom"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_vdq6s"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_chaom"]
+render_priority = 1
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(0.8627451, 0, 0.39607844, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0gdmp"]
-albedo_color = Color(0.99999994, 0.17070219, 0.28199884, 1)
+[sub_resource type="PrismMesh" id="PrismMesh_38p0v"]
+material = SubResource("StandardMaterial3D_chaom")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pfyu7"]
+render_priority = 1
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(0.8627451, 0, 0.39607844, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
 
 [sub_resource type="PrismMesh" id="PrismMesh_chaom"]
+material = SubResource("StandardMaterial3D_pfyu7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0gdmp"]
+render_priority = 1
+transparency = 1
+depth_draw_mode = 1
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vdq6s"]
 material = SubResource("StandardMaterial3D_0gdmp")
 
 [node name="PillarPuzzle" type="Node3D" unique_id=1938957]
@@ -24,14 +52,24 @@ my_id = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 my_id = 2
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1731612058]
+[node name="Pillar" type="Node3D" parent="." unique_id=215631048]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pillar" unique_id=1955963580]
+transform = Transform3D(0.4323289, 0, 0, 0, 0.43232888, 0, 0, 0, 0.32845026, 0, -1, 0.32845026)
+mesh = SubResource("PrismMesh_38p0v")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Pillar" unique_id=1208291398]
+transform = Transform3D(-0.4323289, 3.779539e-08, 0, -3.779539e-08, -0.43232888, 0, 0, 0, 0.32845026, 1.5118157e-08, 0.9887128, 0.32845026)
+mesh = SubResource("PrismMesh_chaom")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pillar" unique_id=1731612058]
 transform = Transform3D(0.764262, 0, 0, 0, 1.2265892, 0, 0, 0, 0.764262, 0, 0, 0)
 mesh = SubResource("CylinderMesh_vdq6s")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1955963580]
-transform = Transform3D(0.43232888, 0, 0, 0, 0.43232888, 0, 0, 0, 0.32845026, 0, -1, 0.32845026)
-mesh = SubResource("PrismMesh_chaom")
+[node name="hemisphere" parent="." unique_id=1322680354 instance=ExtResource("3_chaom")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.1855694e-08, 0, 0.5)
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1208291398]
-transform = Transform3D(-0.43232888, 3.779539e-08, 0, -3.779539e-08, -0.43232888, 0, 0, 0, 0.32845026, 1.8897696e-08, 0.94548, 0.32845026)
-mesh = SubResource("PrismMesh_chaom")
+[node name="Sphere" parent="hemisphere" index="0" unique_id=1759918269]
+transform = Transform3D(1.7605513, 0, 0, 0, 1.5312885, 0, 0, 0, 1, 0, 0, 0)
+
+[editable path="hemisphere"]

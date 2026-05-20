@@ -1,4 +1,4 @@
-extends CSGCylinder3D
+extends Node3D
 
 @export var my_id = 0
 
@@ -41,12 +41,13 @@ func _process(delta: float) -> void:
 			snapping = false
 
 
-func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
+func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, normal: Vector3, _shape_idx: int) -> void:
+	if normal.dot(global_transform.basis.z) < 0.2:
+		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.is_pressed():
 			dragging = true
 			snapping = false
-			
 			
 			audio_stream_player_3d.play()
 			var length = audio_stream_player_3d.stream.get_length()

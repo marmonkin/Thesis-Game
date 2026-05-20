@@ -8,7 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://nsxveipwx4wt" path="res://Sauce/PNG/d1122aa1de7c5b48b08ebffe35aceb1e.jpg" id="4_ib00c"]
 [ext_resource type="Texture2D" uid="uid://bv2gmfowdgd33" path="res://isolated-brown-nautical-compass-equipment-on-transparent-background-free-png.webp" id="6_6wywb"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_6wywb"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_qx34j"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cw7ow"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4lpd7"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ajx1l"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7j06c"]
 albedo_color = Color(0.21123034, 0.23943305, 0.47554272, 1)
@@ -27,7 +33,7 @@ size = Vector3(1.98, 2.15, 0.26)
 size = Vector3(1.9150391, 1.7753906, 0.3125)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qx34j"]
-render_priority = 0
+render_priority = 1
 shader = ExtResource("3_6wywb")
 shader_parameter/albedo = ExtResource("4_ib00c")
 shader_parameter/fade_inner_radius = 7.0
@@ -66,19 +72,19 @@ neighbour_rooms = Dictionary[String, String]({
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Walls" unique_id=148599417]
 transform = Transform3D(3, 0, 0, 0, -4.371139e-08, 2.28, 0, -1, -9.966197e-08, 0, 2.28, 2.9999998)
-mesh = SubResource("PlaneMesh_6wywb")
+mesh = SubResource("PlaneMesh_qx34j")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Walls" unique_id=1765777882]
 transform = Transform3D(-3, -8.742278e-08, 0, -1.1464113e-14, 4.371139e-08, 2.28, -2.6226832e-07, 1, -9.966197e-08, 0, 2.2799997, -3.0000002)
-mesh = SubResource("PlaneMesh_6wywb")
+mesh = SubResource("PlaneMesh_cw7ow")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Walls" unique_id=1420161419]
 transform = Transform3D(3.9340247e-07, -1, 0, -1.3113416e-07, -3.5527137e-15, 2.28, -3, -1.3113416e-07, -9.966196e-08, 2.9999995, 2.2799997, 3.771752e-07)
-mesh = SubResource("PlaneMesh_6wywb")
+mesh = SubResource("PlaneMesh_4lpd7")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Walls" unique_id=1652599375]
 transform = Transform3D(-6.5567076e-07, 1, 0, 1.3113416e-07, 1.1732768e-14, 2.28, 3, 2.1855693e-07, -9.966196e-08, -3.0000005, 2.2799997, -4.0962973e-07)
-mesh = SubResource("PlaneMesh_6wywb")
+mesh = SubResource("PlaneMesh_ajx1l")
 
 [node name="Floor" type="CSGBox3D" parent="." unique_id=132568579]
 transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 6, 0, 0, 0)

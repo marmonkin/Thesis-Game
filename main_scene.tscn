@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bumsrj82m85xw" path="res://main.gd" id="1_mo76n"]
 [ext_resource type="PackedScene" uid="uid://pi7rrl21hf2v" path="res://cam_anchor.tscn" id="2_2c62f"]
+[ext_resource type="PackedScene" uid="uid://bjbl32gaq47rr" path="res://Sauce/3D/bag_bottom.tscn" id="2_6jybn"]
 [ext_resource type="Script" uid="uid://bjiiftr3dlrao" path="res://Scripts/managers/arrows_man.gd" id="3_hq1ik"]
 [ext_resource type="PackedScene" uid="uid://d2ahpjp6808fh" path="res://Gameplay/note_overlay.tscn" id="3_qwutr"]
 [ext_resource type="Script" uid="uid://hmqgtod608ku" path="res://Scripts/room_unlocker.gd" id="3_wr18j"]
@@ -34,6 +35,12 @@ ambient_light_source = 3
 ambient_light_sky_contribution = 0.6
 tonemap_mode = 4
 glow_enabled = true
+
+[sub_resource type="TorusMesh" id="TorusMesh_84odl"]
+inner_radius = 0.816
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6jybn"]
+size = Vector3(1.9443359, 0.23632813, 1.8635254)
 
 [sub_resource type="Resource" id="Resource_7ycvg"]
 script = ExtResource("6_66tet")
@@ -93,7 +100,55 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Control" unique_id=1064325762]
+[node name="InventoryView" type="SubViewportContainer" parent="Control" unique_id=2081951413]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6020833
+anchor_right = 1.0
+anchor_bottom = 0.4027778
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 0
+stretch = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="Control/InventoryView" unique_id=1045671]
+transparent_bg = true
+handle_input_locally = false
+physics_object_picking = true
+canvas_cull_mask = 4294967294
+size = Vector2i(764, 435)
+render_target_update_mode = 4
+
+[node name="Bag" type="Node3D" parent="Control/InventoryView/SubViewport" unique_id=1321391035]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -32)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Control/InventoryView/SubViewport/Bag" unique_id=614441489]
+layers = 4
+mesh = SubResource("TorusMesh_84odl")
+
+[node name="hemisphere2" parent="Control/InventoryView/SubViewport/Bag/MeshInstance3D" unique_id=1707029660 instance=ExtResource("2_6jybn")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Control/InventoryView/SubViewport/Bag/MeshInstance3D" unique_id=473888174]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Control/InventoryView/SubViewport/Bag/MeshInstance3D/StaticBody3D" unique_id=131554529]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.38183594, 0)
+shape = SubResource("BoxShape3D_6jybn")
+
+[node name="Camera3D2" type="Camera3D" parent="Control/InventoryView/SubViewport/Bag" unique_id=1953931908]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2, -8.742277e-08)
+cull_mask = 4
+projection = 1
+size = 2.5
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Control/InventoryView/SubViewport/Bag" unique_id=13471346]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1, -4.371139e-08)
+layers = 4
+
+[node name="MoveArrowsView" type="SubViewportContainer" parent="Control" unique_id=1064325762]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.6020833
@@ -108,7 +163,7 @@ mouse_filter = 0
 stretch = true
 metadata/_edit_use_anchors_ = true
 
-[node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer" unique_id=269038662]
+[node name="SubViewport" type="SubViewport" parent="Control/MoveArrowsView" unique_id=269038662]
 transparent_bg = true
 handle_input_locally = false
 physics_object_picking = true
@@ -116,46 +171,46 @@ canvas_cull_mask = 4294967294
 size = Vector2i(764, 435)
 render_target_update_mode = 4
 
-[node name="Camera3D2" type="Camera3D" parent="Control/SubViewportContainer/SubViewport" unique_id=748193400]
+[node name="Camera3D2" type="Camera3D" parent="Control/MoveArrowsView/SubViewport" unique_id=748193400]
 transform = Transform3D(0.7071068, -0.35355338, 0.61237246, 0, 0.8660254, 0.50000006, -0.7071068, -0.35355338, 0.61237246, -13.938137, 3.5000005, -16.938137)
 cull_mask = 2
 projection = 1
 size = 2.5
 
-[node name="MoveArrows" type="Node3D" parent="Control/SubViewportContainer/SubViewport" unique_id=1019808265]
+[node name="MoveArrows" type="Node3D" parent="Control/MoveArrowsView/SubViewport" unique_id=1019808265]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -21)
 script = ExtResource("3_hq1ik")
 rotation_speed = 5.0
 rotation_deg = -90
 
-[node name="N" parent="Control/SubViewportContainer/SubViewport/MoveArrows" unique_id=1309140725 instance=ExtResource("4_8mm7a")]
+[node name="N" parent="Control/MoveArrowsView/SubViewport/MoveArrows" unique_id=1309140725 instance=ExtResource("4_8mm7a")]
 unique_name_in_owner = true
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -0.7200012)
 data = SubResource("Resource_7ycvg")
 
-[node name="S" parent="Control/SubViewportContainer/SubViewport/MoveArrows" unique_id=799992737 instance=ExtResource("4_8mm7a")]
+[node name="S" parent="Control/MoveArrowsView/SubViewport/MoveArrows" unique_id=799992737 instance=ExtResource("4_8mm7a")]
 unique_name_in_owner = true
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0.7199993)
 data = SubResource("Resource_wr18j")
 
-[node name="E" parent="Control/SubViewportContainer/SubViewport/MoveArrows" unique_id=390808290 instance=ExtResource("4_8mm7a")]
+[node name="E" parent="Control/MoveArrowsView/SubViewport/MoveArrows" unique_id=390808290 instance=ExtResource("4_8mm7a")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.70000076, 0, 0)
 data = SubResource("Resource_qwutr")
 
-[node name="W" parent="Control/SubViewportContainer/SubViewport/MoveArrows" unique_id=145518109 instance=ExtResource("4_8mm7a")]
+[node name="W" parent="Control/MoveArrowsView/SubViewport/MoveArrows" unique_id=145518109 instance=ExtResource("4_8mm7a")]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, -0.70000076, 0, 0)
 data = SubResource("Resource_671wp")
 
-[node name="Sprite3D" type="Sprite3D" parent="Control/SubViewportContainer/SubViewport/MoveArrows" unique_id=870262354]
+[node name="Sprite3D" type="Sprite3D" parent="Control/MoveArrowsView/SubViewport/MoveArrows" unique_id=870262354]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.008577846, -3.749367e-10)
 layers = 2
 modulate = Color(0.8047426, 0.80474263, 0.8047426, 1)
 texture = ExtResource("6_hq1ik")
 
-[node name="SubViewportContainer2" type="SubViewportContainer" parent="Control" unique_id=182045605]
+[node name="MainView" type="SubViewportContainer" parent="Control" unique_id=182045605]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.6020833
@@ -165,7 +220,7 @@ grow_vertical = 2
 stretch = true
 metadata/_edit_use_anchors_ = true
 
-[node name="SubViewport" type="SubViewport" parent="Control/SubViewportContainer2" unique_id=1076353369]
+[node name="SubViewport" type="SubViewport" parent="Control/MainView" unique_id=1076353369]
 handle_input_locally = false
 physics_object_picking = true
 physics_object_picking_sort = true
@@ -173,18 +228,18 @@ physics_object_picking_first_only = true
 size = Vector2i(1156, 1080)
 render_target_update_mode = 4
 
-[node name="Cam_anchor" parent="Control/SubViewportContainer2/SubViewport" unique_id=1352252814 instance=ExtResource("2_2c62f")]
+[node name="Cam_anchor" parent="Control/MainView/SubViewport" unique_id=1352252814 instance=ExtResource("2_2c62f")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 rotation_deg = 90
 
-[node name="Camera3D" parent="Control/SubViewportContainer2/SubViewport/Cam_anchor" index="0" unique_id=666522786]
+[node name="Camera3D" parent="Control/MainView/SubViewport/Cam_anchor" index="0" unique_id=666522786]
 transform = Transform3D(0.7071068, -0.3535534, 0.61237246, 0, 0.8660254, 0.50000006, -0.7071068, -0.3535534, 0.61237246, 4.050653, 3.512281, 4.0718384)
 cull_mask = 1048569
 current = true
 size = 8.069
 
-[node name="AudioListener3D" type="AudioListener3D" parent="Control/SubViewportContainer2/SubViewport/Cam_anchor/Camera3D" index="0" unique_id=1444841079]
+[node name="AudioListener3D" type="AudioListener3D" parent="Control/MainView/SubViewport/Cam_anchor/Camera3D" index="0" unique_id=1444841079]
 current = true
 
 [node name="UI" parent="." unique_id=1589225218 instance=ExtResource("3_qwutr")]
@@ -490,7 +545,7 @@ transform = Transform3D(-3.367718e-08, 0, -0.31629246, 0, 1, 0, 0.77044404, 0, -
 size = Vector3(1.9882813, 2.9394531, 0.2319336)
 material = SubResource("ShaderMaterial_4lpd7")
 
-[editable path="Control/SubViewportContainer2/SubViewport/Cam_anchor"]
+[editable path="Control/MainView/SubViewport/Cam_anchor"]
 [editable path="SpawnRoom"]
 [editable path="NoteRoom/Letter"]
 [editable path="HallwayNorth/Letter"]

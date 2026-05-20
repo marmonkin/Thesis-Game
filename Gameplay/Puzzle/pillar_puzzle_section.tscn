@@ -4,57 +4,107 @@
 [ext_resource type="AudioStream" uid="uid://dq3b8jsyqu83i" path="res://Sauce/Audio/mixkit-gear-metallic-lock-sound-2858.wav" id="2_4j5ht"]
 [ext_resource type="AudioStream" uid="uid://bencjvqsj00vp" path="res://Sauce/Audio/Concrete scrape loop audio 320 kbps original.mp3" id="3_fesr4"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m0kaq"]
-albedo_color = Color(0, 0.5555682, 0.99516314, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fesr4"]
+render_priority = 1
+transparency = 1
+depth_draw_mode = 1
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_w7rjg"]
+material = SubResource("StandardMaterial3D_fesr4")
+top_radius = 0.48
+bottom_radius = 0.48
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w7rjg"]
+render_priority = 1
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(0, 0.54874706, 0.9364654, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
 
 [sub_resource type="PrismMesh" id="PrismMesh_vdq6s"]
-material = SubResource("StandardMaterial3D_m0kaq")
+material = SubResource("StandardMaterial3D_w7rjg")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vdq6s"]
-albedo_color = Color(0.99999994, 0.19804469, 0.34718308, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4j5ht"]
+render_priority = 1
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(0.8627451, 0, 0.39607844, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
 
 [sub_resource type="BoxMesh" id="BoxMesh_0gdmp"]
-material = SubResource("StandardMaterial3D_vdq6s")
+material = SubResource("StandardMaterial3D_4j5ht")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_chaom"]
-albedo_color = Color(1, 0.64185244, 0.44292474, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xq3c8"]
+render_priority = 1
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(1, 0.6431373, 0.44313726, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+
+[sub_resource type="BoxMesh" id="BoxMesh_78l57"]
+material = SubResource("StandardMaterial3D_xq3c8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hvs0e"]
+render_priority = 1
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(1, 0.6431373, 0.44313726, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
 
 [sub_resource type="BoxMesh" id="BoxMesh_m0kaq"]
-material = SubResource("StandardMaterial3D_chaom")
+material = SubResource("StandardMaterial3D_hvs0e")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0gdmp"]
-albedo_color = Color(0, 0.7985661, 0.6356226, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rr12v"]
+render_priority = 1
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(4.428029e-06, 0.7246067, 0.6476225, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_chaom"]
-material = SubResource("StandardMaterial3D_0gdmp")
+material = SubResource("StandardMaterial3D_rr12v")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_m0kaq"]
 height = 0.50878906
 radius = 0.52685547
 
-[node name="PillarSection" type="CSGCylinder3D" unique_id=1871072951]
-height = 0.46777344
+[node name="PillarSection" type="MeshInstance3D" unique_id=197140238]
+mesh = SubResource("CylinderMesh_w7rjg")
 script = ExtResource("1_w7rjg")
 
 [node name="Shapes" type="Node3D" parent="." unique_id=1735700590]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Shapes" unique_id=1724510170]
+[node name="Triangle" type="MeshInstance3D" parent="Shapes" unique_id=1724510170]
 transform = Transform3D(0, 0, 0.19999997, 0, 0.39999998, 0, -0.39999995, 0, 0, 0.39999995, 0, 0)
 mesh = SubResource("PrismMesh_vdq6s")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Shapes" unique_id=1375985981]
+[node name="Square" type="MeshInstance3D" parent="Shapes" unique_id=1375985981]
 transform = Transform3D(-0.39999995, 0, -8.742276e-09, 0, 0.39999998, 0, 1.7484552e-08, 0, -0.19999997, 0, 0, -0.39999995)
 mesh = SubResource("BoxMesh_0gdmp")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Shapes" unique_id=2000564767]
+[node name="Plus1" type="MeshInstance3D" parent="Shapes" unique_id=2000564767]
 transform = Transform3D(-0.39999995, 0, -8.742276e-09, 0, 0.07999999, 0, 1.7484552e-08, 0, -0.19999997, 3.4969105e-08, 0, 0.39999995)
-mesh = SubResource("BoxMesh_m0kaq")
+mesh = SubResource("BoxMesh_78l57")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Shapes" unique_id=844619403]
+[node name="Plus2" type="MeshInstance3D" parent="Shapes" unique_id=844619403]
 transform = Transform3D(1.748455e-08, 0.07999999, -8.742276e-09, 0.39999995, -3.4969108e-09, 0, 0, -3.4969108e-09, -0.19999997, 3.4969105e-08, 0, 0.39999995)
 mesh = SubResource("BoxMesh_m0kaq")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Shapes" unique_id=502491339]
+[node name="Circle" type="MeshInstance3D" parent="Shapes" unique_id=502491339]
 transform = Transform3D(7.636845e-09, -0.10346437, 1.7921668e-08, 0, -4.522571e-09, -0.40999997, 0.40999997, 1.9271744e-09, 0, -0.39999992, 0, 1.7484552e-08)
 mesh = SubResource("CylinderMesh_chaom")
 

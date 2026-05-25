@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://8cptfgy1ry1q"]
+
+[ext_resource type="PackedScene" uid="uid://cf0ox1t6i5j8f" path="res://Gameplay/interactable.tscn" id="1_utvlj"]
+[ext_resource type="Script" uid="uid://cdy6jrpiy81g3" path="res://Scripts/i_pickup.gd" id="2_q2ef8"]
+[ext_resource type="Script" uid="uid://dmwkuyfanvx0t" path="res://Resource/InteractableData.gd" id="3_sm25n"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_20cee"]
+radius = 1.0
+radial_segments = 12
+rings = 12
+
+[sub_resource type="Resource" id="Resource_g03ww"]
+script = ExtResource("3_sm25n")
+display_name = "Box"
+metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
+
+[node name="Key" type="CSGMesh3D" unique_id=1071779072]
+transform = Transform3D(0.23760074, 0, 0, 0, 0.23760074, 0, 0, 0, 0.23760074, 0, 0, 0)
+mesh = SubResource("SphereMesh_20cee")
+
+[node name="Area3D" parent="." unique_id=1309140725 instance=ExtResource("1_utvlj")]
+transform = Transform3D(1.353596, 0, 0, 0, 1.353596, 0, 0, 0, 1.353596, 0, 0, 0)
+script = ExtResource("2_q2ef8")
+data = SubResource("Resource_g03ww")

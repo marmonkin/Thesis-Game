@@ -10,6 +10,7 @@ extends Node3D
 
 @onready var audio_stream_player_3d: AudioStreamPlayer = $AudioStreamPlayer3D
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var mesh_instance_3d: MeshInstance3D = $MeshInstance3D
 
 const STEP_DEG = 90.
 
@@ -33,10 +34,10 @@ func _process(delta: float) -> void:
 		current_deg = lerp_angle(deg_to_rad(current_deg),deg_to_rad(target_deg),snap_speed * delta)
 		
 		current_deg = rad_to_deg(current_deg)
-		rotation_degrees.y = current_deg
+		mesh_instance_3d.rotation_degrees.y = current_deg
 		
-		if abs(rotation_degrees.y - target_deg) < 0.5:
-			rotation_degrees.y = target_deg
+		if abs(mesh_instance_3d.rotation_degrees.y - target_deg) < 0.5:
+			mesh_instance_3d.rotation_degrees.y = target_deg
 			current_deg = target_deg
 			snapping = false
 
@@ -61,7 +62,7 @@ func _input(event: InputEvent) -> void:
 		if get_parent().rotation_direction == 1:
 			current_deg -= event.relative.y * sens
 		
-		rotation_degrees.y = current_deg
+		mesh_instance_3d.rotation_degrees.y = current_deg
 		
 		print(audio_stream_player_3d.playing)
 		
@@ -72,7 +73,6 @@ func _input(event: InputEvent) -> void:
 		var t = clamp(speed / max_drag_speed, 0.0, 1.0)
 		
 		# adjust sound based on speed
-		#audio_stream_player_3d.pitch_scale = lerp(.9, 1.5, t)
 		audio_stream_player_3d.volume_db = lerp(-15.0, -5.0, t)
 		
 		# stop if barely moving
@@ -85,8 +85,7 @@ func _input(event: InputEvent) -> void:
 				audio_stream_player_3d.play()
 				var length = audio_stream_player_3d.stream.get_length()
 				audio_stream_player_3d.seek(randf_range(0.0, length))
-		
-		
+	
 	if event is InputEventMouseButton and not get_parent().solved:
 		if event.button_index == MOUSE_BUTTON_LEFT and !event.pressed:
 			if dragging:
@@ -107,6 +106,6 @@ func snap():
 
 
 func get_current_side() -> int:
-	var normalized = fposmod(rotation_degrees.y, 360.0)
+	var normalized = fposmod(mesh_instance_3d.rotation_degrees.y, 360.0)
 	var num = int(round(normalized / STEP_DEG)) % 4
 	return num

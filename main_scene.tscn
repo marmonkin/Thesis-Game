@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dwma16btcf6v8"]
 
-[ext_resource type="Script" uid="uid://bumsrj82m85xw" path="res://main.gd" id="1_mo76n"]
+[ext_resource type="Script" uid="uid://bumsrj82m85xw" path="res://Scripts/main.gd" id="1_mo76n"]
 [ext_resource type="PackedScene" uid="uid://pi7rrl21hf2v" path="res://cam_anchor.tscn" id="2_2c62f"]
 [ext_resource type="PackedScene" uid="uid://bjbl32gaq47rr" path="res://Sauce/3D/bag_bottom.tscn" id="2_6jybn"]
 [ext_resource type="Script" uid="uid://bjiiftr3dlrao" path="res://Scripts/managers/arrows_man.gd" id="3_hq1ik"]
@@ -13,10 +13,15 @@
 [ext_resource type="Texture2D" uid="uid://bv2gmfowdgd33" path="res://isolated-brown-nautical-compass-equipment-on-transparent-background-free-png.webp" id="6_hq1ik"]
 [ext_resource type="PackedScene" uid="uid://ddc3tlmhufgbg" path="res://Rooms/room1.tscn" id="6_nfk4m"]
 [ext_resource type="PackedScene" uid="uid://k4u7gndrwxrn" path="res://Rooms/letter_room.tscn" id="8_671wp"]
+[ext_resource type="Texture2D" uid="uid://rw80mx6ubi0d" path="res://Sauce/Cursor/look_a.png" id="8_vimvf"]
+[ext_resource type="Script" uid="uid://bixjbrto1jrhq" path="res://eye_button.gd" id="9_ghshe"]
+[ext_resource type="Texture2D" uid="uid://c1qakhjpvn0dw" path="res://Sauce/PNG/Crumpled-low-wear.png" id="10_fv2he"]
+[ext_resource type="PackedScene" uid="uid://csrs8fu250bpt" path="res://item_manifest.tscn" id="11_ghshe"]
 [ext_resource type="Texture2D" uid="uid://clajncmfwdxty" path="res://Sauce/PNG/First-note.png" id="12_u0ygc"]
 [ext_resource type="Shader" uid="uid://5j620dcmf257" path="res://CloseFade.gdshader" id="13_42l1d"]
 [ext_resource type="PackedScene" uid="uid://cso28bogm3x3c" path="res://Gameplay/Puzzle/pillar_puzzle.tscn" id="14_42l1d"]
 [ext_resource type="PackedScene" uid="uid://cws7uwxsqkk6k" path="res://Gameplay/letter.tscn" id="15_m35m6"]
+[ext_resource type="PackedScene" uid="uid://8cptfgy1ry1q" path="res://Gameplay/Puzzle/key.tscn" id="16_fv2he"]
 [ext_resource type="Texture2D" uid="uid://bh6d6kfv1ps3f" path="res://Sauce/PNG/Jessica_hint.png" id="16_u0ygc"]
 [ext_resource type="Texture2D" uid="uid://nsxveipwx4wt" path="res://Sauce/PNG/d1122aa1de7c5b48b08ebffe35aceb1e.jpg" id="18_7th4q"]
 
@@ -242,6 +247,25 @@ size = 8.069
 [node name="AudioListener3D" type="AudioListener3D" parent="Control/MainView/SubViewport/Cam_anchor/Camera3D" index="0" unique_id=1444841079]
 current = true
 
+[node name="TextureButton" type="TextureButton" parent="Control" unique_id=1766039509]
+layout_mode = 0
+offset_left = 1162.0
+offset_top = 445.0
+offset_right = 1202.0
+offset_bottom = 485.0
+scale = Vector2(2.6705642, 2.6705642)
+texture_normal = ExtResource("8_vimvf")
+stretch_mode = 3
+script = ExtResource("9_ghshe")
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=922454633]
+visible = false
+layout_mode = 1
+offset_right = 2480.0
+offset_bottom = 3508.0
+scale = Vector2(28.83621, 27.018387)
+texture = ExtResource("10_fv2he")
+
 [node name="UI" parent="." unique_id=1589225218 instance=ExtResource("3_qwutr")]
 visible = false
 anchors_preset = 15
@@ -289,6 +313,10 @@ neighbour_rooms = Dictionary[String, String]({
 transform = Transform3D(-3.5527137e-15, 2.6226834e-08, 0.6, 0.6, -2.6226834e-08, 0, 2.6226834e-08, 0.6, -2.6226829e-08, -3.1618605, 2.6, 0.021899223)
 rotation_direction = 1
 solution = Array[int]([2, 0, 3])
+
+[node name="item_manifest" parent="SpawnRoom" unique_id=850345965 instance=ExtResource("11_ghshe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24778849, 1, -0.36291575)
+item_to_manifest = ExtResource("16_fv2he")
 
 [node name="NoteRoom" parent="." unique_id=509234291 instance=ExtResource("8_671wp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
@@ -544,6 +572,9 @@ mesh = SubResource("PlaneMesh_6wywb")
 transform = Transform3D(-3.367718e-08, 0, -0.31629246, 0, 1, 0, 0.77044404, 0, -1.38255825e-08, -2.9957242, 0.96972656, -0.0015621185)
 size = Vector3(1.9882813, 2.9394531, 0.2319336)
 material = SubResource("ShaderMaterial_4lpd7")
+
+[connection signal="button_down" from="Control/TextureButton" to="Control/TextureButton" method="_on_button_down"]
+[connection signal="button_up" from="Control/TextureButton" to="Control/TextureButton" method="_on_button_up"]
 
 [editable path="Control/MainView/SubViewport/Cam_anchor"]
 [editable path="SpawnRoom"]

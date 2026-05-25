@@ -12,6 +12,9 @@ func activate_ui(img):
 	cam_anchor.lock_rot = true
 	move_arrows.lock_rot = true
 
+func activate_book(res):
+	pass
+
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:

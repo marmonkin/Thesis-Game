@@ -4,6 +4,7 @@ class_name InteractableManager
 var interactables = []
 var interactions_enabled: bool = true
 
+var eyes_closed = false
 
 func register_interactable(interactable):
 	if not interactables.has(interactable):

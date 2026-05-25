@@ -4,6 +4,10 @@
 [ext_resource type="AudioStream" uid="uid://dq3b8jsyqu83i" path="res://Sauce/Audio/mixkit-gear-metallic-lock-sound-2858.wav" id="2_4j5ht"]
 [ext_resource type="AudioStream" uid="uid://bencjvqsj00vp" path="res://Sauce/Audio/Concrete scrape loop audio 320 kbps original.mp3" id="3_fesr4"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_m0kaq"]
+height = 0.50878906
+radius = 0.52685547
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fesr4"]
 render_priority = 1
 transparency = 1
@@ -14,9 +18,6 @@ stencil_compare = 5
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_w7rjg"]
 material = SubResource("StandardMaterial3D_fesr4")
-top_radius = 0.48
-bottom_radius = 0.48
-height = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w7rjg"]
 render_priority = 1
@@ -78,35 +79,10 @@ stencil_compare = 5
 [sub_resource type="CylinderMesh" id="CylinderMesh_chaom"]
 material = SubResource("StandardMaterial3D_rr12v")
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_m0kaq"]
-height = 0.50878906
-radius = 0.52685547
-
-[node name="PillarSection" type="MeshInstance3D" unique_id=197140238]
-mesh = SubResource("CylinderMesh_w7rjg")
+[node name="PillarSection" type="Node3D" unique_id=1822891985]
 script = ExtResource("1_w7rjg")
 
 [node name="Shapes" type="Node3D" parent="." unique_id=1735700590]
-
-[node name="Triangle" type="MeshInstance3D" parent="Shapes" unique_id=1724510170]
-transform = Transform3D(0, 0, 0.19999997, 0, 0.39999998, 0, -0.39999995, 0, 0, 0.39999995, 0, 0)
-mesh = SubResource("PrismMesh_vdq6s")
-
-[node name="Square" type="MeshInstance3D" parent="Shapes" unique_id=1375985981]
-transform = Transform3D(-0.39999995, 0, -8.742276e-09, 0, 0.39999998, 0, 1.7484552e-08, 0, -0.19999997, 0, 0, -0.39999995)
-mesh = SubResource("BoxMesh_0gdmp")
-
-[node name="Plus1" type="MeshInstance3D" parent="Shapes" unique_id=2000564767]
-transform = Transform3D(-0.39999995, 0, -8.742276e-09, 0, 0.07999999, 0, 1.7484552e-08, 0, -0.19999997, 3.4969105e-08, 0, 0.39999995)
-mesh = SubResource("BoxMesh_78l57")
-
-[node name="Plus2" type="MeshInstance3D" parent="Shapes" unique_id=844619403]
-transform = Transform3D(1.748455e-08, 0.07999999, -8.742276e-09, 0.39999995, -3.4969108e-09, 0, 0, -3.4969108e-09, -0.19999997, 3.4969105e-08, 0, 0.39999995)
-mesh = SubResource("BoxMesh_m0kaq")
-
-[node name="Circle" type="MeshInstance3D" parent="Shapes" unique_id=502491339]
-transform = Transform3D(7.636845e-09, -0.10346437, 1.7921668e-08, 0, -4.522571e-09, -0.40999997, 0.40999997, 1.9271744e-09, 0, -0.39999992, 0, 1.7484552e-08)
-mesh = SubResource("CylinderMesh_chaom")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=2051338475]
 
@@ -120,5 +96,31 @@ volume_db = -10.0
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer" parent="." unique_id=1223028082]
 stream = ExtResource("3_fesr4")
 volume_db = 12.065
+
+[node name="Node3D" type="Node3D" parent="." unique_id=265109854]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1172293510]
+transform = Transform3D(1, 0, 0, 0, 0.26400003, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_w7rjg")
+
+[node name="Triangle" type="MeshInstance3D" parent="MeshInstance3D" unique_id=1724510170]
+transform = Transform3D(0, 0, 0.19999997, 0, 1.5151513, 0, -0.39999995, 0, 0, 0.39999995, 0, 0)
+mesh = SubResource("PrismMesh_vdq6s")
+
+[node name="Square" type="MeshInstance3D" parent="MeshInstance3D" unique_id=1375985981]
+transform = Transform3D(-0.39999995, 0, -8.742276e-09, 0, 1.5151513, 0, 1.7484552e-08, 0, -0.19999997, 0, 0, -0.39999995)
+mesh = SubResource("BoxMesh_0gdmp")
+
+[node name="Plus1" type="MeshInstance3D" parent="MeshInstance3D" unique_id=2000564767]
+transform = Transform3D(-0.39999995, 0, -8.742276e-09, 0, 0.30303022, 0, 1.7484552e-08, 0, -0.19999997, 3.4969105e-08, 0, 0.39999995)
+mesh = SubResource("BoxMesh_78l57")
+
+[node name="Plus2" type="MeshInstance3D" parent="MeshInstance3D" unique_id=844619403]
+transform = Transform3D(1.748455e-08, 0.07999999, -8.742276e-09, 1.5151511, -1.3245872e-08, 0, 0, -3.4969108e-09, -0.19999997, 3.4969105e-08, 0, 0.39999995)
+mesh = SubResource("BoxMesh_m0kaq")
+
+[node name="Circle" type="MeshInstance3D" parent="MeshInstance3D" unique_id=502491339]
+transform = Transform3D(7.636845e-09, -0.10346437, 1.7921668e-08, 0, -1.7130949e-08, -1.55303, 0.40999997, 1.9271744e-09, 0, -0.39999992, 0, 1.7484552e-08)
+mesh = SubResource("CylinderMesh_chaom")
 
 [connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]

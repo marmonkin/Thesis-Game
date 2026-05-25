@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://w5y3cjfpqllj"]
+
+[ext_resource type="Script" uid="uid://chmxji57yabhq" path="res://Scripts/book.gd" id="1_kh36y"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_d7s7k"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kh36y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kh36y"]
+size = Vector3(2.0039063, 0.16894531, 1.2226563)
+
+[node name="Book" type="Area3D" unique_id=955336977]
+script = ExtResource("1_kh36y")
+
+[node name="model" type="Node3D" parent="." unique_id=2032012908]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="model" unique_id=17372376]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.6068231, 0, 0, 0)
+mesh = SubResource("PlaneMesh_d7s7k")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="model" unique_id=1159964787]
+transform = Transform3D(0.8947696, 0, 0, 0, 0.055440985, 0, 0, 0, 1.1162031, 0.5, 0.022176394, 0)
+mesh = SubResource("BoxMesh_kh36y")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="model" unique_id=510617552]
+transform = Transform3D(0.8947696, 0, 0, 0, 0.055440985, 0, 0, 0, 1.1162031, -0.4842466, 0.022176394, 0)
+mesh = SubResource("BoxMesh_kh36y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=960217402]
+shape = SubResource("BoxShape3D_kh36y")

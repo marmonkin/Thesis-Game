@@ -1,11 +1,9 @@
 [gd_scene format=3 uid="uid://d1n2rq1qu12dt"]
 
 [ext_resource type="Script" uid="uid://cmgq1syb3anf2" path="res://Scripts/room_base.gd" id="1_20cee"]
-[ext_resource type="PackedScene" uid="uid://cf0ox1t6i5j8f" path="res://Gameplay/interactable.tscn" id="1_uglcu"]
-[ext_resource type="Script" uid="uid://dmwkuyfanvx0t" path="res://Resource/InteractableData.gd" id="2_fs65j"]
 [ext_resource type="Shader" uid="uid://5j620dcmf257" path="res://CloseFade.gdshader" id="3_6wywb"]
-[ext_resource type="Script" uid="uid://cdy6jrpiy81g3" path="res://Scripts/i_pickup.gd" id="3_qigil"]
 [ext_resource type="Texture2D" uid="uid://nsxveipwx4wt" path="res://Sauce/PNG/d1122aa1de7c5b48b08ebffe35aceb1e.jpg" id="4_ib00c"]
+[ext_resource type="PackedScene" uid="uid://8cptfgy1ry1q" path="res://Gameplay/Puzzle/key.tscn" id="5_qigil"]
 [ext_resource type="Texture2D" uid="uid://bv2gmfowdgd33" path="res://isolated-brown-nautical-compass-equipment-on-transparent-background-free-png.webp" id="6_6wywb"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qx34j"]
@@ -47,16 +45,6 @@ render_priority = 0
 shader = ExtResource("3_6wywb")
 shader_parameter/fade_inner_radius = 7.0
 shader_parameter/fade_outer_radius = 3.0
-
-[sub_resource type="SphereMesh" id="SphereMesh_20cee"]
-radius = 1.0
-radial_segments = 12
-rings = 12
-
-[sub_resource type="Resource" id="Resource_g03ww"]
-script = ExtResource("2_fs65j")
-display_name = "Box"
-metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
 
 [node name="Room" type="Node3D" unique_id=409298254 groups=["room"]]
 script = ExtResource("1_20cee")
@@ -133,14 +121,8 @@ transform = Transform3D(-3.367718e-08, 0, -0.31629246, 0, 1, 0, 0.77044404, 0, -
 size = Vector3(1.9882813, 2.9394531, 0.2319336)
 material = SubResource("ShaderMaterial_4lpd7")
 
-[node name="Key" type="CSGMesh3D" parent="." unique_id=1332491620]
+[node name="Key" parent="." unique_id=1071779072 instance=ExtResource("5_qigil")]
 transform = Transform3D(0.23760074, 0, 0, 0, 0.23760074, 0, 0, 0, 0.23760074, 2.3116527, 1.356651, -1.6410867)
-mesh = SubResource("SphereMesh_20cee")
-
-[node name="Area3D" parent="Key" unique_id=2115803580 instance=ExtResource("1_uglcu")]
-transform = Transform3D(1.353596, 0, 0, 0, 1.353596, 0, 0, 0, 1.353596, 0, 0, 0)
-script = ExtResource("3_qigil")
-data = SubResource("Resource_g03ww")
 
 [node name="SpotLight3D" type="OmniLight3D" parent="." unique_id=509807374]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 4.021005, -9.772809e-08)

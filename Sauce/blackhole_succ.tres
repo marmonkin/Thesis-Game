@@ -1,0 +1,10 @@
+[gd_resource type="ParticleProcessMaterial" format=3 uid="uid://bao27allt6b4s"]
+
+[resource]
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 15.0
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, -0.2, 0)
+radial_accel_min = -97.14
+radial_accel_max = -10.390002

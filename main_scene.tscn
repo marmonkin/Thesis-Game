@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://8cptfgy1ry1q" path="res://Gameplay/Puzzle/key.tscn" id="16_fv2he"]
 [ext_resource type="Texture2D" uid="uid://bh6d6kfv1ps3f" path="res://Sauce/PNG/Jessica_hint.png" id="16_u0ygc"]
 [ext_resource type="Texture2D" uid="uid://nsxveipwx4wt" path="res://Sauce/PNG/d1122aa1de7c5b48b08ebffe35aceb1e.jpg" id="18_7th4q"]
+[ext_resource type="PackedScene" uid="uid://6w4hyo5s83yo" path="res://Sauce/dust_particles.tscn" id="25_5smuj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mo76n"]
 sky_top_color = Color(0.63908696, 0.62341, 0.55517936, 1)
@@ -104,6 +105,46 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MainView" type="SubViewportContainer" parent="Control" unique_id=182045605]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.6020833
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="Control/MainView" unique_id=1076353369]
+handle_input_locally = false
+physics_object_picking = true
+physics_object_picking_sort = true
+physics_object_picking_first_only = true
+size = Vector2i(1156, 1080)
+render_target_update_mode = 4
+
+[node name="Cam_anchor" parent="Control/MainView/SubViewport" unique_id=1352252814 instance=ExtResource("2_2c62f")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+rotation_deg = 90
+
+[node name="Camera3D" parent="Control/MainView/SubViewport/Cam_anchor" index="0" unique_id=666522786]
+transform = Transform3D(0.7071068, -0.3535534, 0.61237246, 0, 0.8660254, 0.50000006, -0.7071068, -0.3535534, 0.61237246, 4.050653, 3.512281, 4.0718384)
+cull_mask = 1048569
+current = true
+size = 8.069
+
+[node name="AudioListener3D" type="AudioListener3D" parent="Control/MainView/SubViewport/Cam_anchor/Camera3D" index="0" unique_id=1444841079]
+current = true
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=922454633]
+visible = false
+layout_mode = 1
+offset_right = 2480.0
+offset_bottom = 3508.0
+scale = Vector2(28.83621, 27.018387)
+texture = ExtResource("10_fv2he")
 
 [node name="InventoryView" type="SubViewportContainer" parent="Control" unique_id=2081951413]
 layout_mode = 1
@@ -215,56 +256,22 @@ layers = 2
 modulate = Color(0.8047426, 0.80474263, 0.8047426, 1)
 texture = ExtResource("6_hq1ik")
 
-[node name="MainView" type="SubViewportContainer" parent="Control" unique_id=182045605]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Control" unique_id=1728612795]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.6020833
-anchor_bottom = 1.0
+anchor_left = 0.61614585
+anchor_top = 0.44907406
+anchor_right = 0.6692708
+anchor_bottom = 0.54351854
 grow_horizontal = 2
 grow_vertical = 2
-stretch = true
 metadata/_edit_use_anchors_ = true
 
-[node name="SubViewport" type="SubViewport" parent="Control/MainView" unique_id=1076353369]
-handle_input_locally = false
-physics_object_picking = true
-physics_object_picking_sort = true
-physics_object_picking_first_only = true
-size = Vector2i(1156, 1080)
-render_target_update_mode = 4
-
-[node name="Cam_anchor" parent="Control/MainView/SubViewport" unique_id=1352252814 instance=ExtResource("2_2c62f")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-rotation_deg = 90
-
-[node name="Camera3D" parent="Control/MainView/SubViewport/Cam_anchor" index="0" unique_id=666522786]
-transform = Transform3D(0.7071068, -0.3535534, 0.61237246, 0, 0.8660254, 0.50000006, -0.7071068, -0.3535534, 0.61237246, 4.050653, 3.512281, 4.0718384)
-cull_mask = 1048569
-current = true
-size = 8.069
-
-[node name="AudioListener3D" type="AudioListener3D" parent="Control/MainView/SubViewport/Cam_anchor/Camera3D" index="0" unique_id=1444841079]
-current = true
-
-[node name="TextureButton" type="TextureButton" parent="Control" unique_id=1766039509]
-layout_mode = 0
-offset_left = 1162.0
-offset_top = 445.0
-offset_right = 1202.0
-offset_bottom = 485.0
-scale = Vector2(2.6705642, 2.6705642)
+[node name="TextureButton" type="TextureButton" parent="Control/AspectRatioContainer" unique_id=1766039509]
+layout_mode = 2
 texture_normal = ExtResource("8_vimvf")
-stretch_mode = 3
+stretch_mode = 0
 script = ExtResource("9_ghshe")
-
-[node name="TextureRect" type="TextureRect" parent="Control" unique_id=922454633]
-visible = false
-layout_mode = 1
-offset_right = 2480.0
-offset_bottom = 3508.0
-scale = Vector2(28.83621, 27.018387)
-texture = ExtResource("10_fv2he")
 
 [node name="UI" parent="." unique_id=1589225218 instance=ExtResource("3_qwutr")]
 visible = false
@@ -573,8 +580,11 @@ transform = Transform3D(-3.367718e-08, 0, -0.31629246, 0, 1, 0, 0.77044404, 0, -
 size = Vector3(1.9882813, 2.9394531, 0.2319336)
 material = SubResource("ShaderMaterial_4lpd7")
 
-[connection signal="button_down" from="Control/TextureButton" to="Control/TextureButton" method="_on_button_down"]
-[connection signal="button_up" from="Control/TextureButton" to="Control/TextureButton" method="_on_button_up"]
+[node name="GPUParticles3D" parent="." unique_id=1356626905 instance=ExtResource("25_5smuj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[connection signal="button_down" from="Control/AspectRatioContainer/TextureButton" to="Control/AspectRatioContainer/TextureButton" method="_on_button_down"]
+[connection signal="button_up" from="Control/AspectRatioContainer/TextureButton" to="Control/AspectRatioContainer/TextureButton" method="_on_button_up"]
 
 [editable path="Control/MainView/SubViewport/Cam_anchor"]
 [editable path="SpawnRoom"]

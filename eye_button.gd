@@ -1,6 +1,6 @@
 extends TextureButton
 
-@onready var texture_rect: TextureRect = $"../TextureRect"
+@onready var texture_rect: TextureRect = $"../../TextureRect"
 
 
 # Called when the node enters the scene tree for the first time.

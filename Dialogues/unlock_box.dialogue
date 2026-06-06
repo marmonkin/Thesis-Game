@@ -1,0 +1,12 @@
+~ unlock
+You use {{item}}...
+You hear something open in a different room.
+=> END
+
+~ no_item
+You don't have item
+=> END
+
+~ unlocked
+You already unlocked it
+=> END

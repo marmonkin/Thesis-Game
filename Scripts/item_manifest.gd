@@ -30,8 +30,10 @@ func _process(delta: float) -> void:
 	if not InteractionManager.eyes_closed and manifest_pending:
 		manifest()
 
+
 func manifest():
 	used = true
 	
 	var new_item = item_to_manifest.instantiate()
 	get_parent().add_child(new_item)
+	new_item.global_position = self.global_position

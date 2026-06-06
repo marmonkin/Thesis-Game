@@ -25,6 +25,8 @@
 [ext_resource type="Texture2D" uid="uid://bh6d6kfv1ps3f" path="res://Sauce/PNG/Jessica_hint.png" id="16_u0ygc"]
 [ext_resource type="Texture2D" uid="uid://nsxveipwx4wt" path="res://Sauce/PNG/d1122aa1de7c5b48b08ebffe35aceb1e.jpg" id="18_7th4q"]
 [ext_resource type="PackedScene" uid="uid://6w4hyo5s83yo" path="res://Sauce/dust_particles.tscn" id="25_5smuj"]
+[ext_resource type="Script" uid="uid://cjm5c2vs0ht6g" path="res://Scripts/PuzzleScripts/pillar_puzzle.gd" id="25_kv3aw"]
+[ext_resource type="PackedScene" uid="uid://bgtkd0wbif1bm" path="res://Gameplay/Puzzle/dial_puzzle.tscn" id="27_kv3aw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mo76n"]
 sky_top_color = Color(0.63908696, 0.62341, 0.55517936, 1)
@@ -68,6 +70,18 @@ script = ExtResource("6_66tet")
 interaction_type = 3
 metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o7u2a"]
+render_priority = 0
+shader = ExtResource("13_42l1d")
+shader_parameter/fade_inner_radius = 10.0
+shader_parameter/fade_outer_radius = 4.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ijoax"]
+render_priority = 0
+shader = ExtResource("13_42l1d")
+shader_parameter/fade_inner_radius = 10.0
+shader_parameter/fade_outer_radius = 4.0
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_6wywb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qx34j"]
@@ -80,17 +94,27 @@ shader_parameter/fade_outer_radius = 3.0
 [sub_resource type="BoxMesh" id="BoxMesh_cw7ow"]
 material = SubResource("ShaderMaterial_qx34j")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5smuj"]
+render_priority = 0
+shader = ExtResource("13_42l1d")
+shader_parameter/albedo = ExtResource("18_7th4q")
+shader_parameter/fade_inner_radius = 7.0
+shader_parameter/fade_outer_radius = 3.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_y5ved"]
+material = SubResource("ShaderMaterial_5smuj")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4lpd7"]
 render_priority = 0
 shader = ExtResource("13_42l1d")
 shader_parameter/fade_inner_radius = 7.0
 shader_parameter/fade_outer_radius = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_42l1d"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kv3aw"]
 render_priority = 0
 shader = ExtResource("13_42l1d")
-shader_parameter/fade_inner_radius = 7.0
-shader_parameter/fade_outer_radius = 3.0
+shader_parameter/fade_inner_radius = 12.0
+shader_parameter/fade_outer_radius = 4.0
 
 [node name="Main" type="Node3D" unique_id=998085854]
 script = ExtResource("1_mo76n")
@@ -130,7 +154,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 rotation_deg = 90
 
 [node name="Camera3D" parent="Control/MainView/SubViewport/Cam_anchor" index="0" unique_id=666522786]
-transform = Transform3D(0.7071068, -0.3535534, 0.61237246, 0, 0.8660254, 0.50000006, -0.7071068, -0.3535534, 0.61237246, 4.050653, 3.512281, 4.0718384)
+transform = Transform3D(0.7071068, -0.3535534, 0.61237246, 0, 0.8660254, 0.50000006, -0.7071068, -0.3535534, 0.61237246, 5.8877707, 5.0122814, 5.9089556)
 cull_mask = 1048569
 current = true
 size = 8.069
@@ -275,15 +299,6 @@ script = ExtResource("9_ghshe")
 
 [node name="UI" parent="." unique_id=1589225218 instance=ExtResource("3_qwutr")]
 visible = false
-anchors_preset = 15
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
 
 [node name="-----------------" type="Node3D" parent="." unique_id=1259966664]
 visible = false
@@ -316,13 +331,19 @@ neighbour_rooms = Dictionary[String, String]({
 "West": ""
 })
 
+[node name="CSGBox3D5" parent="SpawnRoom" index="5" unique_id=1042407500]
+material = SubResource("ShaderMaterial_o7u2a")
+
+[node name="CSGBox3D6" parent="SpawnRoom" index="6" unique_id=765682380]
+material = SubResource("ShaderMaterial_ijoax")
+
 [node name="PillarPuzzle" parent="SpawnRoom" unique_id=1938957 instance=ExtResource("14_42l1d")]
-transform = Transform3D(-3.5527137e-15, 2.6226834e-08, 0.6, 0.6, -2.6226834e-08, 0, 2.6226834e-08, 0.6, -2.6226829e-08, -3.1618605, 2.6, 0.021899223)
+transform = Transform3D(-8.881784e-15, 2.6226838e-08, 0.6, 0.6, -2.6226834e-08, 1.7763568e-15, 2.6226834e-08, 0.6, -2.6226829e-08, -3.1618605, 2.6, 0.021899223)
 rotation_direction = 1
 solution = Array[int]([2, 0, 3])
 
 [node name="item_manifest" parent="SpawnRoom" unique_id=850345965 instance=ExtResource("11_ghshe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24778849, 1, -0.36291575)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5746205, 1.2666692, -1.5649991)
 item_to_manifest = ExtResource("16_fv2he")
 
 [node name="NoteRoom" parent="." unique_id=509234291 instance=ExtResource("8_671wp")]
@@ -355,8 +376,6 @@ mesh = SubResource("PlaneMesh_6wywb")
 
 [node name="Letter" parent="NoteRoom" unique_id=126191928 instance=ExtResource("15_m35m6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4967713, 0.05831194, 1.6308169)
-
-[node name="Area3D" parent="NoteRoom/Letter" index="1" unique_id=1832766235]
 my_image = ExtResource("12_u0ygc")
 
 [node name="CSGBox3D4" type="MeshInstance3D" parent="NoteRoom" unique_id=1242948637]
@@ -365,7 +384,7 @@ mesh = SubResource("BoxMesh_cw7ow")
 
 [node name="CSGBox3D5" type="MeshInstance3D" parent="NoteRoom" unique_id=1527880117]
 transform = Transform3D(-6.054261e-08, 0, -0.09792324, 0, 2.6088753, 0, 1.3850535, 0, -4.280361e-09, -3.0015738, 1.2714441, 0.067413904)
-mesh = SubResource("BoxMesh_cw7ow")
+mesh = SubResource("BoxMesh_y5ved")
 
 [node name="BoxRoom" parent="." unique_id=520243100 instance=ExtResource("6_nfk4m")]
 unique_name_in_owner = true
@@ -376,6 +395,9 @@ neighbour_rooms = Dictionary[String, String]({
 "South": "",
 "West": ""
 })
+
+[node name="CSGBox3D" parent="BoxRoom" index="1" unique_id=1282370315]
+transform = Transform3D(0.59976697, 0, 0, 0, 0.59976697, 0, 0, 0, 0.59976697, 1.6842782, 1.7236826, -2.675595)
 
 [node name="Walls" type="Node3D" parent="BoxRoom" unique_id=1653888485]
 
@@ -427,8 +449,6 @@ material = SubResource("ShaderMaterial_4lpd7")
 
 [node name="Letter" parent="HallwayNorth" unique_id=715070445 instance=ExtResource("15_m35m6")]
 transform = Transform3D(-4.371139e-08, 1, 0, 4.371139e-08, 0, 1, 1, 4.371139e-08, -4.3711385e-08, -2.9747615, 1.4414276, -1.2482786)
-
-[node name="Area3D" parent="HallwayNorth/Letter" index="1" unique_id=1832766235]
 my_image = ExtResource("16_u0ygc")
 
 [node name="LibraryEntrance" parent="." unique_id=1025790125 node_paths=PackedStringArray("same_room") instance=ExtResource("5_7ycvg")]
@@ -455,6 +475,24 @@ mesh = SubResource("PlaneMesh_6wywb")
 [node name="CSGBox3D4" type="MeshInstance3D" parent="LibraryEntrance" unique_id=1292145162]
 transform = Transform3D(1.3850535, 0, 0, 0, 2.6088753, 0, 0, 0, 0.09792324, 0.22989297, 1.2714441, 3.0051112)
 mesh = SubResource("BoxMesh_cw7ow")
+
+[node name="Pillars" type="Node3D" parent="LibraryEntrance" unique_id=771135561]
+script = ExtResource("25_kv3aw")
+
+[node name="Pillar" parent="LibraryEntrance/Pillars" unique_id=1440270837 instance=ExtResource("27_kv3aw")]
+transform = Transform3D(0.7071068, 0.7071068, 0, 0, -4.371139e-08, -1, -0.7071068, 0.7071068, 0, -7.9745774, 2.0000002, -7.985241)
+init_rotation = 90.0
+
+[node name="Pillar2" parent="LibraryEntrance/Pillars" unique_id=332108109 instance=ExtResource("27_kv3aw")]
+transform = Transform3D(0.7071068, -0.70710677, 0, 0, -4.371139e-08, -1, 0.70710677, 0.7071068, 0, 2.2077613, 1.9999999, -8.268084)
+
+[node name="Pillar3" parent="LibraryEntrance/Pillars" unique_id=1840344076 instance=ExtResource("27_kv3aw")]
+transform = Transform3D(-0.7071067, -0.7071068, 0, 0, -4.371139e-08, -1, 0.7071068, -0.7071067, 0, 2.2077615, 1.9999995, 2.1970968)
+init_rotation = 45.0
+
+[node name="Pillar4" parent="LibraryEntrance/Pillars" unique_id=358355900 instance=ExtResource("27_kv3aw")]
+transform = Transform3D(-0.70710677, 0.70710677, 0, 0, -4.371139e-08, -1, -0.70710677, -0.70710677, 0, -7.8331537, 1.9999992, 2.0556762)
+init_rotation = 180.0
 
 [node name="LibraryWest" parent="." unique_id=907468272 node_paths=PackedStringArray("same_room") instance=ExtResource("5_7ycvg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
@@ -533,7 +571,7 @@ same_room = [NodePath("../HallwayNorth"), NodePath("../HallwaySouth")]
 [node name="CSGBox3D6" type="CSGBox3D" parent="HallwayCenter" unique_id=1372577624]
 transform = Transform3D(-3.367718e-08, 0, -0.31629246, 0, 1, 0, 0.77044404, 0, -1.38255825e-08, 3.0138326, 0.96972656, -0.0015618559)
 size = Vector3(1.9882813, 2.9394531, 0.2319336)
-material = SubResource("ShaderMaterial_42l1d")
+material = SubResource("ShaderMaterial_kv3aw")
 
 [node name="Walls" type="Node3D" parent="HallwayCenter" unique_id=1030218428]
 
@@ -581,7 +619,7 @@ size = Vector3(1.9882813, 2.9394531, 0.2319336)
 material = SubResource("ShaderMaterial_4lpd7")
 
 [node name="GPUParticles3D" parent="." unique_id=1356626905 instance=ExtResource("25_5smuj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [connection signal="button_down" from="Control/AspectRatioContainer/TextureButton" to="Control/AspectRatioContainer/TextureButton" method="_on_button_down"]
 [connection signal="button_up" from="Control/AspectRatioContainer/TextureButton" to="Control/AspectRatioContainer/TextureButton" method="_on_button_up"]
@@ -589,4 +627,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 [editable path="Control/MainView/SubViewport/Cam_anchor"]
 [editable path="SpawnRoom"]
 [editable path="NoteRoom/Letter"]
+[editable path="BoxRoom"]
 [editable path="HallwayNorth/Letter"]

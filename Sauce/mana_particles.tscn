@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://h71van0bj4tu"]
+
+[ext_resource type="Texture2D" uid="uid://b27h6lmhc2bq2" path="res://addons/kenney_particle_pack/flare_01.png" id="1_isbib"]
+
+[sub_resource type="Curve" id="Curve_ft6ni"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5036496, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_c2pns"]
+curve = SubResource("Curve_ft6ni")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mrthj"]
+particle_flag_damping_as_friction = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.0
+emission_ring_radius = 0.55
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 0, 0)
+spread = 30.0
+initial_velocity_min = 0.099999994
+initial_velocity_max = 0.099999994
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 0.1890001
+radial_velocity_min = -2.2351742e-05
+radial_velocity_max = 0.49997765
+gravity = Vector3(0, 6, 0)
+linear_accel_min = -5.550002
+linear_accel_max = -5.550002
+tangential_accel_min = -5.000002
+tangential_accel_max = 4.9999976
+alpha_curve = SubResource("CurveTexture_c2pns")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mrthj"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(2.5027991e-06, 0.90238667, 0.7920164, 1)
+albedo_texture = ExtResource("1_isbib")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_ft6ni"]
+material = SubResource("StandardMaterial3D_mrthj")
+
+[node name="GPUParticles3D" type="GPUParticles3D" unique_id=2140149992]
+amount = 5
+lifetime = 2.0
+randomness = 1.0
+trail_lifetime = 1.0
+process_material = SubResource("ParticleProcessMaterial_mrthj")
+draw_pass_1 = SubResource("QuadMesh_ft6ni")

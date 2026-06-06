@@ -64,8 +64,6 @@ func _input(event: InputEvent) -> void:
 		
 		mesh_instance_3d.rotation_degrees.y = current_deg
 		
-		print(audio_stream_player_3d.playing)
-		
 		# drag speed
 		var speed = abs(event.relative.x)
 		

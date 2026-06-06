@@ -3,8 +3,8 @@ shader_type spatial;
 uniform sampler2D albedo : source_color;
 
 // Distance fade uniforms
-uniform float fade_inner_radius : hint_range(0.0, 10.0) = 7.;
-uniform float fade_outer_radius : hint_range(0.0, 10.0) = 3.;
+uniform float fade_inner_radius : hint_range(0.0, 50.0) = 10.;
+uniform float fade_outer_radius : hint_range(0.0, 10.0) = 4.;
 
 varying vec3 world_position;
 

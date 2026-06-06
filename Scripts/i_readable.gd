@@ -4,8 +4,6 @@ extends Area3D
 
 var ui: Control
 
-var is_activated: bool = true
-
 
 func _ready():
 	ui = get_tree().current_scene.get_node("UI")

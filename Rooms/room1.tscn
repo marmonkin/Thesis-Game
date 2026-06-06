@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cmgq1syb3anf2" path="res://Scripts/room_base.gd" id="1_hj0iu"]
 [ext_resource type="PackedScene" uid="uid://cf0ox1t6i5j8f" path="res://Gameplay/interactable.tscn" id="2_16wms"]
+[ext_resource type="Script" uid="uid://ci0h0qflegpi3" path="res://Scripts/use_dialogue.gd" id="2_f8sis"]
+[ext_resource type="Resource" uid="uid://biklla26d02im" path="res://Dialogues/unlock_box.dialogue" id="3_aojjf"]
 [ext_resource type="Script" uid="uid://dmwkuyfanvx0t" path="res://Resource/InteractableData.gd" id="3_f8sis"]
 [ext_resource type="Texture2D" uid="uid://bv2gmfowdgd33" path="res://isolated-brown-nautical-compass-equipment-on-transparent-background-free-png.webp" id="4_hj0iu"]
 
@@ -12,7 +14,7 @@ albedo_color = Color(0.21123034, 0.23943305, 0.47554272, 1)
 script = ExtResource("3_f8sis")
 interaction_type = 1
 display_name = ""
-requires_item = "Box"
+requires_item = "Key"
 metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
 
 [node name="Room" type="Node3D" unique_id=409298254 groups=["room"]]
@@ -32,6 +34,8 @@ material = SubResource("StandardMaterial3D_7j06c")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1282370315]
 transform = Transform3D(0.59976697, 0, 0, 0, 0.59976697, 0, 0, 0, 0.59976697, 0.99080086, 0.54683936, 0.27760106)
+script = ExtResource("2_f8sis")
+resource = ExtResource("3_aojjf")
 
 [node name="Area3D" parent="CSGBox3D" unique_id=1309140725 instance=ExtResource("2_16wms")]
 transform = Transform3D(1.0926038, 0, 0, 0, 1.0926038, 0, 0, 0, 1.0926038, 0, 0, 0)

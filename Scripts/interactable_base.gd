@@ -3,13 +3,11 @@ extends Area3D
 signal unlock
 
 @export var data: InteractableData
-@export var ui: Control
 
 var is_activated: bool = true
 
 
 func _ready():
-	ui = get_tree().current_scene.get_node("UI")
 	InteractionManager.register_interactable(self)
 	if not data.requires_item == null:
 		is_activated = false
@@ -45,21 +43,24 @@ func _on_input_event(_camera: Node, event: InputEvent, _position: Vector3, _norm
 func interact():
 	match data.interaction_type:
 		0:
-			get_parent_node_3d().queue_free()
-			InventoryManager.add_to_inventory(data.display_name)
+			InventoryManager.add_to_inventory(get_parent().name)
+			get_parent_node_3d().interact()
 			CursorMananger.set_cursor("default")
 		1:
 			if not is_activated:
 				if InventoryManager.get_item(data.requires_item):
-					print("Used " + data.requires_item)
+					get_parent().interact("unlock", data.requires_item)
+					
 					is_activated = true
 					emit_signal("unlock")
+				else:
+					get_parent().interact("no_item", null)
 			else:
-				print("Already used")
+				get_parent().interact("unlocked", null)
 		3:
 			RoomManager.switch_to_room(get_meta("target_room"))
 		4:
-			ui.activate_ui()
+			get_parent().interact()
 		_:
 			print("No interaction")
 

@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://cdmah6w8ocy8j"]
+
+[sub_resource type="Curve" id="Curve_ft6ni"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5036496, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_c2pns"]
+curve = SubResource("Curve_ft6ni")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mrthj"]
+particle_flag_damping_as_friction = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.75
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 0.79999995
+initial_velocity_max = 0.79999995
+orbit_velocity_min = -0.27499992
+orbit_velocity_max = 0.59500015
+radial_velocity_min = 0.34997764
+radial_velocity_max = 0.5999776
+gravity = Vector3(0, 5, 0)
+linear_accel_min = -5.550002
+linear_accel_max = -5.550002
+radial_accel_min = -5.780002
+radial_accel_max = 5.7499976
+tangential_accel_min = -3.0000021
+tangential_accel_max = 2.9999976
+damping_min = 5.6710005
+damping_max = 5.6710005
+alpha_curve = SubResource("CurveTexture_c2pns")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_32owf"]
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_nfxbi"]
+material = SubResource("StandardMaterial3D_32owf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" unique_id=2140149992]
+amount = 5
+lifetime = 2.0
+trail_enabled = true
+trail_lifetime = 11.76
+process_material = SubResource("ParticleProcessMaterial_mrthj")
+draw_pass_1 = SubResource("RibbonTrailMesh_nfxbi")

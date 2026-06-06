@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://cws7uwxsqkk6k"]
 
-[ext_resource type="Script" uid="uid://bxbr5d5shgj0x" path="res://Scripts/i_readable.gd" id="1_mbwuw"]
+[ext_resource type="Script" uid="uid://davkb4xxgrd75" path="res://Gameplay/letter.gd" id="1_ewnen"]
 [ext_resource type="Shader" uid="uid://5j620dcmf257" path="res://CloseFade.gdshader" id="1_pvut2"]
 [ext_resource type="Texture2D" uid="uid://c1qakhjpvn0dw" path="res://Sauce/PNG/Crumpled-low-wear.png" id="2_ewnen"]
+[ext_resource type="Script" uid="uid://db42nha66i5m8" path="res://Scripts/interactable_base.gd" id="4_ewnen"]
+[ext_resource type="Script" uid="uid://dmwkuyfanvx0t" path="res://Resource/InteractableData.gd" id="5_gxukr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gxukr"]
 render_priority = 0
@@ -15,6 +17,11 @@ shader_parameter/fade_outer_radius = 3.0
 material = SubResource("ShaderMaterial_gxukr")
 size = Vector3(0.62, 0.055, 1)
 
+[sub_resource type="Resource" id="Resource_by5i5"]
+script = ExtResource("5_gxukr")
+interaction_type = 4
+metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_r6swm"]
 size = Vector3(0.73657227, 0.14282227, 1)
 
@@ -22,12 +29,14 @@ size = Vector3(0.73657227, 0.14282227, 1)
 size = Vector3(0.92871094, 0.118133545, 1.2871094)
 
 [node name="Letter" type="Node3D" unique_id=126191928]
+script = ExtResource("1_ewnen")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1608767068]
 mesh = SubResource("BoxMesh_u08kb")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1832766235]
-script = ExtResource("1_mbwuw")
+script = ExtResource("4_ewnen")
+data = SubResource("Resource_by5i5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1963117356]
 shape = SubResource("BoxShape3D_r6swm")

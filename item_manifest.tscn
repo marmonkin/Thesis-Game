@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://csrs8fu250bpt"]
 
 [ext_resource type="Script" uid="uid://iihii6hhb846" path="res://Scripts/item_manifest.gd" id="1_u72wb"]
+[ext_resource type="PackedScene" uid="uid://h71van0bj4tu" path="res://Sauce/mana_particles.tscn" id="2_bij75"]
 
 [node name="item_manifest" type="Node3D" unique_id=850345965]
 script = ExtResource("1_u72wb")
 time_to_manifest = 3.0
+
+[node name="GPUParticles3D" parent="." unique_id=2140149992 instance=ExtResource("2_bij75")]

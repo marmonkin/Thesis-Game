@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://biklla26d02im"
+path="res://.godot/imported/unlock_box.dialogue-8872cd1c807f166f1c6f467b9b9797d8.tres"
+
+[deps]
+
+source_file="res://Dialogues/unlock_box.dialogue"
+dest_files=["res://.godot/imported/unlock_box.dialogue-8872cd1c807f166f1c6f467b9b9797d8.tres"]
+
+[params]
+
+defaults=true

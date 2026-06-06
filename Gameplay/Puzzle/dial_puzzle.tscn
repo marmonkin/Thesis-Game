@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://bgtkd0wbif1bm"]
+
+[ext_resource type="Script" uid="uid://bgec11he5dxaq" path="res://Gameplay/Puzzle/dial_puzzle.gd" id="1_jos80"]
+[ext_resource type="Shader" uid="uid://5j620dcmf257" path="res://CloseFade.gdshader" id="2_r6cs8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3jb4j"]
+render_priority = 0
+shader = ExtResource("2_r6cs8")
+shader_parameter/fade_inner_radius = 10.0
+shader_parameter/fade_outer_radius = 4.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gio84"]
+material = SubResource("ShaderMaterial_3jb4j")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jos80"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_r6cs8"]
+material = SubResource("StandardMaterial3D_jos80")
+radial_segments = 8
+rings = 6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3jb4j"]
+albedo_color = Color(0.9292893, 0, 0.40133643, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_hs68q"]
+material = SubResource("StandardMaterial3D_3jb4j")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jos80"]
+height = 2.046875
+radius = 0.52246094
+
+[node name="Pillar" type="Node3D" unique_id=1440270837]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+script = ExtResource("1_jos80")
+speed = 5.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1884758189]
+transform = Transform3D(1.4, 0, 0, 0, -8.305164e-08, 1.4, 0, -1.9000001, -6.119594e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_gio84")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1369677555]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0.27303368, 0)
+mesh = SubResource("CylinderMesh_r6cs8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D2" unique_id=625095570]
+transform = Transform3D(0.15999998, -6.681497e-23, 6.717324e-30, 0, -1.7484554e-08, -0.92, 2.672599e-23, 0.39999998, -4.0214477e-08, 1.9106853e-15, 0.72399986, 0.47999996)
+mesh = SubResource("PrismMesh_hs68q")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D2" unique_id=1486416223]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/Area3D" unique_id=1808970856]
+transform = Transform3D(1, 0, 1.6703743e-22, 0, 1, 0, 1.6703743e-22, 0, 1, 4.478168e-17, 0.0234375, 0)
+shape = SubResource("CylinderShape3D_jos80")
+
+[connection signal="input_event" from="MeshInstance3D2/Area3D" to="." method="_on_area_3d_input_event"]

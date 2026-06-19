@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://0h84whpyjw5u"]
+
+[ext_resource type="Script" uid="uid://crprdbkectgrs" path="res://Scripts/inventory_item.gd" id="1_5b765"]
+[ext_resource type="PackedScene" uid="uid://cf0ox1t6i5j8f" path="res://Gameplay/interactable.tscn" id="2_gmchj"]
+[ext_resource type="Script" uid="uid://dmwkuyfanvx0t" path="res://Resource/InteractableData.gd" id="3_wppb3"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5b765"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5b765"]
+
+[sub_resource type="Resource" id="Resource_wrdgt"]
+script = ExtResource("3_wppb3")
+interaction_type = 5
+metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
+
+[node name="RigidBody3D" type="RigidBody3D" unique_id=54503593]
+physics_material_override = SubResource("PhysicsMaterial_5b765")
+script = ExtResource("1_5b765")
+
+[node name="InventoryItem" type="MeshInstance3D" parent="." unique_id=647729818]
+layers = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1481332734]
+shape = SubResource("SphereShape3D_5b765")
+
+[node name="Area3D" parent="." unique_id=1309140725 instance=ExtResource("2_gmchj")]
+data = SubResource("Resource_wrdgt")

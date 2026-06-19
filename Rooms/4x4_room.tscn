@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://dw1b5b1oyixlm"]
+
+[ext_resource type="PackedScene" uid="uid://w18vpb4x5ll" path="res://Rooms/room.tscn" id="1_ydsh1"]
+
+[node name="4x4 room" type="Node3D" unique_id=2011092330]
+
+[node name="Room" parent="." unique_id=409298254 instance=ExtResource("1_ydsh1")]
+
+[node name="MeshInstance3D2" parent="Room/Walls" parent_id_path=PackedInt32Array(409298254, 263429393) index="1" unique_id=1765777882]
+visible = false
+
+[node name="MeshInstance3D4" parent="Room/Walls" parent_id_path=PackedInt32Array(409298254, 263429393) index="3" unique_id=1652599375]
+visible = false
+
+[node name="Room2" parent="." unique_id=2103254672 instance=ExtResource("1_ydsh1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+
+[node name="MeshInstance3D2" parent="Room2/Walls" parent_id_path=PackedInt32Array(2103254672, 263429393) index="1" unique_id=1765777882]
+visible = false
+
+[node name="MeshInstance3D3" parent="Room2/Walls" parent_id_path=PackedInt32Array(2103254672, 263429393) index="2" unique_id=1420161419]
+visible = false
+
+[node name="Room3" parent="." unique_id=1920373260 instance=ExtResource("1_ydsh1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -6)
+
+[node name="MeshInstance3D" parent="Room3/Walls" parent_id_path=PackedInt32Array(1920373260, 263429393) index="0" unique_id=148599417]
+visible = false
+
+[node name="MeshInstance3D3" parent="Room3/Walls" parent_id_path=PackedInt32Array(1920373260, 263429393) index="2" unique_id=1420161419]
+visible = false
+
+[node name="Room4" parent="." unique_id=2142000790 instance=ExtResource("1_ydsh1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="MeshInstance3D" parent="Room4/Walls" parent_id_path=PackedInt32Array(2142000790, 263429393) index="0" unique_id=148599417]
+visible = false
+
+[node name="MeshInstance3D4" parent="Room4/Walls" parent_id_path=PackedInt32Array(2142000790, 263429393) index="3" unique_id=1652599375]
+visible = false
+
+[editable path="Room"]
+[editable path="Room2"]
+[editable path="Room3"]
+[editable path="Room4"]

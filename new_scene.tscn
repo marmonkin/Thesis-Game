@@ -1,0 +1,262 @@
+[gd_scene format=3 uid="uid://b24ss0714ncd4"]
+
+[ext_resource type="PackedScene" uid="uid://pi7rrl21hf2v" path="res://cam_anchor.tscn" id="1_12q32"]
+[ext_resource type="Texture2D" uid="uid://c1qakhjpvn0dw" path="res://Sauce/PNG/Crumpled-low-wear.png" id="2_thqof"]
+[ext_resource type="PackedScene" uid="uid://bjbl32gaq47rr" path="res://Sauce/3D/bag_bottom.tscn" id="3_cfd65"]
+[ext_resource type="Script" uid="uid://bjiiftr3dlrao" path="res://Scripts/managers/arrows_man.gd" id="4_4otfk"]
+[ext_resource type="PackedScene" uid="uid://cc72l6ub755xi" path="res://Gameplay/interactable_arrow.tscn" id="5_awce6"]
+[ext_resource type="Script" uid="uid://dmwkuyfanvx0t" path="res://Resource/InteractableData.gd" id="6_l80tj"]
+[ext_resource type="Texture2D" uid="uid://bv2gmfowdgd33" path="res://isolated-brown-nautical-compass-equipment-on-transparent-background-free-png.webp" id="7_qstpk"]
+[ext_resource type="Texture2D" uid="uid://rw80mx6ubi0d" path="res://Sauce/Cursor/look_a.png" id="8_x4vef"]
+[ext_resource type="Script" uid="uid://bixjbrto1jrhq" path="res://Scripts/eye_button.gd" id="9_h4g5j"]
+[ext_resource type="PackedScene" uid="uid://d2ahpjp6808fh" path="res://Gameplay/note_overlay.tscn" id="10_nf3ql"]
+[ext_resource type="PackedScene" uid="uid://w18vpb4x5ll" path="res://Rooms/room.tscn" id="11_jpuox"]
+[ext_resource type="PackedScene" uid="uid://dw1b5b1oyixlm" path="res://Rooms/4x4_room.tscn" id="12_thqof"]
+[ext_resource type="PackedScene" uid="uid://c8wodok4nvhwi" path="res://Rooms/1x3_room.tscn" id="13_cfd65"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_14bjh"]
+inner_radius = 0.816
+
+[sub_resource type="Resource" id="Resource_26wyf"]
+script = ExtResource("6_l80tj")
+interaction_type = 3
+metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
+
+[sub_resource type="Resource" id="Resource_eps2x"]
+script = ExtResource("6_l80tj")
+interaction_type = 3
+metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
+
+[sub_resource type="Resource" id="Resource_n6wmu"]
+script = ExtResource("6_l80tj")
+interaction_type = 3
+metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
+
+[sub_resource type="Resource" id="Resource_tglip"]
+script = ExtResource("6_l80tj")
+interaction_type = 3
+metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
+
+[node name="NewScene" type="Node" unique_id=451101]
+
+[node name="Control" type="Control" parent="." unique_id=558979018]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainView" type="SubViewportContainer" parent="Control" unique_id=237322824]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.6020833
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="Control/MainView" unique_id=308818746]
+handle_input_locally = false
+physics_object_picking = true
+physics_object_picking_sort = true
+physics_object_picking_first_only = true
+size = Vector2i(1156, 1080)
+render_target_update_mode = 4
+
+[node name="Cam_anchor" parent="Control/MainView/SubViewport" unique_id=1352252814 instance=ExtResource("1_12q32")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+rotation_deg = 90
+
+[node name="Camera3D" parent="Control/MainView/SubViewport/Cam_anchor" index="0" unique_id=666522786]
+transform = Transform3D(0.7071068, -0.3535534, 0.61237246, 0, 0.8660254, 0.50000006, -0.7071068, -0.3535534, 0.61237246, 5.8877707, 5.0122814, 5.9089556)
+cull_mask = 1048569
+current = true
+size = 8.069
+
+[node name="AudioListener3D" type="AudioListener3D" parent="Control/MainView/SubViewport/Cam_anchor/Camera3D" index="0" unique_id=246342077]
+current = true
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=76694520]
+visible = false
+layout_mode = 1
+offset_right = 2480.0
+offset_bottom = 3508.0
+scale = Vector2(28.83621, 27.018387)
+texture = ExtResource("2_thqof")
+
+[node name="InventoryView" type="SubViewportContainer" parent="Control" unique_id=1067862354]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6020833
+anchor_right = 1.0
+anchor_bottom = 0.4027778
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 0
+stretch = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="Control/InventoryView" unique_id=1982709252]
+transparent_bg = true
+handle_input_locally = false
+physics_object_picking = true
+canvas_cull_mask = 4294967294
+size = Vector2i(764, 435)
+render_target_update_mode = 4
+
+[node name="Bag" type="Node3D" parent="Control/InventoryView/SubViewport" unique_id=278585649]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -68, -32)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Control/InventoryView/SubViewport/Bag" unique_id=485598008]
+transform = Transform3D(4.0777106, 0, 0, 0, 1.6397314, 0, 0, 0, 3.0329626, 0, 0, 0)
+layers = 4
+mesh = SubResource("TorusMesh_14bjh")
+
+[node name="hemisphere2" parent="Control/InventoryView/SubViewport/Bag/MeshInstance3D" unique_id=1707029660 instance=ExtResource("3_cfd65")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Camera3D2" type="Camera3D" parent="Control/InventoryView/SubViewport/Bag" unique_id=1737245]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1.4425125, 0, -1, -6.305422e-08, 0, 3.7751665, -1.6501778e-07)
+cull_mask = 4
+size = 4.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Control/InventoryView/SubViewport/Bag" unique_id=1112232862]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1, -4.371139e-08)
+layers = 4
+spot_angle = 83.13493
+
+[node name="MoveArrowsView" type="SubViewportContainer" parent="Control" unique_id=916987074]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6020833
+anchor_top = 0.5972222
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 0
+stretch = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="Control/MoveArrowsView" unique_id=1532281269]
+transparent_bg = true
+handle_input_locally = false
+physics_object_picking = true
+canvas_cull_mask = 4294967294
+size = Vector2i(764, 435)
+render_target_update_mode = 4
+
+[node name="Camera3D2" type="Camera3D" parent="Control/MoveArrowsView/SubViewport" unique_id=224524707]
+transform = Transform3D(0.7071068, -0.5, 0.5, 0, 0.70710677, 0.7071068, -0.7071068, -0.5, 0.5, -15.224604, -64.02174, -18.224604)
+cull_mask = 2
+projection = 1
+size = 2.5
+
+[node name="MoveArrows" type="Node3D" parent="Control/MoveArrowsView/SubViewport" unique_id=2062113029]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, -68, -21)
+script = ExtResource("4_4otfk")
+rotation_speed = 5.0
+rotation_deg = -90
+
+[node name="N" parent="Control/MoveArrowsView/SubViewport/MoveArrows" unique_id=1309140725 instance=ExtResource("5_awce6")]
+unique_name_in_owner = true
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -0.7200012)
+data = SubResource("Resource_26wyf")
+
+[node name="S" parent="Control/MoveArrowsView/SubViewport/MoveArrows" unique_id=1183853083 instance=ExtResource("5_awce6")]
+unique_name_in_owner = true
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0.7199993)
+data = SubResource("Resource_eps2x")
+
+[node name="E" parent="Control/MoveArrowsView/SubViewport/MoveArrows" unique_id=453127205 instance=ExtResource("5_awce6")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.70000076, 0, 0)
+data = SubResource("Resource_n6wmu")
+
+[node name="W" parent="Control/MoveArrowsView/SubViewport/MoveArrows" unique_id=1819804837 instance=ExtResource("5_awce6")]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, -0.70000076, 0, 0)
+data = SubResource("Resource_tglip")
+
+[node name="Sprite3D" type="Sprite3D" parent="Control/MoveArrowsView/SubViewport/MoveArrows" unique_id=1645779617]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.008577846, -3.749367e-10)
+layers = 2
+modulate = Color(0.8047426, 0.80474263, 0.8047426, 1)
+texture = ExtResource("7_qstpk")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Control" unique_id=1672970392]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.61614585
+anchor_top = 0.44907406
+anchor_right = 0.6692708
+anchor_bottom = 0.54351854
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureButton" type="TextureButton" parent="Control/AspectRatioContainer" unique_id=1304927740]
+layout_mode = 2
+texture_normal = ExtResource("8_x4vef")
+stretch_mode = 0
+script = ExtResource("9_h4g5j")
+
+[node name="UI" parent="." unique_id=1589225218 instance=ExtResource("10_nf3ql")]
+visible = false
+
+[node name="Room" parent="." unique_id=409298254 instance=ExtResource("11_jpuox")]
+room_id = "base_room"
+
+[node name="Walls" parent="Room" index="0" unique_id=263429393]
+visible = false
+
+[node name="Room2" parent="." unique_id=1630928971 instance=ExtResource("11_jpuox")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="Walls" parent="Room2" index="0" unique_id=263429393]
+visible = false
+
+[node name="Room3" parent="." unique_id=374906456 instance=ExtResource("11_jpuox")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
+
+[node name="Room12" parent="." unique_id=455498297 instance=ExtResource("11_jpuox")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 18)
+
+[node name="Room13" parent="." unique_id=353985807 instance=ExtResource("11_jpuox")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 23)
+
+[node name="Room14" parent="." unique_id=545319679 instance=ExtResource("11_jpuox")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 18)
+
+[node name="Room15" parent="." unique_id=581581896 instance=ExtResource("11_jpuox")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 23)
+
+[node name="Room16" parent="." unique_id=1361604069 instance=ExtResource("11_jpuox")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 18)
+
+[node name="Room17" parent="." unique_id=202285491 instance=ExtResource("11_jpuox")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 23)
+
+[node name="4x4 room" parent="." unique_id=2011092330 instance=ExtResource("12_thqof")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 12)
+
+[node name="1x3_room" parent="." unique_id=723255265 instance=ExtResource("13_cfd65")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 12)
+
+[node name="1x3_room2" parent="." unique_id=1671907191 instance=ExtResource("13_cfd65")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 18)
+
+[connection signal="button_down" from="Control/AspectRatioContainer/TextureButton" to="Control/AspectRatioContainer/TextureButton" method="_on_button_down"]
+[connection signal="button_up" from="Control/AspectRatioContainer/TextureButton" to="Control/AspectRatioContainer/TextureButton" method="_on_button_up"]
+
+[editable path="Control/MainView/SubViewport/Cam_anchor"]
+[editable path="Room"]
+[editable path="Room2"]

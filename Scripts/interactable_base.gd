@@ -27,6 +27,8 @@ func _on_mouse_entered():
 			cursor_type = "move"
 		4:
 			cursor_type = "read"
+		5:
+			cursor_type = "grab"
 	
 	CursorMananger.set_cursor(cursor_type)
 
@@ -43,13 +45,14 @@ func _on_input_event(_camera: Node, event: InputEvent, _position: Vector3, _norm
 func interact():
 	match data.interaction_type:
 		0:
-			InventoryManager.add_to_inventory(get_parent().name)
+			InventoryManager.add_to_inventory(get_parent())
 			get_parent_node_3d().interact()
 			CursorMananger.set_cursor("default")
 		1:
 			if not is_activated:
-				if InventoryManager.get_item(data.requires_item):
+				if CursorMananger.holding_item != null and CursorMananger.holding_item.name == data.requires_item:
 					get_parent().interact("unlock", data.requires_item)
+					InventoryManager.remove_from_inventory(CursorMananger.holding_item)
 					
 					is_activated = true
 					emit_signal("unlock")
@@ -61,6 +64,11 @@ func interact():
 			RoomManager.switch_to_room(get_meta("target_room"))
 		4:
 			get_parent().interact()
+		5:
+			if CursorMananger.holding_item != get_parent():
+				CursorMananger.holding_item = get_parent()
+			else:
+				CursorMananger.holding_item = null
 		_:
 			print("No interaction")
 

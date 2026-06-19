@@ -9,6 +9,8 @@ class_name CursorManager
 @onready var look_cursor: Texture2D = preload("uid://rw80mx6ubi0d")
 @onready var grab_cursor: Texture2D = preload("uid://cbtf4ncdgwi80")
 
+var holding_item
+
 func _ready():
 	# Set the default cursor
 	Input.set_custom_mouse_cursor(default_cursor, Input.CURSOR_ARROW, Vector2(16, 16))

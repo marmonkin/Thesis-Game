@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://ddc3tlmhufgbg" path="res://Rooms/room1.tscn" id="6_nfk4m"]
 [ext_resource type="PackedScene" uid="uid://k4u7gndrwxrn" path="res://Rooms/letter_room.tscn" id="8_671wp"]
 [ext_resource type="Texture2D" uid="uid://rw80mx6ubi0d" path="res://Sauce/Cursor/look_a.png" id="8_vimvf"]
-[ext_resource type="Script" uid="uid://bixjbrto1jrhq" path="res://eye_button.gd" id="9_ghshe"]
+[ext_resource type="Script" uid="uid://bixjbrto1jrhq" path="res://Scripts/eye_button.gd" id="9_ghshe"]
 [ext_resource type="Texture2D" uid="uid://c1qakhjpvn0dw" path="res://Sauce/PNG/Crumpled-low-wear.png" id="10_fv2he"]
 [ext_resource type="PackedScene" uid="uid://csrs8fu250bpt" path="res://item_manifest.tscn" id="11_ghshe"]
 [ext_resource type="Texture2D" uid="uid://clajncmfwdxty" path="res://Sauce/PNG/First-note.png" id="12_u0ygc"]
@@ -46,9 +46,6 @@ glow_enabled = true
 
 [sub_resource type="TorusMesh" id="TorusMesh_84odl"]
 inner_radius = 0.816
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_6jybn"]
-size = Vector3(1.9443359, 0.23632813, 1.8635254)
 
 [sub_resource type="Resource" id="Resource_7ycvg"]
 script = ExtResource("6_66tet")
@@ -196,27 +193,22 @@ render_target_update_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -32)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Control/InventoryView/SubViewport/Bag" unique_id=614441489]
+transform = Transform3D(4.0777106, 0, 0, 0, 1.6397314, 0, 0, 0, 3.0329626, 0, 0, 0)
 layers = 4
 mesh = SubResource("TorusMesh_84odl")
 
 [node name="hemisphere2" parent="Control/InventoryView/SubViewport/Bag/MeshInstance3D" unique_id=1707029660 instance=ExtResource("2_6jybn")]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Control/InventoryView/SubViewport/Bag/MeshInstance3D" unique_id=473888174]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Control/InventoryView/SubViewport/Bag/MeshInstance3D/StaticBody3D" unique_id=131554529]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.38183594, 0)
-shape = SubResource("BoxShape3D_6jybn")
-
 [node name="Camera3D2" type="Camera3D" parent="Control/InventoryView/SubViewport/Bag" unique_id=1953931908]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2, -8.742277e-08)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1.4425125, 0, -1, -6.305422e-08, 0, 3.7751665, -1.6501778e-07)
 cull_mask = 4
-projection = 1
-size = 2.5
+size = 4.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Control/InventoryView/SubViewport/Bag" unique_id=13471346]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1, -4.371139e-08)
 layers = 4
+spot_angle = 83.13493
 
 [node name="MoveArrowsView" type="SubViewportContainer" parent="Control" unique_id=1064325762]
 layout_mode = 1
@@ -242,7 +234,7 @@ size = Vector2i(764, 435)
 render_target_update_mode = 4
 
 [node name="Camera3D2" type="Camera3D" parent="Control/MoveArrowsView/SubViewport" unique_id=748193400]
-transform = Transform3D(0.7071068, -0.35355338, 0.61237246, 0, 0.8660254, 0.50000006, -0.7071068, -0.35355338, 0.61237246, -13.938137, 3.5000005, -16.938137)
+transform = Transform3D(0.7071068, -0.49999994, 0.50000006, 0, 0.7071067, 0.7071068, -0.7071068, -0.49999994, 0.49999997, -15.224604, 3.9782577, -18.224604)
 cull_mask = 2
 projection = 1
 size = 2.5
@@ -395,9 +387,6 @@ neighbour_rooms = Dictionary[String, String]({
 "South": "",
 "West": ""
 })
-
-[node name="CSGBox3D" parent="BoxRoom" index="1" unique_id=1282370315]
-transform = Transform3D(0.59976697, 0, 0, 0, 0.59976697, 0, 0, 0, 0.59976697, 1.6842782, 1.7236826, -2.675595)
 
 [node name="Walls" type="Node3D" parent="BoxRoom" unique_id=1653888485]
 
@@ -627,5 +616,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 [editable path="Control/MainView/SubViewport/Cam_anchor"]
 [editable path="SpawnRoom"]
 [editable path="NoteRoom/Letter"]
-[editable path="BoxRoom"]
 [editable path="HallwayNorth/Letter"]

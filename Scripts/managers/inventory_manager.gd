@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var bag: Node3D = $/root/Main/Control/InventoryView/SubViewport/Bag
+@onready var bag: Node3D = get_tree().get_first_node_in_group("bag")
 
 const INVENTORY_ITEM = preload("uid://0h84whpyjw5u")
 

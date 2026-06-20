@@ -189,7 +189,7 @@ canvas_cull_mask = 4294967294
 size = Vector2i(764, 435)
 render_target_update_mode = 4
 
-[node name="Bag" type="Node3D" parent="Control/InventoryView/SubViewport" unique_id=1321391035]
+[node name="Bag" type="Node3D" parent="Control/InventoryView/SubViewport" unique_id=1321391035 groups=["bag"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -32)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Control/InventoryView/SubViewport/Bag" unique_id=614441489]

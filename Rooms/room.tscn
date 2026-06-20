@@ -43,7 +43,7 @@ size = Vector3(1, 0.078125, 1)
 material = SubResource("StandardMaterial3D_7j06c")
 
 [node name="Sprite3D" type="Sprite3D" parent="Node3D" unique_id=813923217]
-transform = Transform3D(-1, 8.742278e-08, 0, 3.821371e-15, 4.371139e-08, 1, 8.742278e-08, 1, -4.371139e-08, 0, 0.05725479, -2.5026736e-09)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.05725479, -2.5026736e-09)
 layers = 4
 modulate = Color(0, 0, 0, 1)
 texture = ExtResource("3_adkj4")

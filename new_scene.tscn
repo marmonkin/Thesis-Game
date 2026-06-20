@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b24ss0714ncd4"]
 
+[ext_resource type="Script" uid="uid://bumsrj82m85xw" path="res://Scripts/main.gd" id="1_4otfk"]
 [ext_resource type="PackedScene" uid="uid://pi7rrl21hf2v" path="res://cam_anchor.tscn" id="1_12q32"]
 [ext_resource type="Texture2D" uid="uid://c1qakhjpvn0dw" path="res://Sauce/PNG/Crumpled-low-wear.png" id="2_thqof"]
 [ext_resource type="PackedScene" uid="uid://bjbl32gaq47rr" path="res://Sauce/3D/bag_bottom.tscn" id="3_cfd65"]
@@ -11,8 +12,21 @@
 [ext_resource type="Script" uid="uid://bixjbrto1jrhq" path="res://Scripts/eye_button.gd" id="9_h4g5j"]
 [ext_resource type="PackedScene" uid="uid://d2ahpjp6808fh" path="res://Gameplay/note_overlay.tscn" id="10_nf3ql"]
 [ext_resource type="PackedScene" uid="uid://w18vpb4x5ll" path="res://Rooms/room.tscn" id="11_jpuox"]
-[ext_resource type="PackedScene" uid="uid://dw1b5b1oyixlm" path="res://Rooms/4x4_room.tscn" id="12_thqof"]
+[ext_resource type="PackedScene" uid="uid://dw1b5b1oyixlm" path="res://Rooms/2x2_room.tscn" id="12_thqof"]
 [ext_resource type="PackedScene" uid="uid://c8wodok4nvhwi" path="res://Rooms/1x3_room.tscn" id="13_cfd65"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cfd65"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_4otfk"]
+sky_material = SubResource("ProceduralSkyMaterial_cfd65")
+
+[sub_resource type="Environment" id="Environment_awce6"]
+background_mode = 2
+sky = SubResource("Sky_4otfk")
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="TorusMesh" id="TorusMesh_14bjh"]
 inner_radius = 0.816
@@ -37,7 +51,11 @@ script = ExtResource("6_l80tj")
 interaction_type = 3
 metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
 
-[node name="NewScene" type="Node" unique_id=451101]
+[node name="NewScene" type="Node3D" unique_id=536596422]
+script = ExtResource("1_4otfk")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1733626177]
+environment = SubResource("Environment_awce6")
 
 [node name="Control" type="Control" parent="." unique_id=558979018]
 layout_mode = 3
@@ -77,7 +95,6 @@ current = true
 size = 8.069
 
 [node name="AudioListener3D" type="AudioListener3D" parent="Control/MainView/SubViewport/Cam_anchor/Camera3D" index="0" unique_id=246342077]
-current = true
 
 [node name="TextureRect" type="TextureRect" parent="Control" unique_id=76694520]
 visible = false
@@ -109,7 +126,8 @@ canvas_cull_mask = 4294967294
 size = Vector2i(764, 435)
 render_target_update_mode = 4
 
-[node name="Bag" type="Node3D" parent="Control/InventoryView/SubViewport" unique_id=278585649]
+[node name="Bag" type="Node3D" parent="Control/InventoryView/SubViewport" unique_id=278585649 groups=["bag"]]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -68, -32)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Control/InventoryView/SubViewport/Bag" unique_id=485598008]
@@ -123,6 +141,7 @@ transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0
 [node name="Camera3D2" type="Camera3D" parent="Control/InventoryView/SubViewport/Bag" unique_id=1737245]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1.4425125, 0, -1, -6.305422e-08, 0, 3.7751665, -1.6501778e-07)
 cull_mask = 4
+current = true
 size = 4.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Control/InventoryView/SubViewport/Bag" unique_id=1112232862]
@@ -157,6 +176,7 @@ render_target_update_mode = 4
 transform = Transform3D(0.7071068, -0.5, 0.5, 0, 0.70710677, 0.7071068, -0.7071068, -0.5, 0.5, -15.224604, -64.02174, -18.224604)
 cull_mask = 2
 projection = 1
+current = true
 size = 2.5
 
 [node name="MoveArrows" type="Node3D" parent="Control/MoveArrowsView/SubViewport" unique_id=2062113029]
@@ -214,45 +234,53 @@ visible = false
 
 [node name="Room" parent="." unique_id=409298254 instance=ExtResource("11_jpuox")]
 room_id = "base_room"
+neighbour_rooms = Dictionary[String, String]({
+"East": "",
+"North": "Outside1",
+"South": "",
+"West": ""
+})
 
 [node name="Walls" parent="Room" index="0" unique_id=263429393]
 visible = false
 
 [node name="Room2" parent="." unique_id=1630928971 instance=ExtResource("11_jpuox")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+room_id = "Outside1"
 
 [node name="Walls" parent="Room2" index="0" unique_id=263429393]
 visible = false
 
 [node name="Room3" parent="." unique_id=374906456 instance=ExtResource("11_jpuox")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
+room_id = "Inside1"
 
 [node name="Room12" parent="." unique_id=455498297 instance=ExtResource("11_jpuox")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 18)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 18)
 
 [node name="Room13" parent="." unique_id=353985807 instance=ExtResource("11_jpuox")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 23)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 23)
 
 [node name="Room14" parent="." unique_id=545319679 instance=ExtResource("11_jpuox")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 18)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 18)
 
 [node name="Room15" parent="." unique_id=581581896 instance=ExtResource("11_jpuox")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 23)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 23)
 
 [node name="Room16" parent="." unique_id=1361604069 instance=ExtResource("11_jpuox")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 18)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 18)
 
 [node name="Room17" parent="." unique_id=202285491 instance=ExtResource("11_jpuox")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 23)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 23)
 
 [node name="4x4 room" parent="." unique_id=2011092330 instance=ExtResource("12_thqof")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 12)
 
 [node name="1x3_room" parent="." unique_id=723255265 instance=ExtResource("13_cfd65")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 12)
 
 [node name="1x3_room2" parent="." unique_id=1671907191 instance=ExtResource("13_cfd65")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 18)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 18)
 
 [connection signal="button_down" from="Control/AspectRatioContainer/TextureButton" to="Control/AspectRatioContainer/TextureButton" method="_on_button_down"]
 [connection signal="button_up" from="Control/AspectRatioContainer/TextureButton" to="Control/AspectRatioContainer/TextureButton" method="_on_button_up"]
@@ -260,3 +288,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 18)
 [editable path="Control/MainView/SubViewport/Cam_anchor"]
 [editable path="Room"]
 [editable path="Room2"]
+[editable path="4x4 room"]
+[editable path="4x4 room/Room"]
+[editable path="4x4 room/Room2"]
+[editable path="4x4 room/Room3"]
+[editable path="4x4 room/Room4"]

@@ -6,7 +6,7 @@ extends Node3D
 
 var target_rotation = .0
 var move_target = self
-var move_target_pos
+var move_target_pos: Vector3
 
 var lock_rot = false
 

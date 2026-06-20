@@ -14,6 +14,7 @@ interaction_type = 5
 metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
 
 [node name="RigidBody3D" type="RigidBody3D" unique_id=54503593]
+input_ray_pickable = false
 physics_material_override = SubResource("PhysicsMaterial_5b765")
 script = ExtResource("1_5b765")
 

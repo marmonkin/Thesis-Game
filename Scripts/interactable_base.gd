@@ -4,6 +4,8 @@ signal unlock
 
 @export var data: InteractableData
 
+@onready var my_area_collision: CollisionShape3D = $CollisionShape3D
+
 var is_activated: bool = true
 
 

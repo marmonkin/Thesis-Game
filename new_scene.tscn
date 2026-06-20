@@ -95,6 +95,7 @@ current = true
 size = 8.069
 
 [node name="AudioListener3D" type="AudioListener3D" parent="Control/MainView/SubViewport/Cam_anchor/Camera3D" index="0" unique_id=246342077]
+current = true
 
 [node name="TextureRect" type="TextureRect" parent="Control" unique_id=76694520]
 visible = false
@@ -255,29 +256,33 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
 room_id = "Inside1"
 
+[node name="Room4" parent="." unique_id=496405638 instance=ExtResource("11_jpuox")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 12)
+room_id = "Inside1"
+
 [node name="Room12" parent="." unique_id=455498297 instance=ExtResource("11_jpuox")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 18)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 18)
 
 [node name="Room13" parent="." unique_id=353985807 instance=ExtResource("11_jpuox")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 23)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 23)
 
 [node name="Room14" parent="." unique_id=545319679 instance=ExtResource("11_jpuox")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 18)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 18)
 
 [node name="Room15" parent="." unique_id=581581896 instance=ExtResource("11_jpuox")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 23)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 23)
 
 [node name="Room16" parent="." unique_id=1361604069 instance=ExtResource("11_jpuox")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 18)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 18)
 
 [node name="Room17" parent="." unique_id=202285491 instance=ExtResource("11_jpuox")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0, 23)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 23)
 
 [node name="4x4 room" parent="." unique_id=2011092330 instance=ExtResource("12_thqof")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 12)
 
 [node name="1x3_room" parent="." unique_id=723255265 instance=ExtResource("13_cfd65")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 0, 12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 12)
 
 [node name="1x3_room2" parent="." unique_id=1671907191 instance=ExtResource("13_cfd65")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 18)

@@ -161,6 +161,7 @@ current = true
 
 [node name="TextureRect" type="TextureRect" parent="Control" unique_id=922454633]
 visible = false
+modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 offset_right = 2480.0
 offset_bottom = 3508.0

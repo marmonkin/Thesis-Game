@@ -19,6 +19,9 @@ func add_to_inventory(item):
 	
 	var new_item_collision = new_item.get_node("CollisionShape3D")
 	new_item_collision.shape = item.mesh.create_convex_shape()
+	
+	var new_item_area = new_item.get_node("Area3D")
+	new_item_area.my_area_collision.shape = item.mesh.create_convex_shape()
 
 func remove_from_inventory(item):
 	inventory.erase(item)

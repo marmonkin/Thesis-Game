@@ -24,6 +24,8 @@
 [ext_resource type="PackedScene" uid="uid://8cptfgy1ry1q" path="res://Gameplay/Puzzle/key.tscn" id="16_fv2he"]
 [ext_resource type="Texture2D" uid="uid://bh6d6kfv1ps3f" path="res://Sauce/PNG/Jessica_hint.png" id="16_u0ygc"]
 [ext_resource type="Texture2D" uid="uid://nsxveipwx4wt" path="res://Sauce/PNG/d1122aa1de7c5b48b08ebffe35aceb1e.jpg" id="18_7th4q"]
+[ext_resource type="Texture2D" uid="uid://d4gerwj8s085x" path="res://Sauce/PNG/yeah_wizard.png" id="19_o7u2a"]
+[ext_resource type="Texture2D" uid="uid://cmpet157u0wq1" path="res://Sauce/PNG/pickle_wizerd.png" id="20_ijoax"]
 [ext_resource type="PackedScene" uid="uid://6w4hyo5s83yo" path="res://Sauce/dust_particles.tscn" id="25_5smuj"]
 [ext_resource type="Script" uid="uid://cjm5c2vs0ht6g" path="res://Scripts/PuzzleScripts/pillar_puzzle.gd" id="25_kv3aw"]
 [ext_resource type="PackedScene" uid="uid://bgtkd0wbif1bm" path="res://Gameplay/Puzzle/dial_puzzle.tscn" id="27_kv3aw"]
@@ -67,6 +69,16 @@ script = ExtResource("6_66tet")
 interaction_type = 3
 metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j8kkg"]
+render_priority = 0
+shader = ExtResource("13_42l1d")
+shader_parameter/albedo = ExtResource("18_7th4q")
+shader_parameter/fade_inner_radius = 10.0
+shader_parameter/fade_outer_radius = 4.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_yh4yk"]
+material = SubResource("ShaderMaterial_j8kkg")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o7u2a"]
 render_priority = 0
 shader = ExtResource("13_42l1d")
@@ -81,15 +93,15 @@ shader_parameter/fade_outer_radius = 4.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_6wywb"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qx34j"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yh4yk"]
 render_priority = 0
 shader = ExtResource("13_42l1d")
 shader_parameter/albedo = ExtResource("18_7th4q")
-shader_parameter/fade_inner_radius = 7.0
-shader_parameter/fade_outer_radius = 3.0
+shader_parameter/fade_inner_radius = 10.0
+shader_parameter/fade_outer_radius = 4.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_cw7ow"]
-material = SubResource("ShaderMaterial_qx34j")
+[sub_resource type="BoxMesh" id="BoxMesh_p8s74"]
+material = SubResource("ShaderMaterial_yh4yk")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5smuj"]
 render_priority = 0
@@ -106,6 +118,16 @@ render_priority = 0
 shader = ExtResource("13_42l1d")
 shader_parameter/fade_inner_radius = 7.0
 shader_parameter/fade_outer_radius = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qx34j"]
+render_priority = 0
+shader = ExtResource("13_42l1d")
+shader_parameter/albedo = ExtResource("18_7th4q")
+shader_parameter/fade_inner_radius = 7.0
+shader_parameter/fade_outer_radius = 3.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_cw7ow"]
+material = SubResource("ShaderMaterial_qx34j")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kv3aw"]
 render_priority = 0
@@ -324,6 +346,9 @@ neighbour_rooms = Dictionary[String, String]({
 "West": ""
 })
 
+[node name="CSGBox3D4" parent="SpawnRoom" index="4" unique_id=1315955520]
+mesh = SubResource("BoxMesh_yh4yk")
+
 [node name="CSGBox3D5" parent="SpawnRoom" index="5" unique_id=1042407500]
 material = SubResource("ShaderMaterial_o7u2a")
 
@@ -338,6 +363,17 @@ solution = Array[int]([2, 0, 3])
 [node name="item_manifest" parent="SpawnRoom" unique_id=850345965 instance=ExtResource("11_ghshe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5746205, 1.2666692, -1.5649991)
 item_to_manifest = ExtResource("16_fv2he")
+
+[node name="Sprite3D3" type="Sprite3D" parent="SpawnRoom" unique_id=429899182]
+transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, -1, 2.3296068, -2.9737725)
+double_sided = false
+no_depth_test = true
+texture = ExtResource("20_ijoax")
+
+[node name="Sprite3D2" type="Sprite3D" parent="SpawnRoom" unique_id=2125790452]
+transform = Transform3D(0.046434026, -7.366445e-10, -4.5500576e-10, 7.880934e-10, 0.046434026, 1.8626451e-09, 4.5500592e-10, 0, 0.046434015, 0.24260592, 2.1901202, -2.5793495)
+double_sided = false
+texture = ExtResource("19_o7u2a")
 
 [node name="NoteRoom" parent="." unique_id=509234291 instance=ExtResource("8_671wp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
@@ -373,7 +409,7 @@ my_image = ExtResource("12_u0ygc")
 
 [node name="CSGBox3D4" type="MeshInstance3D" parent="NoteRoom" unique_id=1242948637]
 transform = Transform3D(-1.3850535, 0, 8.560722e-09, 0, 2.6088753, 0, -1.2108522e-07, 0, -0.09792324, 0.22989297, 1.2714441, -2.9682064)
-mesh = SubResource("BoxMesh_cw7ow")
+mesh = SubResource("BoxMesh_p8s74")
 
 [node name="CSGBox3D5" type="MeshInstance3D" parent="NoteRoom" unique_id=1527880117]
 transform = Transform3D(-6.054261e-08, 0, -0.09792324, 0, 2.6088753, 0, 1.3850535, 0, -4.280361e-09, -3.0015738, 1.2714441, 0.067413904)

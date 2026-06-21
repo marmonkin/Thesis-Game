@@ -3,7 +3,7 @@
 [resource]
 render_priority = 1
 transparency = 1
-depth_draw_mode = 1
+depth_draw_mode = 2
 stencil_mode = 3
 stencil_flags = 1
 stencil_compare = 5

@@ -28,8 +28,10 @@ func direction_activate(rooms: Dictionary):
 		arrow.set_meta("target_room", target_id)
 		arrow.process_mode = PROCESS_MODE_DISABLED if target_id == "" else PROCESS_MODE_INHERIT
 
+
 func _process(delta):
 	rotation.y = lerp_angle(rotation.y, target_rotation, rotation_speed * delta)
+
 
 func _input(event):
 	if event.is_action_pressed("rot_left") and not lock_rot:

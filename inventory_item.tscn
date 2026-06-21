@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://crprdbkectgrs" path="res://Scripts/inventory_item.gd" id="1_5b765"]
 [ext_resource type="PackedScene" uid="uid://cf0ox1t6i5j8f" path="res://Gameplay/interactable.tscn" id="2_gmchj"]
 [ext_resource type="Script" uid="uid://dmwkuyfanvx0t" path="res://Resource/InteractableData.gd" id="3_wppb3"]
+[ext_resource type="Material" uid="uid://cicn0qfge6ung" path="res://Sauce/Material/blackhole_succ.tres" id="4_wrdgt"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5b765"]
 
@@ -12,6 +13,13 @@
 script = ExtResource("3_wppb3")
 interaction_type = 5
 metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
+
+[sub_resource type="SphereMesh" id="SphereMesh_wppb3"]
+material = ExtResource("4_wrdgt")
+flip_faces = true
+radius = 1.0
+radial_segments = 12
+rings = 12
 
 [node name="RigidBody3D" type="RigidBody3D" unique_id=54503593]
 input_ray_pickable = false
@@ -26,3 +34,8 @@ shape = SubResource("SphereShape3D_5b765")
 
 [node name="Area3D" parent="." unique_id=1309140725 instance=ExtResource("2_gmchj")]
 data = SubResource("Resource_wrdgt")
+
+[node name="Outline" type="MeshInstance3D" parent="." unique_id=1014035948]
+transform = Transform3D(1.022254, 0, 0, 0, 1.022254, 0, 0, 0, 1.022254, 0, 0, 0)
+visible = false
+mesh = SubResource("SphereMesh_wppb3")

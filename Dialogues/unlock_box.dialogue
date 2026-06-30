@@ -10,3 +10,7 @@ You don't have item
 ~ unlocked
 You already unlocked it
 => END
+
+~ wrong_item
+This one doesn't fit...
+=> END

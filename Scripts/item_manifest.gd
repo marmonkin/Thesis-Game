@@ -20,6 +20,9 @@ func _process(delta: float) -> void:
 	if used:
 		return
 	
+	if not InteractionManager.eyes_closed:
+		manifest_progress = 0
+	
 	if InteractionManager.eyes_closed and RoomManager.current_room == my_room and not manifest_pending:
 		manifest_progress += delta
 		print(manifest_progress)

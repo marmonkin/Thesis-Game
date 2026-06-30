@@ -21,6 +21,7 @@
 [ext_resource type="Shader" uid="uid://5j620dcmf257" path="res://CloseFade.gdshader" id="13_42l1d"]
 [ext_resource type="PackedScene" uid="uid://cso28bogm3x3c" path="res://Gameplay/Puzzle/pillar_puzzle.tscn" id="14_42l1d"]
 [ext_resource type="PackedScene" uid="uid://cws7uwxsqkk6k" path="res://Gameplay/letter.tscn" id="15_m35m6"]
+[ext_resource type="Texture2D" uid="uid://b8biocg62j5no" path="res://Sauce/PNG/Wizardganginball.png" id="15_p8s74"]
 [ext_resource type="PackedScene" uid="uid://8cptfgy1ry1q" path="res://Gameplay/Puzzle/key.tscn" id="16_fv2he"]
 [ext_resource type="Texture2D" uid="uid://bh6d6kfv1ps3f" path="res://Sauce/PNG/Jessica_hint.png" id="16_u0ygc"]
 [ext_resource type="Texture2D" uid="uid://nsxveipwx4wt" path="res://Sauce/PNG/d1122aa1de7c5b48b08ebffe35aceb1e.jpg" id="18_7th4q"]
@@ -29,6 +30,8 @@
 [ext_resource type="PackedScene" uid="uid://6w4hyo5s83yo" path="res://Sauce/dust_particles.tscn" id="25_5smuj"]
 [ext_resource type="Script" uid="uid://cjm5c2vs0ht6g" path="res://Scripts/PuzzleScripts/pillar_puzzle.gd" id="25_kv3aw"]
 [ext_resource type="PackedScene" uid="uid://bgtkd0wbif1bm" path="res://Gameplay/Puzzle/dial_puzzle.tscn" id="27_kv3aw"]
+[ext_resource type="PackedScene" uid="uid://w18vpb4x5ll" path="res://Rooms/room.tscn" id="30_j8kkg"]
+[ext_resource type="PackedScene" uid="uid://dw1b5b1oyixlm" path="res://Rooms/2x2_room.tscn" id="31_yh4yk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mo76n"]
 sky_top_color = Color(0.63908696, 0.62341, 0.55517936, 1)
@@ -113,12 +116,6 @@ shader_parameter/fade_outer_radius = 3.0
 [sub_resource type="BoxMesh" id="BoxMesh_y5ved"]
 material = SubResource("ShaderMaterial_5smuj")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4lpd7"]
-render_priority = 0
-shader = ExtResource("13_42l1d")
-shader_parameter/fade_inner_radius = 7.0
-shader_parameter/fade_outer_radius = 3.0
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qx34j"]
 render_priority = 0
 shader = ExtResource("13_42l1d")
@@ -128,6 +125,12 @@ shader_parameter/fade_outer_radius = 3.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_cw7ow"]
 material = SubResource("ShaderMaterial_qx34j")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4lpd7"]
+render_priority = 0
+shader = ExtResource("13_42l1d")
+shader_parameter/fade_inner_radius = 7.0
+shader_parameter/fade_outer_radius = 3.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kv3aw"]
 render_priority = 0
@@ -193,8 +196,8 @@ texture = ExtResource("10_fv2he")
 [node name="InventoryView" type="SubViewportContainer" parent="Control" unique_id=2081951413]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.6020833
-anchor_right = 1.0
+anchor_left = 0.68541664
+anchor_right = 0.9166667
 anchor_bottom = 0.4027778
 grow_horizontal = 2
 grow_vertical = 2
@@ -209,7 +212,7 @@ transparent_bg = true
 handle_input_locally = false
 physics_object_picking = true
 canvas_cull_mask = 4294967294
-size = Vector2i(764, 435)
+size = Vector2i(444, 435)
 render_target_update_mode = 4
 
 [node name="Bag" type="Node3D" parent="Control/InventoryView/SubViewport" unique_id=1321391035 groups=["bag"]]
@@ -226,6 +229,7 @@ transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0
 [node name="Camera3D2" type="Camera3D" parent="Control/InventoryView/SubViewport/Bag" unique_id=1953931908]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1.4425125, 0, -1, -6.305422e-08, 0, 3.7751665, -1.6501778e-07)
 cull_mask = 4
+fov = 100.0
 size = 4.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Control/InventoryView/SubViewport/Bag" unique_id=13471346]
@@ -236,9 +240,9 @@ spot_angle = 83.13493
 [node name="MoveArrowsView" type="SubViewportContainer" parent="Control" unique_id=1064325762]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.6020833
+anchor_left = 0.68541664
 anchor_top = 0.5972222
-anchor_right = 1.0
+anchor_right = 0.9166667
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -253,7 +257,7 @@ transparent_bg = true
 handle_input_locally = false
 physics_object_picking = true
 canvas_cull_mask = 4294967294
-size = Vector2i(764, 435)
+size = Vector2i(444, 435)
 render_target_update_mode = 4
 
 [node name="Camera3D2" type="Camera3D" parent="Control/MoveArrowsView/SubViewport" unique_id=748193400]
@@ -327,7 +331,7 @@ in_room = NodePath("../../SpawnRoom")
 direction = "East"
 trigger = NodePath("../../BoxRoom/CSGBox3D/Area3D")
 
-[node name="EmptyRoom" type="Node3D" parent="Unlockers" unique_id=348072332 node_paths=PackedStringArray("unlock_room", "in_room", "trigger")]
+[node name="Hallway" type="Node3D" parent="Unlockers" unique_id=348072332 node_paths=PackedStringArray("unlock_room", "in_room", "trigger")]
 script = ExtResource("3_wr18j")
 unlock_room = NodePath("../../HallwayCenter")
 in_room = NodePath("../../SpawnRoom")
@@ -355,6 +359,17 @@ material = SubResource("ShaderMaterial_o7u2a")
 [node name="CSGBox3D6" parent="SpawnRoom" index="6" unique_id=765682380]
 material = SubResource("ShaderMaterial_ijoax")
 
+[node name="Sprite3D4" type="Sprite3D" parent="SpawnRoom" unique_id=1354364076]
+transform = Transform3D(0.051906254, 0, -0.051906236, 0, 0.07340652, 0, 0.051906236, 0, 0.051906254, 2.1010041, 2.7931929, -2.1239822)
+shaded = true
+double_sided = false
+texture = ExtResource("15_p8s74")
+
+[node name="AreaLight3D" type="AreaLight3D" parent="SpawnRoom/Sprite3D4" unique_id=227975215]
+transform = Transform3D(1, 0, -3.5002955e-08, 0, 1, 0, 3.5002955e-08, 0, 1, -4.200355e-08, 1.3000001, 1.2)
+light_color = Color(0.18289572, 0.6310977, 0.75632244, 1)
+shadow_enabled = true
+
 [node name="PillarPuzzle" parent="SpawnRoom" unique_id=1938957 instance=ExtResource("14_42l1d")]
 transform = Transform3D(-8.881784e-15, 2.6226838e-08, 0.6, 0.6, -2.6226834e-08, 1.7763568e-15, 2.6226834e-08, 0.6, -2.6226829e-08, -3.1618605, 2.6, 0.021899223)
 rotation_direction = 1
@@ -366,14 +381,22 @@ item_to_manifest = ExtResource("16_fv2he")
 
 [node name="Sprite3D3" type="Sprite3D" parent="SpawnRoom" unique_id=429899182]
 transform = Transform3D(0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, -1, 2.3296068, -2.9737725)
+transparent = false
+shaded = true
 double_sided = false
-no_depth_test = true
 texture = ExtResource("20_ijoax")
 
 [node name="Sprite3D2" type="Sprite3D" parent="SpawnRoom" unique_id=2125790452]
 transform = Transform3D(0.046434026, -7.366445e-10, -4.5500576e-10, 7.880934e-10, 0.046434026, 1.8626451e-09, 4.5500592e-10, 0, 0.046434015, 0.24260592, 2.1901202, -2.5793495)
+shaded = true
 double_sided = false
 texture = ExtResource("19_o7u2a")
+
+[node name="Key" parent="SpawnRoom" unique_id=1071779072 instance=ExtResource("16_fv2he")]
+transform = Transform3D(0.23760074, 0, 0, 0, 0.23760074, 0, 0, 0, 0.23760074, -0.29046535, 1.1274621, -1.1509724)
+
+[node name="Key2" parent="SpawnRoom" unique_id=1099116964 instance=ExtResource("16_fv2he")]
+transform = Transform3D(0.23760074, 0, 0, 0, 0.23760074, 0, 0, 0, 0.23760074, 1.158917, 1.1274621, -1.1509724)
 
 [node name="NoteRoom" parent="." unique_id=509234291 instance=ExtResource("8_671wp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
@@ -419,9 +442,9 @@ mesh = SubResource("BoxMesh_y5ved")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
 neighbour_rooms = Dictionary[String, String]({
-"East": "",
+"East": "Big1Room3",
 "North": "base_room",
-"South": "",
+"South": "test_room",
 "West": ""
 })
 
@@ -442,40 +465,6 @@ mesh = SubResource("PlaneMesh_6wywb")
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="BoxRoom/Walls" unique_id=2108872279]
 transform = Transform3D(-6.5567076e-07, 1, 0, 1.3113416e-07, 1.1732768e-14, 2.28, 3, 2.1855693e-07, -9.966196e-08, -3.0000005, 2.2799997, -4.0962973e-07)
 mesh = SubResource("PlaneMesh_6wywb")
-
-[node name="HallwayNorth" parent="." unique_id=259956236 node_paths=PackedStringArray("same_room") instance=ExtResource("5_7ycvg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -6)
-room_id = "unlockable1"
-neighbour_rooms = Dictionary[String, String]({
-"East": "",
-"North": "",
-"South": "unlockable",
-"West": ""
-})
-same_room = [NodePath("../HallwayCenter"), NodePath("../HallwaySouth")]
-
-[node name="Walls" type="Node3D" parent="HallwayNorth" unique_id=503585996]
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="HallwayNorth/Walls" unique_id=2031169210]
-transform = Transform3D(-3, -8.742278e-08, 0, -1.1464113e-14, 4.371139e-08, 2.28, -2.6226832e-07, 1, -9.966197e-08, 0, 2.2799997, -3.0000002)
-mesh = SubResource("PlaneMesh_6wywb")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="HallwayNorth/Walls" unique_id=344307771]
-transform = Transform3D(3.9340247e-07, -1, 0, -1.3113416e-07, -3.5527137e-15, 2.28, -3, -1.3113416e-07, -9.966196e-08, 2.9999995, 2.2799997, 3.771752e-07)
-mesh = SubResource("PlaneMesh_6wywb")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="HallwayNorth/Walls" unique_id=170080263]
-transform = Transform3D(-6.5567076e-07, 1, 0, 1.3113416e-07, 1.1732768e-14, 2.28, 3, 2.1855693e-07, -9.966196e-08, -3.0000005, 2.2799997, -4.0962973e-07)
-mesh = SubResource("PlaneMesh_6wywb")
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="HallwayNorth" unique_id=1717852232]
-transform = Transform3D(-3.367718e-08, 0, -0.31629246, 0, 1, 0, 0.77044404, 0, -1.38255825e-08, -2.9957242, 0.96972656, -0.0015621185)
-size = Vector3(1.9882813, 2.9394531, 0.2319336)
-material = SubResource("ShaderMaterial_4lpd7")
-
-[node name="Letter" parent="HallwayNorth" unique_id=715070445 instance=ExtResource("15_m35m6")]
-transform = Transform3D(-4.371139e-08, 1, 0, 4.371139e-08, 0, 1, 1, 4.371139e-08, -4.3711385e-08, -2.9747615, 1.4414276, -1.2482786)
-my_image = ExtResource("16_u0ygc")
 
 [node name="LibraryEntrance" parent="." unique_id=1025790125 node_paths=PackedStringArray("same_room") instance=ExtResource("5_7ycvg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -6)
@@ -583,6 +572,40 @@ mesh = SubResource("PlaneMesh_6wywb")
 transform = Transform3D(3.9340247e-07, -1, 0, -1.3113416e-07, -3.5527137e-15, 2.28, -3, -1.3113416e-07, -9.966196e-08, 2.9999995, 2.2799997, 3.771752e-07)
 mesh = SubResource("PlaneMesh_6wywb")
 
+[node name="HallwayNorth" parent="." unique_id=259956236 node_paths=PackedStringArray("same_room") instance=ExtResource("5_7ycvg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -6)
+room_id = "unlockable1"
+neighbour_rooms = Dictionary[String, String]({
+"East": "",
+"North": "",
+"South": "unlockable",
+"West": ""
+})
+same_room = [NodePath("../HallwayCenter"), NodePath("../HallwaySouth")]
+
+[node name="Walls" type="Node3D" parent="HallwayNorth" unique_id=503585996]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="HallwayNorth/Walls" unique_id=2031169210]
+transform = Transform3D(-3, -8.742278e-08, 0, -1.1464113e-14, 4.371139e-08, 2.28, -2.6226832e-07, 1, -9.966197e-08, 0, 2.2799997, -3.0000002)
+mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="HallwayNorth/Walls" unique_id=344307771]
+transform = Transform3D(3.9340247e-07, -1, 0, -1.3113416e-07, -3.5527137e-15, 2.28, -3, -1.3113416e-07, -9.966196e-08, 2.9999995, 2.2799997, 3.771752e-07)
+mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="HallwayNorth/Walls" unique_id=170080263]
+transform = Transform3D(-6.5567076e-07, 1, 0, 1.3113416e-07, 1.1732768e-14, 2.28, 3, 2.1855693e-07, -9.966196e-08, -3.0000005, 2.2799997, -4.0962973e-07)
+mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="HallwayNorth" unique_id=1717852232]
+transform = Transform3D(-3.367718e-08, 0, -0.31629246, 0, 1, 0, 0.77044404, 0, -1.38255825e-08, -2.9957242, 0.96972656, -0.0015621185)
+size = Vector3(1.9882813, 2.9394531, 0.2319336)
+material = SubResource("ShaderMaterial_4lpd7")
+
+[node name="Letter" parent="HallwayNorth" unique_id=715070445 instance=ExtResource("15_m35m6")]
+transform = Transform3D(-4.371139e-08, 1, 0, 4.371139e-08, 0, 1, 1, 4.371139e-08, -4.3711385e-08, -2.9747615, 1.4414276, -1.2482786)
+my_image = ExtResource("16_u0ygc")
+
 [node name="HallwayCenter" parent="." unique_id=536103405 node_paths=PackedStringArray("same_room") instance=ExtResource("5_7ycvg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
 room_id = "unlockable"
@@ -647,6 +670,27 @@ material = SubResource("ShaderMaterial_4lpd7")
 [node name="GPUParticles3D" parent="." unique_id=1356626905 instance=ExtResource("25_5smuj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
+[node name="Room" parent="." unique_id=1621714398 instance=ExtResource("30_j8kkg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
+room_id = "test_room"
+neighbour_rooms = Dictionary[String, String]({
+"East": "",
+"North": "room1",
+"South": "",
+"West": ""
+})
+
+[node name="2x2 room" parent="." unique_id=2011092330 instance=ExtResource("31_yh4yk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 12)
+
+[node name="Room3" parent="2x2 room" index="2" unique_id=1920373260]
+neighbour_rooms = Dictionary[String, String]({
+"East": "Big1Room4",
+"North": "",
+"South": "Big1Room2",
+"West": "room1"
+})
+
 [connection signal="button_down" from="Control/AspectRatioContainer/TextureButton" to="Control/AspectRatioContainer/TextureButton" method="_on_button_down"]
 [connection signal="button_up" from="Control/AspectRatioContainer/TextureButton" to="Control/AspectRatioContainer/TextureButton" method="_on_button_up"]
 
@@ -654,3 +698,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 [editable path="SpawnRoom"]
 [editable path="NoteRoom/Letter"]
 [editable path="HallwayNorth/Letter"]
+[editable path="2x2 room"]
+[editable path="2x2 room/Room"]
+[editable path="2x2 room/Room2"]
+[editable path="2x2 room/Room3"]
+[editable path="2x2 room/Room4"]

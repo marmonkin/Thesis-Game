@@ -52,12 +52,15 @@ func interact():
 			CursorMananger.set_cursor("default")
 		1:
 			if not is_activated:
-				if CursorMananger.holding_item != null and CursorMananger.holding_item.name == data.requires_item:
-					get_parent().interact("unlock", data.requires_item)
-					InventoryManager.remove_from_inventory(CursorMananger.holding_item)
-					
-					is_activated = true
-					emit_signal("unlock")
+				if CursorMananger.holding_item != null:
+					if CursorMananger.holding_item.name == data.requires_item:
+						get_parent().interact("unlock", data.requires_item)
+						InventoryManager.remove_from_inventory(CursorMananger.holding_item)
+						
+						is_activated = true
+						emit_signal("unlock")
+					else:
+						get_parent().interact("wrong_item", null)
 				else:
 					get_parent().interact("no_item", null)
 			else:
@@ -69,8 +72,10 @@ func interact():
 		5:
 			if CursorMananger.holding_item != get_parent():
 				CursorMananger.holding_item = get_parent()
+				get_parent().holding = true
 			else:
 				CursorMananger.holding_item = null
+				get_parent().holding = false
 		_:
 			print("No interaction")
 

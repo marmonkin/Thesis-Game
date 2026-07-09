@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dwma16btcf6v8"]
 
 [ext_resource type="Script" uid="uid://bumsrj82m85xw" path="res://Scripts/main.gd" id="1_mo76n"]
-[ext_resource type="PackedScene" uid="uid://pi7rrl21hf2v" path="res://cam_anchor.tscn" id="2_2c62f"]
+[ext_resource type="PackedScene" uid="uid://pi7rrl21hf2v" path="res://Gameplay/cam_anchor.tscn" id="2_2c62f"]
 [ext_resource type="PackedScene" uid="uid://bjbl32gaq47rr" path="res://Sauce/3D/bag_bottom.tscn" id="2_6jybn"]
 [ext_resource type="Script" uid="uid://bjiiftr3dlrao" path="res://Scripts/managers/arrows_man.gd" id="3_hq1ik"]
 [ext_resource type="PackedScene" uid="uid://d2ahpjp6808fh" path="res://Gameplay/note_overlay.tscn" id="3_qwutr"]
@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://rw80mx6ubi0d" path="res://Sauce/Cursor/look_a.png" id="8_vimvf"]
 [ext_resource type="Script" uid="uid://bixjbrto1jrhq" path="res://Scripts/eye_button.gd" id="9_ghshe"]
 [ext_resource type="Texture2D" uid="uid://c1qakhjpvn0dw" path="res://Sauce/PNG/Crumpled-low-wear.png" id="10_fv2he"]
-[ext_resource type="PackedScene" uid="uid://csrs8fu250bpt" path="res://item_manifest.tscn" id="11_ghshe"]
+[ext_resource type="PackedScene" uid="uid://csrs8fu250bpt" path="res://Gameplay/item_manifest.tscn" id="11_ghshe"]
 [ext_resource type="Texture2D" uid="uid://clajncmfwdxty" path="res://Sauce/PNG/First-note.png" id="12_u0ygc"]
 [ext_resource type="Shader" uid="uid://5j620dcmf257" path="res://CloseFade.gdshader" id="13_42l1d"]
 [ext_resource type="PackedScene" uid="uid://cso28bogm3x3c" path="res://Gameplay/Puzzle/pillar_puzzle.tscn" id="14_42l1d"]
@@ -27,13 +27,15 @@
 [ext_resource type="Texture2D" uid="uid://nsxveipwx4wt" path="res://Sauce/PNG/d1122aa1de7c5b48b08ebffe35aceb1e.jpg" id="18_7th4q"]
 [ext_resource type="Texture2D" uid="uid://d4gerwj8s085x" path="res://Sauce/PNG/yeah_wizard.png" id="19_o7u2a"]
 [ext_resource type="Texture2D" uid="uid://cmpet157u0wq1" path="res://Sauce/PNG/pickle_wizerd.png" id="20_ijoax"]
+[ext_resource type="Script" uid="uid://lueulvdcxnpy" path="res://map_init.gd" id="22_1n88h"]
+[ext_resource type="PackedScene" uid="uid://cf0ox1t6i5j8f" path="res://Gameplay/interactable.tscn" id="23_opjno"]
 [ext_resource type="PackedScene" uid="uid://6w4hyo5s83yo" path="res://Sauce/dust_particles.tscn" id="25_5smuj"]
 [ext_resource type="Script" uid="uid://cjm5c2vs0ht6g" path="res://Scripts/PuzzleScripts/pillar_puzzle.gd" id="25_kv3aw"]
 [ext_resource type="PackedScene" uid="uid://bgtkd0wbif1bm" path="res://Gameplay/Puzzle/dial_puzzle.tscn" id="27_kv3aw"]
 [ext_resource type="PackedScene" uid="uid://w18vpb4x5ll" path="res://Rooms/room.tscn" id="30_j8kkg"]
 [ext_resource type="PackedScene" uid="uid://dw1b5b1oyixlm" path="res://Rooms/2x2_room.tscn" id="31_yh4yk"]
-[ext_resource type="Texture2D" uid="uid://jeicyus17xlu" path="res://Sauce/PNG/map5.png" id="33_o4fqm"]
-[ext_resource type="Texture2D" uid="uid://cqq4isuyspnn4" path="res://Sauce/PNG/map_atlas.tres" id="34_gfmxp"]
+[ext_resource type="PackedScene" uid="uid://bhp87ypjfpbw3" path="res://Gameplay/window.tscn" id="33_o4fqm"]
+[ext_resource type="PackedScene" uid="uid://c8wodok4nvhwi" path="res://Rooms/1x3_room.tscn" id="36_opjno"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mo76n"]
 sky_top_color = Color(0.63908696, 0.62341, 0.55517936, 1)
@@ -74,16 +76,6 @@ script = ExtResource("6_66tet")
 interaction_type = 3
 metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j8kkg"]
-render_priority = 0
-shader = ExtResource("13_42l1d")
-shader_parameter/albedo = ExtResource("18_7th4q")
-shader_parameter/fade_inner_radius = 10.0
-shader_parameter/fade_outer_radius = 4.0
-
-[sub_resource type="BoxMesh" id="BoxMesh_yh4yk"]
-material = SubResource("ShaderMaterial_j8kkg")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o7u2a"]
 render_priority = 0
 shader = ExtResource("13_42l1d")
@@ -96,6 +88,11 @@ shader = ExtResource("13_42l1d")
 shader_parameter/fade_inner_radius = 10.0
 shader_parameter/fade_outer_radius = 4.0
 
+[sub_resource type="Resource" id="Resource_meb7l"]
+script = ExtResource("6_66tet")
+interaction_type = 2
+metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_6wywb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yh4yk"]
@@ -107,16 +104,6 @@ shader_parameter/fade_outer_radius = 4.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_p8s74"]
 material = SubResource("ShaderMaterial_yh4yk")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5smuj"]
-render_priority = 0
-shader = ExtResource("13_42l1d")
-shader_parameter/albedo = ExtResource("18_7th4q")
-shader_parameter/fade_inner_radius = 7.0
-shader_parameter/fade_outer_radius = 3.0
-
-[sub_resource type="BoxMesh" id="BoxMesh_y5ved"]
-material = SubResource("ShaderMaterial_5smuj")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qx34j"]
 render_priority = 0
@@ -139,105 +126,6 @@ render_priority = 0
 shader = ExtResource("13_42l1d")
 shader_parameter/fade_inner_radius = 12.0
 shader_parameter/fade_outer_radius = 4.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1n88h"]
-atlas = ExtResource("33_o4fqm")
-region = Rect2(0, 0, 20, 20)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gfmxp"]
-load_path = "res://.godot/imported/map5.png-456355e569746fcd97722f1caba6c857.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_opjno"]
-atlas = SubResource("CompressedTexture2D_gfmxp")
-region = Rect2(40, 0, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_meb7l"]
-atlas = SubResource("CompressedTexture2D_gfmxp")
-region = Rect2(60, 0, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w30ff"]
-atlas = SubResource("CompressedTexture2D_gfmxp")
-region = Rect2(80, 0, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xy6fp"]
-atlas = SubResource("CompressedTexture2D_gfmxp")
-region = Rect2(0, 20, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uws2o"]
-atlas = SubResource("CompressedTexture2D_gfmxp")
-region = Rect2(20, 20, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iylel"]
-atlas = SubResource("CompressedTexture2D_gfmxp")
-region = Rect2(40, 20, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yj5sn"]
-atlas = SubResource("CompressedTexture2D_gfmxp")
-region = Rect2(60, 20, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jtbqm"]
-atlas = SubResource("CompressedTexture2D_gfmxp")
-region = Rect2(80, 20, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ek5vw"]
-atlas = SubResource("CompressedTexture2D_gfmxp")
-region = Rect2(0, 40, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jip8q"]
-atlas = SubResource("CompressedTexture2D_gfmxp")
-region = Rect2(20, 40, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_euc68"]
-atlas = SubResource("CompressedTexture2D_gfmxp")
-region = Rect2(40, 40, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_38t8r"]
-atlas = SubResource("CompressedTexture2D_gfmxp")
-region = Rect2(60, 40, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jef5d"]
-atlas = SubResource("CompressedTexture2D_gfmxp")
-region = Rect2(80, 40, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q1yuq"]
-atlas = SubResource("CompressedTexture2D_gfmxp")
-region = Rect2(0, 60, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uacds"]
-atlas = SubResource("CompressedTexture2D_gfmxp")
-region = Rect2(20, 60, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y0lqw"]
-atlas = SubResource("CompressedTexture2D_gfmxp")
-region = Rect2(40, 60, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c5xsv"]
-atlas = SubResource("CompressedTexture2D_gfmxp")
-region = Rect2(60, 60, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_84x1k"]
-atlas = SubResource("CompressedTexture2D_gfmxp")
-region = Rect2(80, 60, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0hwxg"]
-atlas = SubResource("CompressedTexture2D_gfmxp")
-region = Rect2(0, 80, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_si2mt"]
-atlas = SubResource("CompressedTexture2D_gfmxp")
-region = Rect2(20, 80, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sp30j"]
-atlas = SubResource("CompressedTexture2D_gfmxp")
-region = Rect2(40, 80, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7tmle"]
-atlas = SubResource("CompressedTexture2D_gfmxp")
-region = Rect2(60, 80, 20, 20)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ya33n"]
-atlas = SubResource("CompressedTexture2D_gfmxp")
-region = Rect2(80, 80, 20, 20)
 
 [node name="Main" type="Node3D" unique_id=998085854]
 script = ExtResource("1_mo76n")
@@ -430,9 +318,9 @@ visible = false
 
 [node name="NoteRoom" type="Node3D" parent="Unlockers" unique_id=648966976 node_paths=PackedStringArray("unlock_room", "in_room", "trigger")]
 script = ExtResource("3_wr18j")
-unlock_room = NodePath("../../NoteRoom")
-in_room = NodePath("../../SpawnRoom")
-direction = "East"
+unlock_room = NodePath("../../LibraryEntrance")
+in_room = NodePath("../../NoteRoom")
+direction = "North"
 trigger = NodePath("../../BoxRoom/CSGBox3D/Area3D")
 
 [node name="Hallway" type="Node3D" parent="Unlockers" unique_id=348072332 node_paths=PackedStringArray("unlock_room", "in_room", "trigger")]
@@ -445,22 +333,20 @@ trigger = NodePath("../../SpawnRoom/PillarPuzzle")
 [node name="-----------------2" type="Node3D" parent="." unique_id=961954054]
 visible = false
 
-[node name="SpawnRoom" parent="." unique_id=409298254 instance=ExtResource("5_hq1ik")]
+[node name="SpawnRoom" parent="." unique_id=409298254 node_paths=PackedStringArray("same_room") instance=ExtResource("5_hq1ik")]
 unique_name_in_owner = true
 neighbour_rooms = Dictionary[String, String]({
-"East": "",
+"East": "note_room",
 "North": "",
 "South": "room1",
 "West": ""
 })
+same_room = [NodePath("../NoteRoom")]
 
-[node name="CSGBox3D4" parent="SpawnRoom" index="4" unique_id=1315955520]
-mesh = SubResource("BoxMesh_yh4yk")
-
-[node name="CSGBox3D5" parent="SpawnRoom" index="5" unique_id=1042407500]
+[node name="CSGBox3D5" parent="SpawnRoom" index="4" unique_id=1042407500]
 material = SubResource("ShaderMaterial_o7u2a")
 
-[node name="CSGBox3D6" parent="SpawnRoom" index="6" unique_id=765682380]
+[node name="CSGBox3D6" parent="SpawnRoom" index="5" unique_id=765682380]
 material = SubResource("ShaderMaterial_ijoax")
 
 [node name="Sprite3D4" type="Sprite3D" parent="SpawnRoom" unique_id=1354364076]
@@ -502,15 +388,22 @@ transform = Transform3D(0.23760074, 0, 0, 0, 0.23760074, 0, 0, 0, 0.23760074, -0
 [node name="Key2" parent="SpawnRoom" unique_id=1099116964 instance=ExtResource("16_fv2he")]
 transform = Transform3D(0.23760074, 0, 0, 0, 0.23760074, 0, 0, 0, 0.23760074, 1.158917, 1.1274621, -1.1509724)
 
-[node name="NoteRoom" parent="." unique_id=509234291 instance=ExtResource("8_671wp")]
+[node name="CSGBox3D" type="CSGBox3D" parent="SpawnRoom" unique_id=2107026784]
+script = ExtResource("22_1n88h")
+
+[node name="Area3D" parent="SpawnRoom/CSGBox3D" unique_id=1015125189 instance=ExtResource("23_opjno")]
+data = SubResource("Resource_meb7l")
+
+[node name="NoteRoom" parent="." unique_id=509234291 node_paths=PackedStringArray("same_room") instance=ExtResource("8_671wp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
 room_id = "note_room"
 neighbour_rooms = Dictionary[String, String]({
-"East": "",
-"North": "library_entrance",
+"East": "Corridor1Room3",
+"North": "",
 "South": "",
 "West": "base_room"
 })
+same_room = [NodePath("../SpawnRoom")]
 
 [node name="Walls" type="Node3D" parent="NoteRoom" unique_id=130056120]
 
@@ -526,10 +419,6 @@ mesh = SubResource("PlaneMesh_6wywb")
 transform = Transform3D(3.9340247e-07, -1, 0, -1.3113416e-07, -3.5527137e-15, 2.28, -3, -1.3113416e-07, -9.966196e-08, 2.9999995, 2.2799997, 3.771752e-07)
 mesh = SubResource("PlaneMesh_6wywb")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="NoteRoom/Walls" unique_id=23645677]
-transform = Transform3D(-6.5567076e-07, 1, 0, 1.3113416e-07, 1.1732768e-14, 2.28, 3, 2.1855693e-07, -9.966196e-08, -3.0000005, 2.2799997, -4.0962973e-07)
-mesh = SubResource("PlaneMesh_6wywb")
-
 [node name="Letter" parent="NoteRoom" unique_id=126191928 instance=ExtResource("15_m35m6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4967713, 0.05831194, 1.6308169)
 my_image = ExtResource("12_u0ygc")
@@ -538,9 +427,9 @@ my_image = ExtResource("12_u0ygc")
 transform = Transform3D(-1.3850535, 0, 8.560722e-09, 0, 2.6088753, 0, -1.2108522e-07, 0, -0.09792324, 0.22989297, 1.2714441, -2.9682064)
 mesh = SubResource("BoxMesh_p8s74")
 
-[node name="CSGBox3D5" type="MeshInstance3D" parent="NoteRoom" unique_id=1527880117]
-transform = Transform3D(-6.054261e-08, 0, -0.09792324, 0, 2.6088753, 0, 1.3850535, 0, -4.280361e-09, -3.0015738, 1.2714441, 0.067413904)
-mesh = SubResource("BoxMesh_y5ved")
+[node name="CSGBox3D5" type="MeshInstance3D" parent="NoteRoom" unique_id=1368518426]
+transform = Transform3D(-6.054261e-08, 0, -0.09792324, 0, 2.6088753, 0, 1.3850535, 0, -4.280361e-09, 2.9717436, 1.2714441, -0.030509114)
+mesh = SubResource("BoxMesh_p8s74")
 
 [node name="BoxRoom" parent="." unique_id=520243100 instance=ExtResource("6_nfk4m")]
 unique_name_in_owner = true
@@ -569,6 +458,10 @@ mesh = SubResource("PlaneMesh_6wywb")
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="BoxRoom/Walls" unique_id=2108872279]
 transform = Transform3D(-6.5567076e-07, 1, 0, 1.3113416e-07, 1.1732768e-14, 2.28, 3, 2.1855693e-07, -9.966196e-08, -3.0000005, 2.2799997, -4.0962973e-07)
 mesh = SubResource("PlaneMesh_6wywb")
+
+[node name="CSGBox3D7" type="MeshInstance3D" parent="BoxRoom" unique_id=153443998]
+transform = Transform3D(-6.054261e-08, 0, -0.09792324, 0, 2.6088753, 0, 1.3850535, 0, -4.280361e-09, 2.9984245, 1.2714441, -0.22478151)
+mesh = SubResource("BoxMesh_p8s74")
 
 [node name="LibraryEntrance" parent="." unique_id=1025790125 node_paths=PackedStringArray("same_room") instance=ExtResource("5_7ycvg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -6)
@@ -795,161 +688,34 @@ neighbour_rooms = Dictionary[String, String]({
 "West": "room1"
 })
 
-[node name="Window" type="Window" parent="." unique_id=1612041944]
-anisotropic_filtering_level = 2
-oversampling_override = 1.0
-initial_position = 2
-size = Vector2i(600, 600)
+[node name="CSGBox3D6" type="MeshInstance3D" parent="2x2 room/Room3" index="2" unique_id=1836963357]
+transform = Transform3D(-6.054261e-08, 0, -0.09792324, 0, 2.6088753, 0, 1.3850535, 0, -4.280361e-09, -3.0015755, 1.2714441, -0.22478151)
+mesh = SubResource("BoxMesh_p8s74")
 
-[node name="Node2D" type="Node2D" parent="Window" unique_id=49685764]
+[node name="Window" parent="." unique_id=2134220589 instance=ExtResource("33_o4fqm")]
+unique_name_in_owner = true
+size = Vector2i(936, 936)
+unresizable = true
+maximize_disabled = true
 
-[node name="Camera2D" type="Camera2D" parent="Window/Node2D" unique_id=1232609996]
+[node name="1x3_room" parent="." unique_id=723255265 instance=ExtResource("36_opjno")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -12)
 
-[node name="Control" type="Control" parent="Window" unique_id=1460393336]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 600.0
-offset_bottom = 600.0
+[node name="Room1" parent="1x3_room" index="0" unique_id=1719092100]
+room_id = "Corridor1Room1"
 
-[node name="GridContainer" type="GridContainer" parent="Window/Control" unique_id=213671702]
-propagate_maximum_size = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -500.0
-offset_bottom = -500.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(6, 6)
-theme_override_constants/h_separation = 0
-theme_override_constants/v_separation = 0
-columns = 5
+[node name="Room3" parent="1x3_room" index="2" unique_id=87512041]
+room_id = "Corridor1Room3"
+neighbour_rooms = Dictionary[String, String]({
+"East": "",
+"North": "Corridor1Room2",
+"South": "",
+"West": "note_room"
+})
 
-[node name="TextureRect" type="TextureRect" parent="Window/Control/GridContainer" unique_id=1904864310]
-texture_filter = 1
-layout_mode = 2
-texture = SubResource("AtlasTexture_1n88h")
-
-[node name="TextureRect2" type="TextureRect" parent="Window/Control/GridContainer" unique_id=1354963623]
-texture_filter = 1
-layout_mode = 2
-texture = ExtResource("34_gfmxp")
-
-[node name="TextureRect3" type="TextureRect" parent="Window/Control/GridContainer" unique_id=296113438]
-texture_filter = 1
-layout_mode = 2
-texture = SubResource("AtlasTexture_opjno")
-
-[node name="TextureRect4" type="TextureRect" parent="Window/Control/GridContainer" unique_id=550638003]
-texture_filter = 1
-layout_mode = 2
-texture = SubResource("AtlasTexture_meb7l")
-
-[node name="TextureRect5" type="TextureRect" parent="Window/Control/GridContainer" unique_id=716563115]
-texture_filter = 1
-layout_mode = 2
-texture = SubResource("AtlasTexture_w30ff")
-
-[node name="TextureRect6" type="TextureRect" parent="Window/Control/GridContainer" unique_id=1589044079]
-texture_filter = 1
-layout_mode = 2
-texture = SubResource("AtlasTexture_xy6fp")
-
-[node name="TextureRect7" type="TextureRect" parent="Window/Control/GridContainer" unique_id=2124446548]
-texture_filter = 1
-layout_mode = 2
-texture = SubResource("AtlasTexture_uws2o")
-
-[node name="TextureRect8" type="TextureRect" parent="Window/Control/GridContainer" unique_id=369331978]
-texture_filter = 1
-layout_mode = 2
-texture = SubResource("AtlasTexture_iylel")
-
-[node name="TextureRect9" type="TextureRect" parent="Window/Control/GridContainer" unique_id=1069863037]
-texture_filter = 1
-layout_mode = 2
-texture = SubResource("AtlasTexture_yj5sn")
-
-[node name="TextureRect10" type="TextureRect" parent="Window/Control/GridContainer" unique_id=1990982759]
-texture_filter = 1
-layout_mode = 2
-texture = SubResource("AtlasTexture_jtbqm")
-
-[node name="TextureRect11" type="TextureRect" parent="Window/Control/GridContainer" unique_id=454017057]
-texture_filter = 1
-layout_mode = 2
-texture = SubResource("AtlasTexture_ek5vw")
-
-[node name="TextureRect12" type="TextureRect" parent="Window/Control/GridContainer" unique_id=147683210]
-texture_filter = 1
-layout_mode = 2
-texture = SubResource("AtlasTexture_jip8q")
-
-[node name="TextureRect13" type="TextureRect" parent="Window/Control/GridContainer" unique_id=776278953]
-texture_filter = 1
-layout_mode = 2
-texture = SubResource("AtlasTexture_euc68")
-
-[node name="TextureRect14" type="TextureRect" parent="Window/Control/GridContainer" unique_id=1250885430]
-texture_filter = 1
-layout_mode = 2
-texture = SubResource("AtlasTexture_38t8r")
-
-[node name="TextureRect15" type="TextureRect" parent="Window/Control/GridContainer" unique_id=773364866]
-texture_filter = 1
-layout_mode = 2
-texture = SubResource("AtlasTexture_jef5d")
-
-[node name="TextureRect16" type="TextureRect" parent="Window/Control/GridContainer" unique_id=1367246470]
-texture_filter = 1
-layout_mode = 2
-texture = SubResource("AtlasTexture_q1yuq")
-
-[node name="TextureRect17" type="TextureRect" parent="Window/Control/GridContainer" unique_id=1155281426]
-texture_filter = 1
-layout_mode = 2
-texture = SubResource("AtlasTexture_uacds")
-
-[node name="TextureRect18" type="TextureRect" parent="Window/Control/GridContainer" unique_id=1310413398]
-texture_filter = 1
-layout_mode = 2
-texture = SubResource("AtlasTexture_y0lqw")
-
-[node name="TextureRect19" type="TextureRect" parent="Window/Control/GridContainer" unique_id=2034360173]
-texture_filter = 1
-layout_mode = 2
-texture = SubResource("AtlasTexture_c5xsv")
-
-[node name="TextureRect20" type="TextureRect" parent="Window/Control/GridContainer" unique_id=1211957387]
-texture_filter = 1
-layout_mode = 2
-texture = SubResource("AtlasTexture_84x1k")
-
-[node name="TextureRect21" type="TextureRect" parent="Window/Control/GridContainer" unique_id=997020610]
-texture_filter = 1
-layout_mode = 2
-texture = SubResource("AtlasTexture_0hwxg")
-
-[node name="TextureRect22" type="TextureRect" parent="Window/Control/GridContainer" unique_id=1344864825]
-texture_filter = 1
-layout_mode = 2
-texture = SubResource("AtlasTexture_si2mt")
-
-[node name="TextureRect23" type="TextureRect" parent="Window/Control/GridContainer" unique_id=963148238]
-texture_filter = 1
-layout_mode = 2
-texture = SubResource("AtlasTexture_sp30j")
-
-[node name="TextureRect24" type="TextureRect" parent="Window/Control/GridContainer" unique_id=839569994]
-texture_filter = 1
-layout_mode = 2
-texture = SubResource("AtlasTexture_7tmle")
-
-[node name="TextureRect25" type="TextureRect" parent="Window/Control/GridContainer" unique_id=1809696344]
-texture_filter = 1
-layout_mode = 2
-texture = SubResource("AtlasTexture_ya33n")
+[node name="CSGBox3D6" type="MeshInstance3D" parent="1x3_room/Room3" index="2" unique_id=781029668]
+transform = Transform3D(1.3850535, 0, 0, 0, 2.6088753, 0, 0, 0, 0.09792324, 0.0073640347, 1.2714441, 3.0051115)
+mesh = SubResource("BoxMesh_p8s74")
 
 [connection signal="button_down" from="Control/AspectRatioContainer/TextureButton" to="Control/AspectRatioContainer/TextureButton" method="_on_button_down"]
 [connection signal="button_up" from="Control/AspectRatioContainer/TextureButton" to="Control/AspectRatioContainer/TextureButton" method="_on_button_up"]
@@ -963,3 +729,7 @@ texture = SubResource("AtlasTexture_ya33n")
 [editable path="2x2 room/Room2"]
 [editable path="2x2 room/Room3"]
 [editable path="2x2 room/Room4"]
+[editable path="1x3_room"]
+[editable path="1x3_room/Room1"]
+[editable path="1x3_room/Room2"]
+[editable path="1x3_room/Room3"]

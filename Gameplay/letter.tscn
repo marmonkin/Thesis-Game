@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cws7uwxsqkk6k"]
 
-[ext_resource type="Script" uid="uid://davkb4xxgrd75" path="res://Gameplay/letter.gd" id="1_ewnen"]
+[ext_resource type="Script" uid="uid://davkb4xxgrd75" path="res://Scripts/letter.gd" id="1_ewnen"]
 [ext_resource type="Shader" uid="uid://5j620dcmf257" path="res://CloseFade.gdshader" id="1_pvut2"]
 [ext_resource type="Texture2D" uid="uid://c1qakhjpvn0dw" path="res://Sauce/PNG/Crumpled-low-wear.png" id="2_ewnen"]
 [ext_resource type="Script" uid="uid://db42nha66i5m8" path="res://Scripts/interactable_base.gd" id="4_ewnen"]

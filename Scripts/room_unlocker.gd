@@ -11,6 +11,7 @@ func _ready() -> void:
 
 
 func _on_unlock():
+	
 	in_room.neighbour_rooms[direction] = unlock_room.room_id
 	if in_room == RoomManager.current_room:
 		RoomManager.arrow_container.direction_activate(in_room.neighbour_rooms)

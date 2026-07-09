@@ -4,48 +4,48 @@
 
 [node name="1x3_room" type="Node3D" unique_id=723255265]
 
-[node name="Room1" parent="." unique_id=87512041 node_paths=PackedStringArray("same_room") instance=ExtResource("1_v6wwo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
-room_id = "Corridor1Room1"
+[node name="Room1" parent="." unique_id=1719092100 node_paths=PackedStringArray("same_room") instance=ExtResource("1_v6wwo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.0000005)
+room_id = "Corridor1Room3"
 neighbour_rooms = Dictionary[String, String]({
 "East": "",
 "North": "",
-"South": "",
-"West": "Corridor1Room2"
+"South": "Corridor1Room2",
+"West": ""
 })
-same_room = [NodePath("../Room2"), NodePath("../Room3")]
+same_room = [NodePath("../Room3"), NodePath("../Room2")]
 
-[node name="MeshInstance3D4" parent="Room1/Walls" parent_id_path=PackedInt32Array(87512041, 263429393) index="3" unique_id=1652599375]
+[node name="MeshInstance3D" parent="Room1/Walls" parent_id_path=PackedInt32Array(1719092100, 263429393) index="0" unique_id=148599417]
 visible = false
 
 [node name="Room2" parent="." unique_id=409298254 node_paths=PackedStringArray("same_room") instance=ExtResource("1_v6wwo")]
 room_id = "Corridor1Room2"
 neighbour_rooms = Dictionary[String, String]({
-"East": "Corridor1Room1",
-"North": "",
-"South": "",
-"West": "Corridor1Room3"
+"East": "",
+"North": "Corridor1Room1",
+"South": "Corridor1Room3",
+"West": ""
 })
-same_room = [NodePath("../Room1"), NodePath("../Room3")]
+same_room = [NodePath("../Room3"), NodePath("../Room1")]
 
-[node name="MeshInstance3D3" parent="Room2/Walls" parent_id_path=PackedInt32Array(409298254, 263429393) index="2" unique_id=1420161419]
+[node name="MeshInstance3D" parent="Room2/Walls" parent_id_path=PackedInt32Array(409298254, 263429393) index="0" unique_id=148599417]
 visible = false
 
-[node name="MeshInstance3D4" parent="Room2/Walls" parent_id_path=PackedInt32Array(409298254, 263429393) index="3" unique_id=1652599375]
+[node name="MeshInstance3D2" parent="Room2/Walls" parent_id_path=PackedInt32Array(409298254, 263429393) index="1" unique_id=1765777882]
 visible = false
 
-[node name="Room3" parent="." unique_id=1719092100 node_paths=PackedStringArray("same_room") instance=ExtResource("1_v6wwo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
-room_id = "Corridor1Room3"
+[node name="Room3" parent="." unique_id=87512041 node_paths=PackedStringArray("same_room") instance=ExtResource("1_v6wwo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+room_id = "Corridor1Room1"
 neighbour_rooms = Dictionary[String, String]({
-"East": "Corridor1Room2",
-"North": "",
+"East": "",
+"North": "Corridor1Room2",
 "South": "",
 "West": ""
 })
-same_room = [NodePath("../Room1"), NodePath("../Room2")]
+same_room = [NodePath("../Room2"), NodePath("../Room1")]
 
-[node name="MeshInstance3D3" parent="Room3/Walls" parent_id_path=PackedInt32Array(1719092100, 263429393) index="2" unique_id=1420161419]
+[node name="MeshInstance3D2" parent="Room3/Walls" parent_id_path=PackedInt32Array(87512041, 263429393) index="1" unique_id=1765777882]
 visible = false
 
 [editable path="Room1"]

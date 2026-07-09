@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b24ss0714ncd4"]
 
 [ext_resource type="Script" uid="uid://bumsrj82m85xw" path="res://Scripts/main.gd" id="1_4otfk"]
-[ext_resource type="PackedScene" uid="uid://pi7rrl21hf2v" path="res://cam_anchor.tscn" id="1_12q32"]
+[ext_resource type="PackedScene" uid="uid://pi7rrl21hf2v" path="res://Gameplay/cam_anchor.tscn" id="1_12q32"]
 [ext_resource type="Texture2D" uid="uid://c1qakhjpvn0dw" path="res://Sauce/PNG/Crumpled-low-wear.png" id="2_thqof"]
 [ext_resource type="PackedScene" uid="uid://bjbl32gaq47rr" path="res://Sauce/3D/bag_bottom.tscn" id="3_cfd65"]
 [ext_resource type="Script" uid="uid://bjiiftr3dlrao" path="res://Scripts/managers/arrows_man.gd" id="4_4otfk"]

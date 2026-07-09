@@ -2,14 +2,11 @@
 
 [ext_resource type="Script" uid="uid://cmgq1syb3anf2" path="res://Scripts/room_base.gd" id="1_20cee"]
 [ext_resource type="Shader" uid="uid://5j620dcmf257" path="res://CloseFade.gdshader" id="3_6wywb"]
-[ext_resource type="Texture2D" uid="uid://nsxveipwx4wt" path="res://Sauce/PNG/d1122aa1de7c5b48b08ebffe35aceb1e.jpg" id="4_ib00c"]
 [ext_resource type="Texture2D" uid="uid://bv2gmfowdgd33" path="res://isolated-brown-nautical-compass-equipment-on-transparent-background-free-png.webp" id="6_6wywb"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qx34j"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_cw7ow"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_4lpd7"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ajx1l"]
 
@@ -28,16 +25,6 @@ size = Vector3(1.98, 2.15, 0.26)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6wywb"]
 size = Vector3(1.9150391, 1.7753906, 0.3125)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qx34j"]
-render_priority = 0
-shader = ExtResource("3_6wywb")
-shader_parameter/albedo = ExtResource("4_ib00c")
-shader_parameter/fade_inner_radius = 7.0
-shader_parameter/fade_outer_radius = 3.0
-
-[sub_resource type="BoxMesh" id="BoxMesh_cw7ow"]
-material = SubResource("ShaderMaterial_qx34j")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4lpd7"]
 render_priority = 0
@@ -64,10 +51,6 @@ mesh = SubResource("PlaneMesh_qx34j")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Walls" unique_id=1765777882]
 transform = Transform3D(-3, -8.742278e-08, 0, -1.1464113e-14, 4.371139e-08, 2.28, -2.6226832e-07, 1, -9.966197e-08, 0, 2.2799997, -3.0000002)
 mesh = SubResource("PlaneMesh_cw7ow")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Walls" unique_id=1420161419]
-transform = Transform3D(3.9340247e-07, -1, 0, -1.3113416e-07, -3.5527137e-15, 2.28, -3, -1.3113416e-07, -9.966196e-08, 2.9999995, 2.2799997, 3.771752e-07)
-mesh = SubResource("PlaneMesh_4lpd7")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Walls" unique_id=1652599375]
 transform = Transform3D(-6.5567076e-07, 1, 0, 1.3113416e-07, 1.1732768e-14, 2.28, 3, 2.1855693e-07, -9.966196e-08, -3.0000005, 2.2799997, -4.0962973e-07)
@@ -105,10 +88,6 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0
 layers = 4
 modulate = Color(0, 0, 0, 1)
 texture = ExtResource("6_6wywb")
-
-[node name="CSGBox3D4" type="MeshInstance3D" parent="." unique_id=1315955520]
-transform = Transform3D(-6.054261e-08, 0, 0.09792324, 0, 2.6088753, 0, -1.3850535, 0, -4.280361e-09, 3, 1.2714441, 0.06741415)
-mesh = SubResource("BoxMesh_cw7ow")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=1042407500]
 transform = Transform3D(0.77044404, 0, 0, 0, 1, 0, 0, 0, 0.31629246, -0.008835822, 0.96972656, 2.991044)

@@ -65,6 +65,8 @@ func interact():
 					get_parent().interact("no_item", null)
 			else:
 				get_parent().interact("unlocked", null)
+		2:
+			get_parent().interact()
 		3:
 			RoomManager.switch_to_room(get_meta("target_room"))
 		4:

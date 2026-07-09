@@ -1,0 +1,395 @@
+[gd_scene format=3 uid="uid://cvvihsm3ces1w"]
+
+[ext_resource type="Texture2D" uid="uid://bkuup4ne4qgc0" path="res://Sauce/PNG/map_bg.png" id="1_0hol4"]
+[ext_resource type="Script" uid="uid://b6ap7134m8ln4" path="res://Scripts/map_swap.gd" id="2_q6r6c"]
+[ext_resource type="Texture2D" uid="uid://s4ckhh7apc2j" path="res://Sauce/PNG/map_hover_atlas.tres" id="3_kdubu"]
+[ext_resource type="Texture2D" uid="uid://ce7d6f1mvca8k" path="res://Sauce/PNG/map5_hover.png" id="4_d21ai"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gfmxp"]
+load_path = "res://.godot/imported/map5.png-456355e569746fcd97722f1caba6c857.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj586"]
+atlas = SubResource("CompressedTexture2D_gfmxp")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4d7sh"]
+atlas = SubResource("CompressedTexture2D_gfmxp")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ir8iy"]
+atlas = ExtResource("4_d21ai")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqns4"]
+atlas = SubResource("CompressedTexture2D_gfmxp")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0ka3"]
+atlas = ExtResource("4_d21ai")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0h7mo"]
+atlas = SubResource("CompressedTexture2D_gfmxp")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nr8wp"]
+atlas = ExtResource("4_d21ai")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2bti"]
+atlas = SubResource("CompressedTexture2D_gfmxp")
+region = Rect2(80, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ta5nu"]
+atlas = ExtResource("4_d21ai")
+region = Rect2(80, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flf07"]
+atlas = SubResource("CompressedTexture2D_gfmxp")
+region = Rect2(0, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k73cj"]
+atlas = ExtResource("4_d21ai")
+region = Rect2(0, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjqkl"]
+atlas = SubResource("CompressedTexture2D_gfmxp")
+region = Rect2(20, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fs4d3"]
+atlas = ExtResource("4_d21ai")
+region = Rect2(20, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vxoj"]
+atlas = SubResource("CompressedTexture2D_gfmxp")
+region = Rect2(40, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ei405"]
+atlas = ExtResource("4_d21ai")
+region = Rect2(40, 20, 20, 20)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yj5sn"]
+load_path = "res://.godot/imported/map5.png-456355e569746fcd97722f1caba6c857.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8dv2"]
+atlas = SubResource("CompressedTexture2D_yj5sn")
+region = Rect2(60, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nhjh"]
+atlas = ExtResource("4_d21ai")
+region = Rect2(60, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjha6"]
+atlas = SubResource("CompressedTexture2D_yj5sn")
+region = Rect2(80, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gt76g"]
+atlas = ExtResource("4_d21ai")
+region = Rect2(80, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fr6y"]
+atlas = SubResource("CompressedTexture2D_yj5sn")
+region = Rect2(0, 40, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hxjc"]
+atlas = ExtResource("4_d21ai")
+region = Rect2(0, 40, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebxd8"]
+atlas = SubResource("CompressedTexture2D_yj5sn")
+region = Rect2(20, 40, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2u7jv"]
+atlas = ExtResource("4_d21ai")
+region = Rect2(20, 40, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24dk6"]
+atlas = SubResource("CompressedTexture2D_yj5sn")
+region = Rect2(40, 40, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mryly"]
+atlas = ExtResource("4_d21ai")
+region = Rect2(40, 40, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kq1c5"]
+atlas = SubResource("CompressedTexture2D_yj5sn")
+region = Rect2(60, 40, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ornx7"]
+atlas = ExtResource("4_d21ai")
+region = Rect2(60, 40, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnnru"]
+atlas = SubResource("CompressedTexture2D_yj5sn")
+region = Rect2(80, 40, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_540hr"]
+atlas = ExtResource("4_d21ai")
+region = Rect2(80, 40, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ip5v"]
+atlas = SubResource("CompressedTexture2D_yj5sn")
+region = Rect2(0, 60, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5dlx"]
+atlas = ExtResource("4_d21ai")
+region = Rect2(0, 60, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4wnb"]
+atlas = SubResource("CompressedTexture2D_yj5sn")
+region = Rect2(20, 60, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7plk7"]
+atlas = ExtResource("4_d21ai")
+region = Rect2(20, 60, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbwgr"]
+atlas = SubResource("CompressedTexture2D_yj5sn")
+region = Rect2(40, 60, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mj2a"]
+atlas = ExtResource("4_d21ai")
+region = Rect2(40, 60, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fshgd"]
+atlas = SubResource("CompressedTexture2D_yj5sn")
+region = Rect2(60, 60, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbrxf"]
+atlas = ExtResource("4_d21ai")
+region = Rect2(60, 60, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjt7e"]
+atlas = SubResource("CompressedTexture2D_yj5sn")
+region = Rect2(80, 60, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xo8l"]
+atlas = ExtResource("4_d21ai")
+region = Rect2(80, 60, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfyss"]
+atlas = SubResource("CompressedTexture2D_yj5sn")
+region = Rect2(0, 80, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ngjr"]
+atlas = ExtResource("4_d21ai")
+region = Rect2(0, 80, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qilgh"]
+atlas = SubResource("CompressedTexture2D_yj5sn")
+region = Rect2(20, 80, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qosj"]
+atlas = ExtResource("4_d21ai")
+region = Rect2(20, 80, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjlbh"]
+atlas = SubResource("CompressedTexture2D_yj5sn")
+region = Rect2(40, 80, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfelt"]
+atlas = ExtResource("4_d21ai")
+region = Rect2(40, 80, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytlpd"]
+atlas = SubResource("CompressedTexture2D_yj5sn")
+region = Rect2(60, 80, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2v765"]
+atlas = ExtResource("4_d21ai")
+region = Rect2(60, 80, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8fb0"]
+atlas = SubResource("CompressedTexture2D_yj5sn")
+region = Rect2(80, 80, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ma08v"]
+atlas = ExtResource("4_d21ai")
+region = Rect2(80, 80, 20, 20)
+
+[node name="Node2D" type="Node2D" unique_id=923574011]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=752988650]
+offset = Vector2(316, 316)
+
+[node name="Control" type="Control" parent="Camera2D" unique_id=1589455797]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(316, 316)
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/Control" unique_id=856044116]
+texture_filter = 1
+layout_mode = 0
+offset_right = 104.0
+offset_bottom = 104.0
+scale = Vector2(6, 6)
+texture = ExtResource("1_0hol4")
+
+[node name="GridContainer" type="GridContainer" parent="Camera2D/Control" unique_id=1488224302]
+propagate_maximum_size = false
+layout_mode = 0
+offset_left = 6.0
+offset_right = 106.0
+offset_bottom = 100.0
+scale = Vector2(6, 6)
+offset_transform_enabled = true
+offset_transform_position = Vector2(1, 2)
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 5
+script = ExtResource("2_q6r6c")
+
+[node name="TextureRect" type="TextureButton" parent="Camera2D/Control/GridContainer" unique_id=406143819]
+texture_filter = 1
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_rj586")
+texture_hover = ExtResource("3_kdubu")
+
+[node name="TextureRect2" type="TextureButton" parent="Camera2D/Control/GridContainer" unique_id=2053888562]
+texture_filter = 1
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_4d7sh")
+texture_hover = SubResource("AtlasTexture_ir8iy")
+
+[node name="TextureRect3" type="TextureButton" parent="Camera2D/Control/GridContainer" unique_id=1711296306]
+texture_filter = 1
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_hqns4")
+texture_hover = SubResource("AtlasTexture_x0ka3")
+
+[node name="TextureRect4" type="TextureButton" parent="Camera2D/Control/GridContainer" unique_id=1429952532]
+texture_filter = 1
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_0h7mo")
+texture_hover = SubResource("AtlasTexture_nr8wp")
+
+[node name="TextureRect5" type="TextureButton" parent="Camera2D/Control/GridContainer" unique_id=213675034]
+texture_filter = 1
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_d2bti")
+texture_hover = SubResource("AtlasTexture_ta5nu")
+
+[node name="TextureRect6" type="TextureButton" parent="Camera2D/Control/GridContainer" unique_id=320515584]
+texture_filter = 1
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_flf07")
+texture_hover = SubResource("AtlasTexture_k73cj")
+
+[node name="TextureRect7" type="TextureButton" parent="Camera2D/Control/GridContainer" unique_id=1326019608]
+texture_filter = 1
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_rjqkl")
+texture_hover = SubResource("AtlasTexture_fs4d3")
+
+[node name="TextureRect8" type="TextureButton" parent="Camera2D/Control/GridContainer" unique_id=752842710]
+texture_filter = 1
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_7vxoj")
+texture_hover = SubResource("AtlasTexture_ei405")
+
+[node name="TextureRect9" type="TextureButton" parent="Camera2D/Control/GridContainer" unique_id=1828772087]
+texture_filter = 1
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_e8dv2")
+texture_hover = SubResource("AtlasTexture_2nhjh")
+
+[node name="TextureRect10" type="TextureButton" parent="Camera2D/Control/GridContainer" unique_id=1999232622]
+texture_filter = 1
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_bjha6")
+texture_hover = SubResource("AtlasTexture_gt76g")
+
+[node name="TextureRect11" type="TextureButton" parent="Camera2D/Control/GridContainer" unique_id=339801756]
+texture_filter = 1
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_1fr6y")
+texture_hover = SubResource("AtlasTexture_2hxjc")
+
+[node name="TextureRect12" type="TextureButton" parent="Camera2D/Control/GridContainer" unique_id=443056311]
+texture_filter = 1
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_ebxd8")
+texture_hover = SubResource("AtlasTexture_2u7jv")
+
+[node name="TextureRect13" type="TextureButton" parent="Camera2D/Control/GridContainer" unique_id=663024259]
+texture_filter = 1
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_24dk6")
+texture_hover = SubResource("AtlasTexture_mryly")
+
+[node name="TextureRect14" type="TextureButton" parent="Camera2D/Control/GridContainer" unique_id=691237806]
+texture_filter = 1
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_kq1c5")
+texture_hover = SubResource("AtlasTexture_ornx7")
+
+[node name="TextureRect15" type="TextureButton" parent="Camera2D/Control/GridContainer" unique_id=483345328]
+texture_filter = 1
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_cnnru")
+texture_hover = SubResource("AtlasTexture_540hr")
+
+[node name="TextureRect16" type="TextureButton" parent="Camera2D/Control/GridContainer" unique_id=2099474967]
+texture_filter = 1
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_6ip5v")
+texture_hover = SubResource("AtlasTexture_q5dlx")
+
+[node name="TextureRect17" type="TextureButton" parent="Camera2D/Control/GridContainer" unique_id=826493556]
+texture_filter = 1
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_c4wnb")
+texture_hover = SubResource("AtlasTexture_7plk7")
+
+[node name="TextureRect18" type="TextureButton" parent="Camera2D/Control/GridContainer" unique_id=916330270]
+texture_filter = 1
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_fbwgr")
+texture_hover = SubResource("AtlasTexture_7mj2a")
+
+[node name="TextureRect19" type="TextureButton" parent="Camera2D/Control/GridContainer" unique_id=626846273]
+texture_filter = 1
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_fshgd")
+texture_hover = SubResource("AtlasTexture_lbrxf")
+
+[node name="TextureRect20" type="TextureButton" parent="Camera2D/Control/GridContainer" unique_id=1764614718]
+texture_filter = 1
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_xjt7e")
+texture_hover = SubResource("AtlasTexture_0xo8l")
+
+[node name="TextureRect21" type="TextureButton" parent="Camera2D/Control/GridContainer" unique_id=1909681332]
+texture_filter = 1
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_xfyss")
+texture_hover = SubResource("AtlasTexture_3ngjr")
+
+[node name="TextureRect22" type="TextureButton" parent="Camera2D/Control/GridContainer" unique_id=941255335]
+texture_filter = 1
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_qilgh")
+texture_hover = SubResource("AtlasTexture_4qosj")
+
+[node name="TextureRect23" type="TextureButton" parent="Camera2D/Control/GridContainer" unique_id=432810316]
+texture_filter = 1
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_cjlbh")
+texture_hover = SubResource("AtlasTexture_kfelt")
+
+[node name="TextureRect24" type="TextureButton" parent="Camera2D/Control/GridContainer" unique_id=2040827654]
+texture_filter = 1
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_ytlpd")
+texture_hover = SubResource("AtlasTexture_2v765")
+
+[node name="TextureRect25" type="TextureButton" parent="Camera2D/Control/GridContainer" unique_id=1309102846]
+texture_filter = 1
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_b8fb0")
+texture_hover = SubResource("AtlasTexture_ma08v")

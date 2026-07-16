@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dwrww5kwa7vcf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pi0jv"]
+albedo_color = Color(0.21123034, 0.23943305, 0.47554272, 1)
+
+[node name="Node3D" type="Node3D" unique_id=1988337206]
+
+[node name="Floor" type="CSGBox3D" parent="." unique_id=1184319044]
+transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 6, -1.9995117, 0, 0)
+size = Vector3(0.3334961, 0.078125, 0.33203125)
+material = SubResource("StandardMaterial3D_pi0jv")
+
+[node name="Floor2" type="CSGBox3D" parent="." unique_id=2124921435]
+transform = Transform3D(-2.6226832e-07, 0, 6, 0, 1, 0, -6, 0, -2.6226832e-07, -4.3892804e-08, 0, -1.0041504)
+size = Vector3(0.6652832, 0.078125, 0.33203125)
+material = SubResource("StandardMaterial3D_pi0jv")

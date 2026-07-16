@@ -36,6 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://dw1b5b1oyixlm" path="res://Rooms/2x2_room.tscn" id="31_yh4yk"]
 [ext_resource type="PackedScene" uid="uid://bhp87ypjfpbw3" path="res://Gameplay/window.tscn" id="33_o4fqm"]
 [ext_resource type="PackedScene" uid="uid://c8wodok4nvhwi" path="res://Rooms/1x3_room.tscn" id="36_opjno"]
+[ext_resource type="PackedScene" uid="uid://dwrww5kwa7vcf" path="res://Rooms/bend_room.tscn" id="37_meb7l"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mo76n"]
 sky_top_color = Color(0.63908696, 0.62341, 0.55517936, 1)
@@ -162,14 +163,14 @@ render_target_update_mode = 4
 
 [node name="Cam_anchor" parent="Control/MainView/SubViewport" unique_id=1352252814 instance=ExtResource("2_2c62f")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 2, 0)
 rotation_deg = 90
 
 [node name="Camera3D" parent="Control/MainView/SubViewport/Cam_anchor" index="0" unique_id=666522786]
-transform = Transform3D(0.7071068, -0.3535534, 0.61237246, 0, 0.8660254, 0.50000006, -0.7071068, -0.3535534, 0.61237246, 5.8877707, 5.0122814, 5.9089556)
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 5.8877707, 5.0122814, 5.9089556)
 cull_mask = 1048569
 current = true
-size = 8.069
+size = 8.0
 
 [node name="AudioListener3D" type="AudioListener3D" parent="Control/MainView/SubViewport/Cam_anchor/Camera3D" index="0" unique_id=1444841079]
 current = true
@@ -694,7 +695,7 @@ mesh = SubResource("BoxMesh_p8s74")
 
 [node name="Window" parent="." unique_id=2134220589 instance=ExtResource("33_o4fqm")]
 unique_name_in_owner = true
-size = Vector2i(936, 936)
+visible = false
 unresizable = true
 maximize_disabled = true
 
@@ -716,6 +717,9 @@ neighbour_rooms = Dictionary[String, String]({
 [node name="CSGBox3D6" type="MeshInstance3D" parent="1x3_room/Room3" index="2" unique_id=781029668]
 transform = Transform3D(1.3850535, 0, 0, 0, 2.6088753, 0, 0, 0, 0.09792324, 0.0073640347, 1.2714441, 3.0051115)
 mesh = SubResource("BoxMesh_p8s74")
+
+[node name="Node3D" parent="." unique_id=1988337206 instance=ExtResource("37_meb7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
 
 [connection signal="button_down" from="Control/AspectRatioContainer/TextureButton" to="Control/AspectRatioContainer/TextureButton" method="_on_button_down"]
 [connection signal="button_up" from="Control/AspectRatioContainer/TextureButton" to="Control/AspectRatioContainer/TextureButton" method="_on_button_up"]

@@ -22,6 +22,7 @@ InteractionManager="*uid://dtixre216xgcg"
 CursorMananger="*uid://bpub2kg445du6"
 RoomManager="*uid://ctr8g0vu1gueu"
 DialogueManager="*uid://c3rodes2l3gxb"
+PhantomCameraManager="*uid://duq6jhf6unyis"
 
 [display]
 
@@ -31,7 +32,7 @@ window/subwindows/embed_subwindows=false
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
 
 [file_customization]
 

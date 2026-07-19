@@ -6,8 +6,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3jb4j"]
 render_priority = 0
 shader = ExtResource("2_r6cs8")
-shader_parameter/fade_inner_radius = 10.0
-shader_parameter/fade_outer_radius = 4.0
+shader_parameter/fade_inner_radius = 5.0
+shader_parameter/fade_outer_radius = 3.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_gio84"]
 material = SubResource("ShaderMaterial_3jb4j")

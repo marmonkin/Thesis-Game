@@ -14,13 +14,13 @@ var lock_rot = false
 @onready var pcam: PhantomCamera3D = $Camera3D
 
 func _ready() -> void:
-	target_rotation = pcam.get_third_person_rotation_degrees().y
 	RoomManager.register_camera(self)
+	target_rotation = rotation.y
 	
 
 
 func _process(delta):
-	var rot = pcam.get_third_person_rotation_degrees()
+	var rot = pcam.get_third_person_rotation()
 	
 	rot.y = lerp_angle(
 		rot.y,
@@ -28,7 +28,7 @@ func _process(delta):
 		rotation_speed * delta
 	)
 	
-	pcam.set_third_person_rotation_degrees(rot)
+	pcam.set_third_person_rotation(rot)
 	
 	global_position = lerp(global_position, move_target_pos, move_speed * delta)
 
@@ -40,8 +40,6 @@ func move_to_room(room: Node3D):
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("rot_left") and not lock_rot:
 		target_rotation -= deg_to_rad(rotation_deg)
-		target_rotation = wrapf(target_rotation, 0.0, 360.0)
 		
 	if event.is_action_pressed("rot_right") and not lock_rot:
 		target_rotation += deg_to_rad(rotation_deg)
-		target_rotation = wrapf(target_rotation, 0.0, 360.0)

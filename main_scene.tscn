@@ -37,6 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://bhp87ypjfpbw3" path="res://Gameplay/window.tscn" id="33_o4fqm"]
 [ext_resource type="PackedScene" uid="uid://c8wodok4nvhwi" path="res://Rooms/1x3_room.tscn" id="36_opjno"]
 [ext_resource type="PackedScene" uid="uid://dwrww5kwa7vcf" path="res://Rooms/bend_room.tscn" id="37_meb7l"]
+[ext_resource type="PackedScene" uid="uid://bwqydux3edmxv" path="res://node_3d.tscn" id="38_w30ff"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mo76n"]
 sky_top_color = Color(0.63908696, 0.62341, 0.55517936, 1)
@@ -77,17 +78,27 @@ script = ExtResource("6_66tet")
 interaction_type = 3
 metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w30ff"]
+render_priority = 0
+shader = ExtResource("13_42l1d")
+shader_parameter/fade_inner_radius = 5.0000002375
+shader_parameter/fade_outer_radius = 3.0000001425
+
+[sub_resource type="BoxMesh" id="BoxMesh_xy6fp"]
+material = SubResource("ShaderMaterial_w30ff")
+size = Vector3(1.98, 2.15, 0.26)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o7u2a"]
 render_priority = 0
 shader = ExtResource("13_42l1d")
-shader_parameter/fade_inner_radius = 10.0
-shader_parameter/fade_outer_radius = 4.0
+shader_parameter/fade_inner_radius = 5.0000002375
+shader_parameter/fade_outer_radius = 3.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ijoax"]
 render_priority = 0
 shader = ExtResource("13_42l1d")
-shader_parameter/fade_inner_radius = 10.0
-shader_parameter/fade_outer_radius = 4.0
+shader_parameter/fade_inner_radius = 5.0
+shader_parameter/fade_outer_radius = 3.0
 
 [sub_resource type="Resource" id="Resource_meb7l"]
 script = ExtResource("6_66tet")
@@ -119,14 +130,20 @@ material = SubResource("ShaderMaterial_qx34j")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4lpd7"]
 render_priority = 0
 shader = ExtResource("13_42l1d")
-shader_parameter/fade_inner_radius = 7.0
+shader_parameter/fade_inner_radius = 5.0
 shader_parameter/fade_outer_radius = 3.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kv3aw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_meb7l"]
 render_priority = 0
 shader = ExtResource("13_42l1d")
-shader_parameter/fade_inner_radius = 12.0
-shader_parameter/fade_outer_radius = 4.0
+shader_parameter/fade_inner_radius = 5.0
+shader_parameter/fade_outer_radius = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xy6fp"]
+render_priority = 0
+shader = ExtResource("13_42l1d")
+shader_parameter/fade_inner_radius = 5.0
+shader_parameter/fade_outer_radius = 3.0
 
 [node name="Main" type="Node3D" unique_id=998085854]
 script = ExtResource("1_mo76n")
@@ -163,17 +180,20 @@ render_target_update_mode = 4
 
 [node name="Cam_anchor" parent="Control/MainView/SubViewport" unique_id=1352252814 instance=ExtResource("2_2c62f")]
 unique_name_in_owner = true
-transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 2, 0)
-rotation_deg = 90
+transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.7071067, 0, 2, 0)
+rotation_deg = 90.0
 
-[node name="Camera3D" parent="Control/MainView/SubViewport/Cam_anchor" index="0" unique_id=666522786]
-transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 5.8877707, 5.0122814, 5.9089556)
-cull_mask = 1048569
-current = true
-size = 8.0
+[node name="Camera3D" parent="Control/MainView/SubViewport/Cam_anchor" index="0" unique_id=1983213815]
+transform = Transform3D(1.0000001, 2.9802322e-08, -2.9802322e-08, -1.4901161e-08, 0.8660254, 0.49999997, 1.1920929e-07, -0.5, 0.86602557, 0, 3, 5.1961527)
+priority = 1
+tween_on_load = false
+follow_distance = 6.0
+horizontal_rotation_offset = 0.0
+spring_length = 6.0
 
-[node name="AudioListener3D" type="AudioListener3D" parent="Control/MainView/SubViewport/Cam_anchor/Camera3D" index="0" unique_id=1444841079]
-current = true
+[node name="@Camera3D@25569" parent="Control/MainView/SubViewport/Cam_anchor/Camera3D" index="0" unique_id=1694279919]
+transform = Transform3D(0.7071068, -0.35355335, 0.6123724, -1.4901161e-08, 0.8660254, 0.49999997, -0.7071067, -0.35355338, 0.61237246, 3.6742344, 5, 3.6742344)
+cull_mask = 1047553
 
 [node name="TextureRect" type="TextureRect" parent="Control" unique_id=922454633]
 visible = false
@@ -343,6 +363,9 @@ neighbour_rooms = Dictionary[String, String]({
 "West": ""
 })
 same_room = [NodePath("../NoteRoom")]
+
+[node name="Cupboard" parent="SpawnRoom" index="2" unique_id=1929441627]
+mesh = SubResource("BoxMesh_xy6fp")
 
 [node name="CSGBox3D5" parent="SpawnRoom" index="4" unique_id=1042407500]
 material = SubResource("ShaderMaterial_o7u2a")
@@ -618,7 +641,7 @@ same_room = [NodePath("../HallwayNorth"), NodePath("../HallwaySouth")]
 [node name="CSGBox3D6" type="CSGBox3D" parent="HallwayCenter" unique_id=1372577624]
 transform = Transform3D(-3.367718e-08, 0, -0.31629246, 0, 1, 0, 0.77044404, 0, -1.38255825e-08, 3.0138326, 0.96972656, -0.0015618559)
 size = Vector3(1.9882813, 2.9394531, 0.2319336)
-material = SubResource("ShaderMaterial_kv3aw")
+material = SubResource("ShaderMaterial_meb7l")
 
 [node name="Walls" type="Node3D" parent="HallwayCenter" unique_id=1030218428]
 
@@ -633,7 +656,7 @@ mesh = SubResource("PlaneMesh_6wywb")
 [node name="CSGBox3D7" type="CSGBox3D" parent="HallwayCenter" unique_id=1262427483]
 transform = Transform3D(-3.367718e-08, 0, -0.31629246, 0, 1, 0, 0.77044404, 0, -1.38255825e-08, -2.9957242, 0.96972656, -0.0015621185)
 size = Vector3(1.9882813, 2.9394531, 0.2319336)
-material = SubResource("ShaderMaterial_4lpd7")
+material = SubResource("ShaderMaterial_xy6fp")
 
 [node name="HallwaySouth" parent="." unique_id=832566099 node_paths=PackedStringArray("same_room") instance=ExtResource("5_7ycvg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 6)
@@ -720,6 +743,9 @@ mesh = SubResource("BoxMesh_p8s74")
 
 [node name="Node3D" parent="." unique_id=1988337206 instance=ExtResource("37_meb7l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+
+[node name="Node3D2" parent="." unique_id=313038636 instance=ExtResource("38_w30ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.643244, 0, -1.4571968)
 
 [connection signal="button_down" from="Control/AspectRatioContainer/TextureButton" to="Control/AspectRatioContainer/TextureButton" method="_on_button_down"]
 [connection signal="button_up" from="Control/AspectRatioContainer/TextureButton" to="Control/AspectRatioContainer/TextureButton" method="_on_button_up"]

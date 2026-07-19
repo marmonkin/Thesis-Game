@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bwqydux3edmxv"]
+
+[ext_resource type="Script" uid="uid://cmjftw3o27lh5" path="res://zoom_in_area.gd" id="1_a0tk4"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="2_r3fl7"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_jka67"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7j27c"]
+size = Vector3(3.0976563, 1, 1)
+
+[sub_resource type="Resource" id="Resource_i5arm"]
+script = ExtResource("3_jka67")
+
+[node name="Node3D" type="Node3D" unique_id=313038636]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=372396550]
+size = Vector3(3, 1, 1)
+
+[node name="Area3D" type="Area3D" parent="CSGBox3D" unique_id=300077006]
+script = ExtResource("1_a0tk4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D/Area3D" unique_id=87500286]
+shape = SubResource("BoxShape3D_7j27c")
+
+[node name="PhantomCamera3D" type="Node3D" parent="CSGBox3D" unique_id=789008721]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 1.4618497, 2.304531)
+script = ExtResource("2_r3fl7")
+tween_resource = SubResource("Resource_i5arm")
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[connection signal="input_event" from="CSGBox3D/Area3D" to="CSGBox3D/Area3D" method="_on_input_event"]

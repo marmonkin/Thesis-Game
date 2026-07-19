@@ -11,10 +11,15 @@ var rooms: Dictionary[String, Node] = {}
 var current_room: Node3D = null
 var current_room_id: String = ""
 
+var lock_rot
 
-func _ready():
-	pass
-
+func _process(delta: float) -> void:
+	if lock_rot:
+		arrow_container.lock_rot = true
+		cam_anchor.lock_rot = true
+	else:
+		arrow_container.lock_rot = false
+		cam_anchor.lock_rot = false
 
 func get_room(id : String) -> Node3D:
 	return rooms.get(id)

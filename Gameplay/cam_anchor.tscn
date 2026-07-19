@@ -1,15 +1,44 @@
 [gd_scene format=3 uid="uid://pi7rrl21hf2v"]
 
 [ext_resource type="Script" uid="uid://da324mvklj3oh" path="res://Scripts/camera/cam_anchor.gd" id="1_c63li"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="2_n7hlx"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_rreea"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_rreea"]
+
+[sub_resource type="Resource" id="Resource_fmly6"]
+script = ExtResource("3_rreea")
+ease = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fmly6"]
 
 [node name="Cam_anchor" type="Node3D" unique_id=1352252814]
-transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
 script = ExtResource("1_c63li")
 rotation_speed = 5.0
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=666522786]
-transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0.06186247, 3.5000005, 4.0618625)
-cull_mask = 1048573
+[node name="Camera3D" type="Node3D" parent="." unique_id=1983213815 node_paths=PackedStringArray("follow_target")]
+transform = Transform3D(0.70710677, 0.3535534, -0.61237246, 0, 0.8660254, 0.5, 0.70710677, -0.35355335, 0.6123724, -4.8989787, 3.9999995, 4.898978)
+script = ExtResource("2_n7hlx")
+follow_mode = 6
+follow_target = NodePath("..")
+tween_resource = SubResource("Resource_fmly6")
+follow_distance = 8.0
+vertical_rotation_offset = 0.5235987755982988
+horizontal_rotation_offset = 0.7853981633974483
+spring_length = 8.0
+shape = SubResource("BoxShape3D_fmly6")
+align_transform_with_view = Callable()
+align_position_with_view = Callable()
+align_rotation_with_view = Callable()
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="@Camera3D@25569" type="Camera3D" parent="Camera3D" unique_id=1694279919]
+transform = Transform3D(0.70710677, 0.3535534, -0.61237246, 0, 0.8660254, 0.5, 0.70710677, -0.35355335, 0.6123724, -4.8989787, 3.9999995, 4.898978)
+top_level = true
 projection = 1
-size = 6.0
-near = 0.001
+size = 8.0
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D/@Camera3D@25569" unique_id=1739357681]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("4_rreea")

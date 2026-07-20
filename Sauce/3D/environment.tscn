@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://lupcoad75ye4"]
+
+[ext_resource type="PackedScene" uid="uid://dsntbd4hekwgy" path="res://Sauce/3D/Environment.blend" id="1_0dwx2"]
+
+[node name="Environment" unique_id=689747056 instance=ExtResource("1_0dwx2")]

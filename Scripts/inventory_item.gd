@@ -20,9 +20,7 @@ func init_outline(mesh):
 
 func _on_area_3d_mouse_entered() -> void:
 	outline.visible = true
-	print("visible")
 
 
 func _on_area_3d_mouse_exited() -> void:
 	outline.visible = false
-	print("not")

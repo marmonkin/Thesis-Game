@@ -32,7 +32,6 @@
 [ext_resource type="PackedScene" uid="uid://6w4hyo5s83yo" path="res://Sauce/dust_particles.tscn" id="25_5smuj"]
 [ext_resource type="Script" uid="uid://cjm5c2vs0ht6g" path="res://Scripts/PuzzleScripts/pillar_puzzle.gd" id="25_kv3aw"]
 [ext_resource type="PackedScene" uid="uid://bgtkd0wbif1bm" path="res://Gameplay/Puzzle/dial_puzzle.tscn" id="27_kv3aw"]
-[ext_resource type="PackedScene" uid="uid://w18vpb4x5ll" path="res://Rooms/room.tscn" id="30_j8kkg"]
 [ext_resource type="PackedScene" uid="uid://dw1b5b1oyixlm" path="res://Rooms/2x2_room.tscn" id="31_yh4yk"]
 [ext_resource type="PackedScene" uid="uid://bhp87ypjfpbw3" path="res://Gameplay/window.tscn" id="33_o4fqm"]
 [ext_resource type="PackedScene" uid="uid://c8wodok4nvhwi" path="res://Rooms/1x3_room.tscn" id="36_opjno"]
@@ -111,8 +110,8 @@ metadata/_custom_type_script = "uid://dmwkuyfanvx0t"
 render_priority = 0
 shader = ExtResource("13_42l1d")
 shader_parameter/albedo = ExtResource("18_7th4q")
-shader_parameter/fade_inner_radius = 10.0
-shader_parameter/fade_outer_radius = 4.0
+shader_parameter/fade_inner_radius = 5.0
+shader_parameter/fade_outer_radius = 3.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_p8s74"]
 material = SubResource("ShaderMaterial_yh4yk")
@@ -121,7 +120,7 @@ material = SubResource("ShaderMaterial_yh4yk")
 render_priority = 0
 shader = ExtResource("13_42l1d")
 shader_parameter/albedo = ExtResource("18_7th4q")
-shader_parameter/fade_inner_radius = 7.0
+shader_parameter/fade_inner_radius = 5.0
 shader_parameter/fade_outer_radius = 3.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_cw7ow"]
@@ -461,31 +460,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
 neighbour_rooms = Dictionary[String, String]({
 "East": "Big1Room3",
 "North": "base_room",
-"South": "test_room",
+"South": "",
 "West": ""
 })
-
-[node name="Walls" type="Node3D" parent="BoxRoom" unique_id=1653888485]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="BoxRoom/Walls" unique_id=1949912512]
-transform = Transform3D(3, 0, 0, 0, -4.371139e-08, 2.28, 0, -1, -9.966197e-08, 0, 2.28, 2.9999998)
-mesh = SubResource("PlaneMesh_6wywb")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="BoxRoom/Walls" unique_id=1276313130]
-transform = Transform3D(-3, -8.742278e-08, 0, -1.1464113e-14, 4.371139e-08, 2.28, -2.6226832e-07, 1, -9.966197e-08, 0, 2.2799997, -3.0000002)
-mesh = SubResource("PlaneMesh_6wywb")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="BoxRoom/Walls" unique_id=1499495718]
-transform = Transform3D(3.9340247e-07, -1, 0, -1.3113416e-07, -3.5527137e-15, 2.28, -3, -1.3113416e-07, -9.966196e-08, 2.9999995, 2.2799997, 3.771752e-07)
-mesh = SubResource("PlaneMesh_6wywb")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="BoxRoom/Walls" unique_id=2108872279]
-transform = Transform3D(-6.5567076e-07, 1, 0, 1.3113416e-07, 1.1732768e-14, 2.28, 3, 2.1855693e-07, -9.966196e-08, -3.0000005, 2.2799997, -4.0962973e-07)
-mesh = SubResource("PlaneMesh_6wywb")
 
 [node name="CSGBox3D7" type="MeshInstance3D" parent="BoxRoom" unique_id=153443998]
 transform = Transform3D(-6.054261e-08, 0, -0.09792324, 0, 2.6088753, 0, 1.3850535, 0, -4.280361e-09, 2.9984245, 1.2714441, -0.22478151)
 mesh = SubResource("BoxMesh_p8s74")
+
+[node name="Node3D2" parent="BoxRoom" unique_id=313038636 instance=ExtResource("38_w30ff")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.020722346, 0.5, 2.3428028)
 
 [node name="LibraryEntrance" parent="." unique_id=1025790125 node_paths=PackedStringArray("same_room") instance=ExtResource("5_7ycvg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -6)
@@ -691,16 +675,6 @@ material = SubResource("ShaderMaterial_4lpd7")
 [node name="GPUParticles3D" parent="." unique_id=1356626905 instance=ExtResource("25_5smuj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="Room" parent="." unique_id=1621714398 instance=ExtResource("30_j8kkg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
-room_id = "test_room"
-neighbour_rooms = Dictionary[String, String]({
-"East": "",
-"North": "room1",
-"South": "",
-"West": ""
-})
-
 [node name="2x2 room" parent="." unique_id=2011092330 instance=ExtResource("31_yh4yk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 12)
 
@@ -743,9 +717,6 @@ mesh = SubResource("BoxMesh_p8s74")
 
 [node name="Node3D" parent="." unique_id=1988337206 instance=ExtResource("37_meb7l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
-
-[node name="Node3D2" parent="." unique_id=313038636 instance=ExtResource("38_w30ff")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.643244, 0, -1.4571968)
 
 [connection signal="button_down" from="Control/AspectRatioContainer/TextureButton" to="Control/AspectRatioContainer/TextureButton" method="_on_button_down"]
 [connection signal="button_up" from="Control/AspectRatioContainer/TextureButton" to="Control/AspectRatioContainer/TextureButton" method="_on_button_up"]

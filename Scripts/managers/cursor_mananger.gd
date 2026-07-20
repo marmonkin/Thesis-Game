@@ -1,13 +1,13 @@
 extends Node3D
 class_name CursorManager
 
-# Preload cursor textures
 @onready var default_cursor: Texture2D = preload("uid://brvuaqaf6q52a")
 @onready var hover_cursor: Texture2D = preload("uid://fxx3nykk1kxw")
 @onready var interactable_cursor: Texture2D = preload("uid://px2bdxrkhqr7")
 @onready var move_cursor: Texture2D = preload("uid://dwlr5ykxomlkc")
 @onready var look_cursor: Texture2D = preload("uid://rw80mx6ubi0d")
 @onready var grab_cursor: Texture2D = preload("uid://cbtf4ncdgwi80")
+@onready var point_cursor: Texture2D = preload("uid://bvwapm7jxrwve")
 
 var holding_item
 
@@ -31,3 +31,5 @@ func set_cursor(cursor_type: String):
 			Input.set_custom_mouse_cursor(look_cursor, Input.CURSOR_ARROW, Vector2(16, 16))
 		"grab":
 			Input.set_custom_mouse_cursor(grab_cursor, Input.CURSOR_ARROW, Vector2(16, 16))
+		"point":
+			Input.set_custom_mouse_cursor(point_cursor, Input.CURSOR_ARROW, Vector2(16, 16))

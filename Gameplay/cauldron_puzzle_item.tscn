@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bdfw52twqqgq7"]
+
+[ext_resource type="Script" uid="uid://cqd1lw47xat1u" path="res://Scripts/cauldron_item.gd" id="1_oawvs"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1hr0u"]
+radius = 0.6219663
+
+[node name="RigidBody3D" type="Node3D" unique_id=1641253985]
+script = ExtResource("1_oawvs")
+
+[node name="InventoryItem" type="MeshInstance3D" parent="." unique_id=647729818]
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1309140725]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=413945871]
+shape = SubResource("SphereShape3D_1hr0u")
+
+[node name="Outline" type="MeshInstance3D" parent="." unique_id=1014035948]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
+visible = false
+
+[connection signal="input_event" from="Area3D" to="." method="_on_area_3d_input_event"]
+[connection signal="mouse_entered" from="Area3D" to="." method="_on_area_3d_mouse_entered"]
+[connection signal="mouse_exited" from="Area3D" to="." method="_on_area_3d_mouse_exited"]

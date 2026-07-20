@@ -1,31 +1,54 @@
 [gd_scene format=3 uid="uid://bwqydux3edmxv"]
 
 [ext_resource type="Script" uid="uid://cmjftw3o27lh5" path="res://zoom_in_area.gd" id="1_a0tk4"]
+[ext_resource type="Script" uid="uid://cysmksedia1le" path="res://cauldron_manager.gd" id="1_jsk3o"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="2_r3fl7"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_jka67"]
+[ext_resource type="PackedScene" uid="uid://jkchumhpo7jp" path="res://Sauce/3D/Assets/cauldron.tscn" id="4_jka67"]
+[ext_resource type="PackedScene" uid="uid://bep1aa4vyimju" path="res://Sauce/3D/Assets/shelf.tscn" id="5_i5arm"]
+[ext_resource type="PackedScene" uid="uid://bdfw52twqqgq7" path="res://Gameplay/cauldron_puzzle_item.tscn" id="6_i5arm"]
+[ext_resource type="ArrayMesh" uid="uid://1cypcbsph4kl" path="res://Sauce/3D/meshes/bottle.tres" id="7_wc5p8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7j27c"]
-size = Vector3(3.0976563, 1, 1)
+size = Vector3(3.0976563, 2.4, 1.2)
 
 [sub_resource type="Resource" id="Resource_i5arm"]
 script = ExtResource("3_jka67")
+transition = 3
+ease = 1
 
 [node name="Node3D" type="Node3D" unique_id=313038636]
+script = ExtResource("1_jsk3o")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=372396550]
-size = Vector3(3, 1, 1)
-
-[node name="Area3D" type="Area3D" parent="CSGBox3D" unique_id=300077006]
+[node name="Area3D" type="Area3D" parent="." unique_id=300077006]
 script = ExtResource("1_a0tk4")
+zoom_in_size = 3.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D/Area3D" unique_id=87500286]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=87500286]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.70000005, -0.100000024)
 shape = SubResource("BoxShape3D_7j27c")
 
-[node name="PhantomCamera3D" type="Node3D" parent="CSGBox3D" unique_id=789008721]
+[node name="PhantomCamera3D" type="Node3D" parent="." unique_id=789008721]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 1.4618497, 2.304531)
+transform = Transform3D(1, 0, 0, 0, 0.8660253, 0.5, 0, -0.5, 0.8660253, 0, 3.2206686, 3.9366813)
 script = ExtResource("2_r3fl7")
 tween_resource = SubResource("Resource_i5arm")
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
-[connection signal="input_event" from="CSGBox3D/Area3D" to="CSGBox3D/Area3D" method="_on_input_event"]
+[node name="Cauldron" parent="." unique_id=1632312183 instance=ExtResource("4_jka67")]
+
+[node name="Shelf" parent="." unique_id=501010655 instance=ExtResource("5_i5arm")]
+transform = Transform3D(-4.371139e-08, 0, -2.08, 0.039012816, 0.9992387, 0, 0.9992387, -0.03901282, -9.0561805e-08, 2.1855694e-08, 0.97973233, -0.53863215)
+
+[node name="Shelf2" parent="." unique_id=511220053 instance=ExtResource("5_i5arm")]
+transform = Transform3D(-4.371139e-08, 0, -2.08, 0.039012816, 0.9992387, 0, 0.9992387, -0.03901282, -9.0561805e-08, 2.1855694e-08, 1.5792755, -0.5620398)
+
+[node name="RigidBody3D" parent="." unique_id=54503593 instance=ExtResource("6_i5arm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0694531, -0.5)
+
+[node name="InventoryItem" parent="RigidBody3D" index="0" unique_id=647729818]
+mesh = ExtResource("7_wc5p8")
+
+[connection signal="input_event" from="Area3D" to="Area3D" method="_on_input_event"]
+
+[editable path="RigidBody3D"]

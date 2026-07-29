@@ -36,7 +36,6 @@
 [ext_resource type="PackedScene" uid="uid://bhp87ypjfpbw3" path="res://Gameplay/window.tscn" id="33_o4fqm"]
 [ext_resource type="PackedScene" uid="uid://c8wodok4nvhwi" path="res://Rooms/1x3_room.tscn" id="36_opjno"]
 [ext_resource type="PackedScene" uid="uid://dwrww5kwa7vcf" path="res://Rooms/bend_room.tscn" id="37_meb7l"]
-[ext_resource type="PackedScene" uid="uid://bwqydux3edmxv" path="res://node_3d.tscn" id="38_w30ff"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mo76n"]
 sky_top_color = Color(0.63908696, 0.62341, 0.55517936, 1)
@@ -467,9 +466,6 @@ neighbour_rooms = Dictionary[String, String]({
 [node name="CSGBox3D7" type="MeshInstance3D" parent="BoxRoom" unique_id=153443998]
 transform = Transform3D(-6.054261e-08, 0, -0.09792324, 0, 2.6088753, 0, 1.3850535, 0, -4.280361e-09, 2.9984245, 1.2714441, -0.22478151)
 mesh = SubResource("BoxMesh_p8s74")
-
-[node name="Node3D2" parent="BoxRoom" unique_id=313038636 instance=ExtResource("38_w30ff")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.020722346, 0.5, 2.3428028)
 
 [node name="LibraryEntrance" parent="." unique_id=1025790125 node_paths=PackedStringArray("same_room") instance=ExtResource("5_7ycvg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -6)

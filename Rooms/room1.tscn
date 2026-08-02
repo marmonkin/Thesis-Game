@@ -6,7 +6,6 @@
 [ext_resource type="Resource" uid="uid://biklla26d02im" path="res://Dialogues/unlock_box.dialogue" id="3_aojjf"]
 [ext_resource type="Script" uid="uid://dmwkuyfanvx0t" path="res://Resource/InteractableData.gd" id="3_f8sis"]
 [ext_resource type="Texture2D" uid="uid://bv2gmfowdgd33" path="res://isolated-brown-nautical-compass-equipment-on-transparent-background-free-png.webp" id="4_hj0iu"]
-[ext_resource type="PackedScene" uid="uid://bwqydux3edmxv" path="res://node_3d.tscn" id="7_owp4m"]
 [ext_resource type="Shader" uid="uid://5j620dcmf257" path="res://CloseFade.gdshader" id="8_irvpg"]
 [ext_resource type="PackedScene" uid="uid://cd4afcvij6kp5" path="res://Sauce/3D/Assets/table.tscn" id="9_rp1fi"]
 [ext_resource type="PackedScene" uid="uid://bcrh2s1sy2cbn" path="res://Sauce/3D/Assets/chair.tscn" id="10_iurjl"]
@@ -60,8 +59,8 @@ shadow_mesh = SubResource("ArrayMesh_ebk4r")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_85afu"]
 render_priority = 0
 shader = ExtResource("8_irvpg")
-shader_parameter/fade_inner_radius = 6.000000285
-shader_parameter/fade_outer_radius = 4.00000019
+shader_parameter/fade_inner_radius = 8.50000040375
+shader_parameter/fade_outer_radius = 6.000000285
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_165ss"]
 render_priority = 0
@@ -71,7 +70,7 @@ shader_parameter/fade_outer_radius = 3.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_7j27c"]
 material = SubResource("ShaderMaterial_165ss")
-size = Vector3(0.85079956, 1, 5.459961)
+size = Vector3(0.8, 0.8, 5.2000003)
 
 [node name="Room" type="Node3D" unique_id=409298254 groups=["room"]]
 script = ExtResource("1_hj0iu")
@@ -120,9 +119,6 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0
 layers = 2
 texture = ExtResource("4_hj0iu")
 
-[node name="Node3D2" parent="." unique_id=313038636 instance=ExtResource("7_owp4m")]
-transform = Transform3D(7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, -2.2792773, 0.5, 0.04280249)
-
 [node name="Table" parent="." unique_id=1632195547 instance=ExtResource("9_rp1fi")]
 transform = Transform3D(-6.556708e-08, 1.5, 0, -1.5, -6.556708e-08, 0, 0, 0, 1.5, 0.059850156, 0, 2.3518653)
 
@@ -133,12 +129,12 @@ transform = Transform3D(1.1510704e-07, -0.9184195, -1.1859621, -1.5, -7.5531275e
 transform = Transform3D(-1.5, -2.2649371e-07, 9.900354e-15, 0, -6.556708e-08, -1.5, 2.2649371e-07, -1.5, 6.556708e-08, 0.08070584, 1.25, -3.0208187)
 
 [node name="Bookshelf" parent="." unique_id=171844265 instance=ExtResource("11_iurjl")]
-transform = Transform3D(4.708747e-07, 0, -1.5, 0, 1.5, 0, 1.5, 0, 4.708747e-07, 2.5579998, 1.65, -0.10552883)
+transform = Transform3D(-3.3974055e-07, 0, 1.5, 0, 1.5, 0, -1.5, 0, -3.3974055e-07, -2.5420003, 1.5, -0.10552735)
 mesh = SubResource("ArrayMesh_165ss")
 surface_material_override/0 = SubResource("ShaderMaterial_85afu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Bookshelf" unique_id=627846535]
-transform = Transform3D(2.0927764e-07, -1.4117216e-22, 0.6666667, 0, 0.6666667, -1.4117216e-22, -0.6666667, -4.4316265e-29, 2.0927764e-07, -2.2351742e-08, -0.86666673, 0.033681035)
+transform = Transform3D(2.092776e-07, -1.4117216e-22, 0.6666667, 0, 0.6666667, -1.4117216e-22, -0.6666667, -4.4316256e-29, 2.092776e-07, -0.01998704, -0.73333335, 0.016747952)
 mesh = SubResource("BoxMesh_7j27c")
 
 [node name="Book" parent="." unique_id=1948162538 instance=ExtResource("12_v15bi")]

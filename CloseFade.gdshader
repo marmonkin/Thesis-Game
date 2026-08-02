@@ -4,8 +4,8 @@ render_mode depth_prepass_alpha;
 uniform sampler2D albedo : source_color;
 
 // Distance fade uniforms
-uniform float fade_inner_radius : hint_range(0.0, 50.0) = 5.;
-uniform float fade_outer_radius : hint_range(0.0, 10.0) = 3.;
+uniform float fade_inner_radius : hint_range(0.0, 50.0) = 8.5;
+uniform float fade_outer_radius : hint_range(0.0, 10.0) = 6.;
 
 varying vec3 world_position;
 

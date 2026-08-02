@@ -19,7 +19,9 @@ func _ready() -> void:
 
 
 func _on_input_event(camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and !zoomed_in and !zoom_process:
+	if (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT 
+	and event.pressed and !zoomed_in and !zoom_process):
+		
 		zoom_process = true
 		
 		main_cam = camera
@@ -41,7 +43,9 @@ func _on_input_event(camera: Node, event: InputEvent, _event_position: Vector3, 
 
 func _input(event: InputEvent) -> void:
 	if zoomed_in:
-		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed and !zoom_process:
+		if (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT 
+		and event.pressed and !zoom_process):
+			
 			zoom_process = true
 			
 			$CollisionShape3D.set_deferred("disabled", false)

@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://bdfw52twqqgq7" path="res://Gameplay/cauldron_puzzle_item.tscn" id="6_i5arm"]
 [ext_resource type="Shader" uid="uid://5j620dcmf257" path="res://CloseFade.gdshader" id="7_4arys"]
 [ext_resource type="ArrayMesh" uid="uid://1cypcbsph4kl" path="res://Sauce/3D/meshes/bottle.tres" id="7_wc5p8"]
+[ext_resource type="Texture2D" uid="uid://ooidknqp8r1o" path="res://Sauce/PNG/Alchemic/Niter.png" id="10_cdqbm"]
+[ext_resource type="Texture2D" uid="uid://dcc286671sp8u" path="res://Sauce/PNG/Alchemic/Lead.png" id="11_imku0"]
+[ext_resource type="Texture2D" uid="uid://c3bockq1o21he" path="res://Sauce/PNG/Alchemic/Water.png" id="12_wlxy5"]
 
 [sub_resource type="Resource" id="Resource_i5arm"]
 script = ExtResource("3_jka67")
@@ -16,7 +19,7 @@ transition = 3
 ease = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7j27c"]
-size = Vector3(4.4189453, 2.5858643, 2.0418763)
+size = Vector3(3.0341797, 2.5858643, 2.0418763)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uc8lq"]
 size = Vector3(1.9091797, 0.39941406, 1.7148438)
@@ -30,11 +33,71 @@ top_radius = 0.78759766
 bottom_radius = 0.78759766
 height = 0.5414429
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_uc8lq"]
+height = 1.9067383
+
+[sub_resource type="Shader" id="Shader_4arys"]
+code = "shader_type spatial;
+render_mode depth_prepass_alpha;
+
+uniform sampler2D albedo : source_color;
+
+// Distance fade uniforms
+uniform float fade_inner_radius : hint_range(0.0, 50.0) = 8.5;
+uniform float fade_outer_radius : hint_range(0.0, 10.0) = 6.;
+
+varying vec3 world_position;
+
+float bayer4x4(ivec2 pos) {
+	int x = pos.x % 4;
+	int y = pos.y % 4;
+
+	float bayer_matrix[16] = float[16](
+		0.0/16.0,  8.0/16.0,  2.0/16.0, 10.0/16.0,
+		12.0/16.0, 4.0/16.0, 14.0/16.0,  6.0/16.0,
+		3.0/16.0, 11.0/16.0,  1.0/16.0,  9.0/16.0,
+		15.0/16.0, 7.0/16.0, 13.0/16.0,  5.0/16.0
+	);
+
+	return bayer_matrix[y * 4 + x];
+}
+
+void vertex() {
+	// Calculate world position for distance fade
+	world_position = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
+}
+
+void fragment() {
+	vec4 color_base = COLOR;
+	vec4 texture_color = texture(albedo, UV);
+
+	ALBEDO = (color_base * texture_color).rgb;
+
+	float final_alpha = texture_color.a * color_base.a;
+
+	// Linear fade between inner and outer radius
+	float distance_to_camera = length(world_position - CAMERA_POSITION_WORLD);
+	float fade_factor = clamp((distance_to_camera - fade_inner_radius) / (fade_outer_radius - fade_inner_radius), 0.0, 1.0);
+
+	ivec2 screen_pos = ivec2(FRAGCOORD.xy); // Screen coords
+
+	float dither_value = bayer4x4(screen_pos);
+
+	float visibility = 1.0 - fade_factor;
+
+	// Fully disappear at zero visibility
+	if (visibility <= dither_value) {
+		discard;
+	}
+
+	ALPHA = final_alpha;
+}"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6iypd"]
 render_priority = 0
-shader = ExtResource("7_4arys")
-shader_parameter/fade_inner_radius = 5.0
-shader_parameter/fade_outer_radius = 3.0
+shader = SubResource("Shader_4arys")
+shader_parameter/fade_inner_radius = 8.5
+shader_parameter/fade_outer_radius = 6.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_jpnwp"]
 _surfaces = [{
@@ -71,8 +134,8 @@ shadow_mesh = SubResource("ArrayMesh_jpnwp")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cdqbm"]
 render_priority = 0
 shader = ExtResource("7_4arys")
-shader_parameter/fade_inner_radius = 5.0
-shader_parameter/fade_outer_radius = 3.0
+shader_parameter/fade_inner_radius = 8.5
+shader_parameter/fade_outer_radius = 6.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_imku0"]
 resource_name = "Environment_Plane_0053"
@@ -107,13 +170,12 @@ color_red = [NodePath("Bottle"), NodePath("Bottle2"), NodePath("Bottle3")]
 
 [node name="PhantomCamera3D" type="Node3D" parent="." unique_id=789008721]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.8660253, 0.5, 0, -0.5, 0.8660253, 0, 3.6706686, 4.716104)
+transform = Transform3D(1, 0, 0, 0, 0.8660253, 0.5, 0, -0.5, 0.8660253, 0, 5.1706686, 7.31418)
 script = ExtResource("2_r3fl7")
 tween_resource = SubResource("Resource_i5arm")
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
 [node name="zoom_in" type="Area3D" parent="." unique_id=300077006]
-transform = Transform3D(0.68220013, 0, 0, 0, 1.0320363, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_a0tk4")
 zoom_in_size = 3.0
 
@@ -125,7 +187,7 @@ shape = SubResource("BoxShape3D_7j27c")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="cauldron" unique_id=494600393]
-transform = Transform3D(1, 0, 0, 0, 0.65429735, 0, 0, 0, 1, 0, 0.26171896, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26171896, 0)
 shape = SubResource("BoxShape3D_uc8lq")
 
 [node name="Cauldron" parent="." unique_id=1632312183 instance=ExtResource("4_jka67")]
@@ -134,6 +196,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Cauldron" unique_id=1260617747]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07485962, 0)
 mesh = SubResource("CylinderMesh_7j27c")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=489481120]
+transform = Transform3D(0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0, 1, 0, -0.8, 0.4)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D" unique_id=1687546715]
+transform = Transform3D(0.14999998, 0, 0, 0, 1, 0, 0, 0, 0.14999998, 0, 0.84896386, 0)
+mesh = SubResource("CylinderMesh_uc8lq")
 
 [node name="Shelf" parent="." unique_id=501010655 instance=ExtResource("5_i5arm")]
 transform = Transform3D(-6.561696e-08, 1.9469426e-12, -3.12, 0.05851922, 1.4988581, -5.3205502e-09, 1.4988581, -0.05851922, -1.3637953e-07, 0.044387363, 0.97973233, -0.53863215)
@@ -144,7 +213,7 @@ transform = Transform3D(-6.561696e-08, 1.9469426e-12, -3.12, 0.05851922, 1.49885
 mesh = SubResource("ArrayMesh_imku0")
 
 [node name="Bottle" parent="." unique_id=54503593 instance=ExtResource("6_i5arm")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1.0694531, -0.5)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 1.1159655, -0.5)
 
 [node name="InventoryItem" parent="Bottle" index="0" unique_id=647729818]
 mesh = ExtResource("7_wc5p8")
@@ -153,11 +222,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_tereu")
 [node name="Outline" parent="Bottle" index="2" unique_id=1014035948]
 transform = Transform3D(1.05, 0, 0, 0, 1.03, 0, 0, 0, 1.05, 0, 0, 0)
 
-[node name="Sprite3D" parent="Bottle" index="3" unique_id=228286610]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0.05443743)
+[node name="Sprite3D2" parent="Bottle" index="4" unique_id=113190724]
+texture = ExtResource("10_cdqbm")
 
 [node name="Bottle2" parent="." unique_id=1641253985 instance=ExtResource("6_i5arm")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.74515235, 1.0694531, -0.5)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.74515235, 1.1159655, -0.5)
 
 [node name="InventoryItem" parent="Bottle2" index="0" unique_id=647729818]
 mesh = ExtResource("7_wc5p8")
@@ -166,11 +235,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_4arys")
 [node name="Outline" parent="Bottle2" index="2" unique_id=1014035948]
 transform = Transform3D(1.05, 0, 0, 0, 1.03, 0, 0, 0, 1.05, 0, 0, 0)
 
-[node name="Sprite3D" parent="Bottle2" index="3" unique_id=228286610]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0.05443743)
+[node name="Sprite3D2" parent="Bottle2" index="4" unique_id=113190724]
+texture = ExtResource("11_imku0")
 
 [node name="Bottle3" parent="." unique_id=1660859110 instance=ExtResource("6_i5arm")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.5815873, 1.0694531, -0.5)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.5815873, 1.1159655, -0.5)
 
 [node name="InventoryItem" parent="Bottle3" index="0" unique_id=647729818]
 mesh = ExtResource("7_wc5p8")
@@ -179,20 +248,17 @@ surface_material_override/0 = SubResource("StandardMaterial3D_6iypd")
 [node name="Outline" parent="Bottle3" index="2" unique_id=1014035948]
 transform = Transform3D(1.05, 0, 0, 0, 1.03, 0, 0, 0, 1.05, 0, 0, 0)
 
-[node name="Sprite3D" parent="Bottle3" index="3" unique_id=228286610]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0.05443743)
+[node name="Sprite3D2" parent="Bottle3" index="4" unique_id=113190724]
+texture = ExtResource("12_wlxy5")
 
 [node name="Bottle4" parent="." unique_id=89793888 instance=ExtResource("6_i5arm")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.23428965, 1.6691628, -0.5)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.23428965, 1.7156751, -0.5)
 
 [node name="InventoryItem" parent="Bottle4" index="0" unique_id=647729818]
 mesh = ExtResource("7_wc5p8")
 
 [node name="Outline" parent="Bottle4" index="2" unique_id=1014035948]
 transform = Transform3D(1.05, 0, 0, 0, 1.03, 0, 0, 0, 1.05, 0, 0, 0)
-
-[node name="Sprite3D" parent="Bottle4" index="3" unique_id=228286610]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0.05443743)
 
 [connection signal="input_event" from="zoom_in" to="zoom_in" method="_on_input_event"]
 [connection signal="input_event" from="cauldron" to="." method="_on_cauldron_input_event"]

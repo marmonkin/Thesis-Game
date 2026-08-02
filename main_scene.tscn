@@ -32,10 +32,9 @@
 [ext_resource type="PackedScene" uid="uid://6w4hyo5s83yo" path="res://Sauce/dust_particles.tscn" id="25_5smuj"]
 [ext_resource type="Script" uid="uid://cjm5c2vs0ht6g" path="res://Scripts/PuzzleScripts/pillar_puzzle.gd" id="25_kv3aw"]
 [ext_resource type="PackedScene" uid="uid://bgtkd0wbif1bm" path="res://Gameplay/Puzzle/dial_puzzle.tscn" id="27_kv3aw"]
-[ext_resource type="PackedScene" uid="uid://dw1b5b1oyixlm" path="res://Rooms/2x2_room.tscn" id="31_yh4yk"]
 [ext_resource type="PackedScene" uid="uid://bhp87ypjfpbw3" path="res://Gameplay/window.tscn" id="33_o4fqm"]
-[ext_resource type="PackedScene" uid="uid://c8wodok4nvhwi" path="res://Rooms/1x3_room.tscn" id="36_opjno"]
-[ext_resource type="PackedScene" uid="uid://dwrww5kwa7vcf" path="res://Rooms/bend_room.tscn" id="37_meb7l"]
+[ext_resource type="PackedScene" uid="uid://w18vpb4x5ll" path="res://Rooms/room.tscn" id="34_gfmxp"]
+[ext_resource type="PackedScene" uid="uid://bwqydux3edmxv" path="res://node_3d.tscn" id="35_1n88h"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mo76n"]
 sky_top_color = Color(0.63908696, 0.62341, 0.55517936, 1)
@@ -182,15 +181,12 @@ transform = Transform3D(0.7071067, 0, 0.7071067, 0, 1, 0, -0.7071067, 0, 0.70710
 rotation_deg = 90.0
 
 [node name="Camera3D" parent="Control/MainView/SubViewport/Cam_anchor" index="0" unique_id=1983213815]
-transform = Transform3D(1.0000001, 2.9802322e-08, -2.9802322e-08, -1.4901161e-08, 0.8660254, 0.49999997, 1.1920929e-07, -0.5, 0.86602557, 0, 3, 5.1961527)
+transform = Transform3D(1.0000001, 2.9802322e-08, -2.9802322e-08, -1.4901161e-08, 0.8660254, 0.49999997, 1.1920929e-07, -0.5, 0.86602557, 0, 4.4999995, 7.7942286)
 priority = 1
 tween_on_load = false
-follow_distance = 6.0
-horizontal_rotation_offset = 0.0
-spring_length = 6.0
 
 [node name="@Camera3D@25569" parent="Control/MainView/SubViewport/Cam_anchor/Camera3D" index="0" unique_id=1694279919]
-transform = Transform3D(0.7071068, -0.35355335, 0.6123724, -1.4901161e-08, 0.8660254, 0.49999997, -0.7071067, -0.35355338, 0.61237246, 3.6742344, 5, 3.6742344)
+transform = Transform3D(0.7071068, -0.35355335, 0.6123724, 2.9802322e-08, 0.86602545, 0.5, -0.7071067, -0.3535534, 0.6123725, 5.511351, 6.4999995, 5.511351)
 cull_mask = 1047553
 
 [node name="TextureRect" type="TextureRect" parent="Control" unique_id=922454633]
@@ -420,7 +416,7 @@ data = SubResource("Resource_meb7l")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
 room_id = "note_room"
 neighbour_rooms = Dictionary[String, String]({
-"East": "Corridor1Room3",
+"East": "",
 "North": "",
 "South": "",
 "West": "base_room"
@@ -447,10 +443,6 @@ my_image = ExtResource("12_u0ygc")
 
 [node name="CSGBox3D4" type="MeshInstance3D" parent="NoteRoom" unique_id=1242948637]
 transform = Transform3D(-1.3850535, 0, 8.560722e-09, 0, 2.6088753, 0, -1.2108522e-07, 0, -0.09792324, 0.22989297, 1.2714441, -2.9682064)
-mesh = SubResource("BoxMesh_p8s74")
-
-[node name="CSGBox3D5" type="MeshInstance3D" parent="NoteRoom" unique_id=1368518426]
-transform = Transform3D(-6.054261e-08, 0, -0.09792324, 0, 2.6088753, 0, 1.3850535, 0, -4.280361e-09, 2.9717436, 1.2714441, -0.030509114)
 mesh = SubResource("BoxMesh_p8s74")
 
 [node name="BoxRoom" parent="." unique_id=520243100 instance=ExtResource("6_nfk4m")]
@@ -671,48 +663,17 @@ material = SubResource("ShaderMaterial_4lpd7")
 [node name="GPUParticles3D" parent="." unique_id=1356626905 instance=ExtResource("25_5smuj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="2x2 room" parent="." unique_id=2011092330 instance=ExtResource("31_yh4yk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 12)
-
-[node name="Room3" parent="2x2 room" index="2" unique_id=1920373260]
-neighbour_rooms = Dictionary[String, String]({
-"East": "Big1Room4",
-"North": "",
-"South": "Big1Room2",
-"West": "room1"
-})
-
-[node name="CSGBox3D6" type="MeshInstance3D" parent="2x2 room/Room3" index="2" unique_id=1836963357]
-transform = Transform3D(-6.054261e-08, 0, -0.09792324, 0, 2.6088753, 0, 1.3850535, 0, -4.280361e-09, -3.0015755, 1.2714441, -0.22478151)
-mesh = SubResource("BoxMesh_p8s74")
-
 [node name="Window" parent="." unique_id=2134220589 instance=ExtResource("33_o4fqm")]
 unique_name_in_owner = true
 visible = false
 unresizable = true
 maximize_disabled = true
 
-[node name="1x3_room" parent="." unique_id=723255265 instance=ExtResource("36_opjno")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -12)
+[node name="Room" parent="." unique_id=2130478792 instance=ExtResource("34_gfmxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6)
 
-[node name="Room1" parent="1x3_room" index="0" unique_id=1719092100]
-room_id = "Corridor1Room1"
-
-[node name="Room3" parent="1x3_room" index="2" unique_id=87512041]
-room_id = "Corridor1Room3"
-neighbour_rooms = Dictionary[String, String]({
-"East": "",
-"North": "Corridor1Room2",
-"South": "",
-"West": "note_room"
-})
-
-[node name="CSGBox3D6" type="MeshInstance3D" parent="1x3_room/Room3" index="2" unique_id=781029668]
-transform = Transform3D(1.3850535, 0, 0, 0, 2.6088753, 0, 0, 0, 0.09792324, 0.0073640347, 1.2714441, 3.0051115)
-mesh = SubResource("BoxMesh_p8s74")
-
-[node name="Node3D" parent="." unique_id=1988337206 instance=ExtResource("37_meb7l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+[node name="Node3D2" parent="Room" unique_id=313038636 instance=ExtResource("35_1n88h")]
+transform = Transform3D(1, 0, -1.1920929e-07, 0, 1, 0, 1.1920929e-07, 0, 1, 0.020722974, 0.90000004, -2.3571975)
 
 [connection signal="button_down" from="Control/AspectRatioContainer/TextureButton" to="Control/AspectRatioContainer/TextureButton" method="_on_button_down"]
 [connection signal="button_up" from="Control/AspectRatioContainer/TextureButton" to="Control/AspectRatioContainer/TextureButton" method="_on_button_up"]
@@ -721,12 +682,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
 [editable path="SpawnRoom"]
 [editable path="NoteRoom/Letter"]
 [editable path="HallwayNorth/Letter"]
-[editable path="2x2 room"]
-[editable path="2x2 room/Room"]
-[editable path="2x2 room/Room2"]
-[editable path="2x2 room/Room3"]
-[editable path="2x2 room/Room4"]
-[editable path="1x3_room"]
-[editable path="1x3_room/Room1"]
-[editable path="1x3_room/Room2"]
-[editable path="1x3_room/Room3"]

@@ -35,5 +35,4 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_lkhor")
 
 [node name="Cauldron" type="MeshInstance3D" unique_id=1632312183]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("ArrayMesh_2mmcb")

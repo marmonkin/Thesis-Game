@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://bep1aa4vyimju"]
 
-[ext_resource type="Shader" uid="uid://5j620dcmf257" path="res://CloseFade.gdshader" id="1_xfk5f"]
+[ext_resource type="Shader" uid="uid://5j620dcmf257" path="res://Sauce/CloseFade.gdshader" id="1_xfk5f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_arb01"]
 render_priority = 0

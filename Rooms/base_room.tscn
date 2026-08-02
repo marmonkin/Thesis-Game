@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d1n2rq1qu12dt"]
 
 [ext_resource type="Script" uid="uid://cmgq1syb3anf2" path="res://Scripts/room_base.gd" id="1_20cee"]
-[ext_resource type="Shader" uid="uid://5j620dcmf257" path="res://CloseFade.gdshader" id="3_6wywb"]
+[ext_resource type="Shader" uid="uid://5j620dcmf257" path="res://Sauce/CloseFade.gdshader" id="3_6wywb"]
 [ext_resource type="Texture2D" uid="uid://bv2gmfowdgd33" path="res://isolated-brown-nautical-compass-equipment-on-transparent-background-free-png.webp" id="6_6wywb"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qx34j"]

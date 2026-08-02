@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bgtkd0wbif1bm"]
 
 [ext_resource type="Script" uid="uid://bgec11he5dxaq" path="res://Scripts/PuzzleScripts/dial_puzzle.gd" id="1_jos80"]
-[ext_resource type="Shader" uid="uid://5j620dcmf257" path="res://CloseFade.gdshader" id="2_r6cs8"]
+[ext_resource type="Shader" uid="uid://5j620dcmf257" path="res://Sauce/CloseFade.gdshader" id="2_r6cs8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3jb4j"]
 render_priority = 0

@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var cauldron_area: Area3D = $cauldron
+@onready var cauldron_area: Area3D = $Cauldron/cauldron_area
 
 @onready var water_mesh: MeshInstance3D = $Cauldron/MeshInstance3D
 var water_material

@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://c1qakhjpvn0dw" path="res://Sauce/PNG/Crumpled-low-wear.png" id="10_fv2he"]
 [ext_resource type="PackedScene" uid="uid://csrs8fu250bpt" path="res://Gameplay/item_manifest.tscn" id="11_ghshe"]
 [ext_resource type="Texture2D" uid="uid://clajncmfwdxty" path="res://Sauce/PNG/First-note.png" id="12_u0ygc"]
-[ext_resource type="Shader" uid="uid://5j620dcmf257" path="res://CloseFade.gdshader" id="13_42l1d"]
+[ext_resource type="Shader" uid="uid://5j620dcmf257" path="res://Sauce/CloseFade.gdshader" id="13_42l1d"]
 [ext_resource type="PackedScene" uid="uid://cso28bogm3x3c" path="res://Gameplay/Puzzle/pillar_puzzle.tscn" id="14_42l1d"]
 [ext_resource type="PackedScene" uid="uid://cws7uwxsqkk6k" path="res://Gameplay/letter.tscn" id="15_m35m6"]
 [ext_resource type="Texture2D" uid="uid://b8biocg62j5no" path="res://Sauce/PNG/Wizardganginball.png" id="15_p8s74"]
@@ -186,7 +186,7 @@ priority = 1
 tween_on_load = false
 
 [node name="@Camera3D@25569" parent="Control/MainView/SubViewport/Cam_anchor/Camera3D" index="0" unique_id=1694279919]
-transform = Transform3D(0.7071068, -0.35355335, 0.6123724, 2.9802322e-08, 0.86602545, 0.5, -0.7071067, -0.3535534, 0.6123725, 5.511351, 6.4999995, 5.511351)
+transform = Transform3D(0.7071068, -0.35355335, 0.6123724, -1.4901161e-08, 0.8660254, 0.49999997, -0.7071067, -0.35355338, 0.61237246, 5.511351, 6.4999995, 5.511351)
 cull_mask = 1047553
 
 [node name="TextureRect" type="TextureRect" parent="Control" unique_id=922454633]
@@ -353,7 +353,7 @@ unique_name_in_owner = true
 neighbour_rooms = Dictionary[String, String]({
 "East": "note_room",
 "North": "",
-"South": "room1",
+"South": "box",
 "West": ""
 })
 same_room = [NodePath("../NoteRoom")]
@@ -448,16 +448,26 @@ mesh = SubResource("BoxMesh_p8s74")
 [node name="BoxRoom" parent="." unique_id=520243100 instance=ExtResource("6_nfk4m")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+room_id = "box"
 neighbour_rooms = Dictionary[String, String]({
-"East": "Big1Room3",
+"East": "cauldron",
 "North": "base_room",
 "South": "",
 "West": ""
 })
 
-[node name="CSGBox3D7" type="MeshInstance3D" parent="BoxRoom" unique_id=153443998]
-transform = Transform3D(-6.054261e-08, 0, -0.09792324, 0, 2.6088753, 0, 1.3850535, 0, -4.280361e-09, 2.9984245, 1.2714441, -0.22478151)
-mesh = SubResource("BoxMesh_p8s74")
+[node name="CauldronRoom" parent="." unique_id=2130478792 instance=ExtResource("34_gfmxp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6)
+room_id = "cauldron"
+neighbour_rooms = Dictionary[String, String]({
+"East": "",
+"North": "",
+"South": "",
+"West": "box"
+})
+
+[node name="Node3D2" parent="CauldronRoom" unique_id=313038636 instance=ExtResource("35_1n88h")]
+transform = Transform3D(1, 0, -1.1920929e-07, 0, 1, 0, 1.1920929e-07, 0, 1, 0.020722974, 0.90000004, -2.3571975)
 
 [node name="LibraryEntrance" parent="." unique_id=1025790125 node_paths=PackedStringArray("same_room") instance=ExtResource("5_7ycvg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -6)
@@ -668,12 +678,6 @@ unique_name_in_owner = true
 visible = false
 unresizable = true
 maximize_disabled = true
-
-[node name="Room" parent="." unique_id=2130478792 instance=ExtResource("34_gfmxp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6)
-
-[node name="Node3D2" parent="Room" unique_id=313038636 instance=ExtResource("35_1n88h")]
-transform = Transform3D(1, 0, -1.1920929e-07, 0, 1, 0, 1.1920929e-07, 0, 1, 0.020722974, 0.90000004, -2.3571975)
 
 [connection signal="button_down" from="Control/AspectRatioContainer/TextureButton" to="Control/AspectRatioContainer/TextureButton" method="_on_button_down"]
 [connection signal="button_up" from="Control/AspectRatioContainer/TextureButton" to="Control/AspectRatioContainer/TextureButton" method="_on_button_up"]

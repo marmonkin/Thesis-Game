@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://bgutao1x68h0y"]
+
+[ext_resource type="Script" uid="uid://cmgq1syb3anf2" path="res://Scripts/room_base.gd" id="1_s1cvu"]
+[ext_resource type="Texture2D" uid="uid://bv2gmfowdgd33" path="res://isolated-brown-nautical-compass-equipment-on-transparent-background-free-png.webp" id="2_axior"]
+[ext_resource type="PackedScene" uid="uid://ce8g2lijmt5xx" path="res://Sauce/3D/Assets/chandelier.tscn" id="3_axior"]
+[ext_resource type="PackedScene" uid="uid://dh4qsye505rc2" path="res://Sauce/3D/Assets/door.tscn" id="4_m6mit"]
+[ext_resource type="PackedScene" uid="uid://buoe5ieunc0i0" path="res://Sauce/3D/Assets/fireplace.tscn" id="5_tl0c3"]
+[ext_resource type="PackedScene" uid="uid://ce24cd0c2rieu" path="res://Sauce/3D/Assets/sofa.tscn" id="6_vgkr4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbclw"]
+albedo_color = Color(0.21123034, 0.23943305, 0.47554272, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_at5rx"]
+
+[node name="fireplace_room" type="Node3D" unique_id=654487724]
+
+[node name="Room" type="Node3D" parent="." unique_id=409298254 node_paths=PackedStringArray("same_room") groups=["room"]]
+script = ExtResource("1_s1cvu")
+room_id = "fireplace_south"
+neighbour_rooms = Dictionary[String, String]({
+"East": "",
+"North": "fireplace_north",
+"South": "",
+"West": ""
+})
+same_room = [NodePath("../Room2")]
+
+[node name="Node3D" type="Node3D" parent="Room" unique_id=191996790]
+
+[node name="Sprite3D" type="Sprite3D" parent="Room/Node3D" unique_id=813923217]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.05725479, -2.5026736e-09)
+layers = 4
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("2_axior")
+
+[node name="SpotLight3D" type="OmniLight3D" parent="Room/Node3D" unique_id=509807374]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 4.021005, -9.772809e-08)
+omni_range = 3.8976552
+
+[node name="Floor" type="CSGBox3D" parent="Room/Node3D" unique_id=1570323774]
+transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 6, 0, 0, 0)
+size = Vector3(0.75, 0.078, 0.75)
+material = SubResource("StandardMaterial3D_hbclw")
+
+[node name="Walls" type="Node3D" parent="Room" unique_id=37502101]
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Room/Walls" unique_id=1257774438]
+transform = Transform3D(1.7002128e-07, -0.987, -5.0935643e-08, 0, -4.314314e-08, 1.1652719, -2.252, -7.451643e-08, -3.8455342e-15, 2.25, 1.2, 0)
+mesh = SubResource("PlaneMesh_at5rx")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Room/Walls" unique_id=346108073]
+transform = Transform3D(-9.843805e-08, 1, 5.0923767e-08, 0, -4.371139e-08, 1.165, 2.252, 4.371139e-08, 2.2259486e-15, -2.25, 1.2, 0)
+mesh = SubResource("PlaneMesh_at5rx")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Room/Walls" unique_id=1865801098]
+transform = Transform3D(2.252, 1.7257256e-07, 8.905871e-15, 0, -4.314314e-08, 1.1652719, 3.937522e-07, -0.987, -5.0935643e-08, 0, 1.2, 2.249756)
+mesh = SubResource("PlaneMesh_at5rx")
+
+[node name="Chandelier" parent="Room" unique_id=1613355362 instance=ExtResource("3_axior")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 0)
+
+[node name="Door_Frame" parent="Room" unique_id=1495231871 instance=ExtResource("4_m6mit")]
+transform = Transform3D(-4.371139e-08, 1, 0, 4.371139e-08, 0, -1, -1, -4.371139e-08, -4.3711385e-08, 2.2, 0.8, 0)
+
+[node name="Fireplace" parent="Room" unique_id=1601499582 instance=ExtResource("5_tl0c3")]
+transform = Transform3D(2, 0, 0, 0, 1.075, 0, 0, 0, 2, -1.8, 0, 1.8)
+
+[node name="Room2" type="Node3D" parent="." unique_id=1108035895 node_paths=PackedStringArray("same_room") groups=["room"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+script = ExtResource("1_s1cvu")
+room_id = "fireplace_north"
+neighbour_rooms = Dictionary[String, String]({
+"East": "",
+"North": "",
+"South": "fireplace_south",
+"West": ""
+})
+same_room = [NodePath("../Room")]
+
+[node name="Walls" type="Node3D" parent="Room2" unique_id=753149847]
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Room2/Walls" unique_id=1500275908]
+transform = Transform3D(1.7002128e-07, -0.987, -5.0935643e-08, 0, -4.314314e-08, 1.1652719, -2.252, -7.451643e-08, -3.8455342e-15, 2.25, 1.2, 0)
+mesh = SubResource("PlaneMesh_at5rx")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Room2/Walls" unique_id=2053487297]
+transform = Transform3D(-9.843805e-08, 0.987, 5.0935643e-08, 0, -4.314314e-08, 1.1652719, 2.252, 4.314314e-08, 2.2264678e-15, -2.25, 1.2, 0)
+mesh = SubResource("PlaneMesh_at5rx")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Room2/Walls" unique_id=699663976]
+transform = Transform3D(-2.252, -1.4903286e-07, -7.6910685e-15, 0, -4.314314e-08, 1.1652719, -3.4004256e-07, 0.987, 5.0935643e-08, 0, 1.2, -2.25)
+mesh = SubResource("PlaneMesh_at5rx")
+
+[node name="Node3D" type="Node3D" parent="Room2" unique_id=232562285]
+
+[node name="Sprite3D" type="Sprite3D" parent="Room2/Node3D" unique_id=945610199]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.05725479, -2.5026736e-09)
+layers = 4
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("2_axior")
+
+[node name="SpotLight3D" type="OmniLight3D" parent="Room2/Node3D" unique_id=146696834]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 4.021005, -9.772809e-08)
+omni_range = 3.8976552
+
+[node name="Floor" type="CSGBox3D" parent="Room2/Node3D" unique_id=1527954610]
+transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 6, 0, 0, 0)
+size = Vector3(0.75, 0.078, 0.75)
+material = SubResource("StandardMaterial3D_hbclw")
+
+[node name="Chandelier2" parent="Room2" unique_id=1165456844 instance=ExtResource("3_axior")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 0)
+
+[node name="Sofa" parent="Room2" unique_id=1452093913 instance=ExtResource("6_vgkr4")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.6754768, 0, 2.2723274)
+
+[connection signal="visibility_changed" from="Room" to="Room" method="_on_visibility_changed"]
+[connection signal="visibility_changed" from="Room2" to="Room2" method="_on_visibility_changed"]
